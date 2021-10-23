@@ -1,0 +1,35 @@
+<div class="login-wrapper">
+  <div class="card">
+    <div class="card-body">
+        <form (ngSubmit)="onSubmit(signInForm)" #signInForm="ngForm">
+          <h1 class="h3 mb-3 fw-bolder text-center "> Connectez vous</h1>
+
+          <div class="form-floating">
+            <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@sidy.com"
+            required autofocus ngModel>
+            <label for="floatingInput">Votre email</label>
+          </div>
+
+          <div class="form-floating">
+            <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Mot de passeS"  required ngModel>
+            <label for="floatingPassword">Mot de passe </label>
+          </div>
+          <button class="w-100 btn btn-lg btn-primary" type="submit">Connexion</button>
+          <div class="alert alert-danger" role="alert" *ngIf="isFormInValid">
+               Saisissez votre identifiant et mot de passe.
+          </div>
+
+          <div class="alert alert-danger" role="alert" *ngIf="areCredentialIsInvalid">
+            Identifiant ou mot de passe incorrect.
+          </div>
+        </form>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
