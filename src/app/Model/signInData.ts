@@ -1,8 +1,10 @@
 export  class  SignInData {
+
   private email: string;
   private password: string;
 
-  constructor(email :string, password:string ) {
+  constructor(email :string, password:string  ) {
+
     this.email=email;
     this.password=password;
   }
@@ -15,4 +17,6 @@ export  class  SignInData {
   getPassword(): string {
     return this.password;
   }
+
+
 }

@@ -7,7 +7,7 @@ import {AuthenticationService} from "../../service/authentication/authentication
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'j-onpc';
+
 
 
   constructor(public authenticationService: AuthenticationService) {

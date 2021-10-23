@@ -36,6 +36,5 @@ export class AuthenticationService {
 
   logout(){
     this.isAuthenticated=false;
-    this.router.navigate(['']);
   }
 }

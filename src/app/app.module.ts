@@ -25,4 +25,4 @@ import { AccueilComponent } from './accueil/accueil.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
