@@ -5,6 +5,7 @@ import {CreateUserComponent} from "./create-user/create-user.component";
 import {FindUserComponent} from "./find-user/find-user.component";
 import {AccueilComponent} from "./accueil/accueil.component";
 import {AuthGuard} from "./guards/auth.guard";
+import {AppComponent} from "./app.component";
 
 const routes: Routes = [
   {path:'', component:LoginComponent},

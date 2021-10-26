@@ -8,6 +8,8 @@ import {FormsModule} from "@angular/forms";
 import { CreateUserComponent } from './create-user/create-user.component';
 import { FindUserComponent } from './find-user/find-user.component';
 import { AccueilComponent } from './accueil/accueil.component';
+import {HttpClientModule} from "@angular/common/http";
+import { CreateEtablissementComponent } from './create-etablissement/create-etablissement.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { AccueilComponent } from './accueil/accueil.component';
     LoginComponent,
     CreateUserComponent,
     FindUserComponent,
-    AccueilComponent
+    AccueilComponent,
+    CreateEtablissementComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

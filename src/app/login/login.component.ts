@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {AuthenticationService} from "../../../service/authentication/authentication.service";
 import {SignInData} from "../Model/signInData";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'cf-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   isFormInValid=false;
   areCredentialIsInvalid = false;
 
-  constructor(private authenticationService: AuthenticationService) { }
+  constructor(private authenticationService: AuthenticationService,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -26,15 +27,24 @@ export class LoginComponent implements OnInit {
      }
      this.checkCredentials(signInForm);
     //const  signInData= new SignInData(signInForm.value.email,signInForm.value.password);
-
    }
-
 
    private checkCredentials(signInForm : NgForm){
-     const  signInData= new SignInData(signInForm.value.email,signInForm.value.password);
-     if(!this.authenticationService.authenticate(signInData)){
+     let  signInData= new SignInData();
+        signInData.email=signInForm.value.email;
+        signInData.password=signInForm.value.password;
+       if(!this.authenticationService.logUser(signInData)){
        this.isFormInValid=false;
        this.areCredentialIsInvalid=true;
-     }
+         //this.router.navigate(['Accueil']);
+         this.router.navigate(['']);
+     }else {
+         //this.router.navigate(['']);
+         this.router.navigate(['Accueil']);
+       }
    }
+
+
+
+
 }

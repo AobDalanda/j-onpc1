@@ -1,40 +1,56 @@
 import { Injectable } from '@angular/core';
 import {SignInData} from "../../src/app/Model/signInData";
 import {Router} from "@angular/router";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Observable} from "rxjs";
+
+
+const httpOptions = {
+  headers: new HttpHeaders(   )
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-
-  private readonly mockeduser= new SignInData('bsidy01@aldahim.fr','123');
+ // private readonly mockeduser= new SignInData('bsidy01@aldahim.fr','123');
   isAuthenticated =false;
-  constructor(private router:Router) { }
+  verif=false;
+  constructor( private httpClient: HttpClient,private router:Router) { }
 
 
-  authenticate(signData: SignInData): boolean{
-    if(this.checkCredentials(signData)){
-      this.isAuthenticated=true;
-      this.router.navigate(['Accueil']);
-      return true;
-    }
-    this.isAuthenticated=false;
-    return false;
+
+
+  logUser(signData: SignInData) : boolean{
+        let usercredentiels= [
+            {
+              Mail: signData.email,
+              MotDePasse: signData.password
+            }];
+
+         this.httpClient  .post('http://127.0.0.1/ONPC/public/users/login',  JSON.stringify(usercredentiels),httpOptions)
+            .subscribe(
+              result => {
+                this.isAuthenticated=true;
+               console.log('identifiant et mot de passe ok !'+JSON.stringify(result));
+                this.verif= true;
+                    this.router.navigate(['Accueil']);
+              },
+              (error) => {
+                this.isAuthenticated=false;
+                console.log('Erreur ! : ' + error);
+                //this.router.navigate(['']);
+               //
+                this.verif= false;
+              }
+            );
+          return this.verif;
   }
-  private checkCredentials(signInData:SignInData):boolean{
-    return this.checkEmail(signInData.getEmail()) && this.checkPassword(signInData.getPassword())
 
-  }
 
-  private checkEmail (email: string): boolean{
-        return email ===this.mockeduser.getEmail();
-  }
-
-  private checkPassword(password: string):boolean{
-       return  password===this.mockeduser.getPassword();
-  }
 
   logout(){
     this.isAuthenticated=false;
+    this.router.navigate(['']);
   }
 }
