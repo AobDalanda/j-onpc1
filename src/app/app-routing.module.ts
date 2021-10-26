@@ -6,10 +6,12 @@ import {FindUserComponent} from "./find-user/find-user.component";
 import {AccueilComponent} from "./accueil/accueil.component";
 import {AuthGuard} from "./guards/auth.guard";
 import {AppComponent} from "./app.component";
+import {CreateEtablissementComponent} from "./create-etablissement/create-etablissement.component";
 
 const routes: Routes = [
   {path:'', component:LoginComponent},
   {path:'Accueil', component:AccueilComponent, canActivate:[AuthGuard]},
+  {path:'CreationFicheEtablissement', component:CreateEtablissementComponent, canActivate:[AuthGuard]},
   {path:'CreateUser', component:CreateUserComponent, canActivate:[AuthGuard]},
   {path: 'FindUser', component:FindUserComponent, canActivate:[AuthGuard]},
 ];
