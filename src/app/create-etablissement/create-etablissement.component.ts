@@ -1,12 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 
 interface listeTypeDptandEtablishment {
   value: string;
   viewValue: string;
 }
-
-
 
 
 @Component({
@@ -20,6 +18,7 @@ export class CreateEtablissementComponent implements OnInit {
    * doit provenir d'une API
    */
   dpt: listeTypeDptandEtablishment[] = [
+    {value: '', viewValue: 'Département'},
     {value: '01', viewValue: 'Ain'},
     {value: '35', viewValue: 'Ille-et-Villaine'},
     {value: '22', viewValue: "Côtes-d'Armor"}
@@ -27,7 +26,8 @@ export class CreateEtablissementComponent implements OnInit {
   /**
    * Liste type d'etablissement
    */
-  typeEta:listeTypeDptandEtablishment[]=[
+  typeEta: listeTypeDptandEtablishment[] = [
+    {value: '0', viewValue: 'Type établissement'},
     {value: '1', viewValue: 'Etablissement'},
     {value: '2', viewValue: 'Organisme'},
     {value: '3', viewValue: 'Internat'},
@@ -35,7 +35,8 @@ export class CreateEtablissementComponent implements OnInit {
     {value: '5', viewValue: 'Groupes scolaires'},
   ]
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder) {
+  }
 
   title = 'newMat';
   isLinear = true;
@@ -43,16 +44,16 @@ export class CreateEtablissementComponent implements OnInit {
   secondFormGroup!: FormGroup;
 
 
-  ngOnInit(){
+  ngOnInit() {
     /**
      * formulaire "departement et type etablissement"
      */
     this.firstFormGroup = this._formBuilder.group({
-          /**
-           * champs obligatoires
-           */
-              department: ['', Validators.required],
-              typeEtablissement: ['', Validators.required]
+      /**
+       * champs obligatoires
+       */
+      department: ['', Validators.required],
+      typeEtablissement: ['', Validators.required]
 
     });
 
@@ -69,8 +70,7 @@ export class CreateEtablissementComponent implements OnInit {
   }
 
 
-
-  submit(){
+  submit() {
     console.log(this.firstFormGroup.value);
     console.log(this.secondFormGroup.value);
   }

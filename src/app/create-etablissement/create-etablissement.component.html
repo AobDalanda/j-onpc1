@@ -1,48 +1,51 @@
 <h2 align="center">Création de fiche etablissement</h2>
-
-
-
-<mat-horizontal-stepper labelPosition="bottom" color="warn" [linear]="isLinear">
-<!-- step 1 formulaire  departement et type etablissement-->
-  <mat-step [stepControl]="firstFormGroup"  >
-    <ng-template matStepLabel >   <span>  Departemement </span>  </ng-template>
-    departement et type etablissement
+<mat-horizontal-stepper labelPosition="bottom" [linear]="isLinear">
+  <!-- step 1 formulaire  departement et type etablissement-->
+  <mat-step [stepControl]="firstFormGroup">
+    <ng-template matStepLabel><span>  Departemement </span></ng-template>
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Basic Details</ng-template>
       <mat-form-field>
-        <mat-label>Departement </mat-label>
-        <mat-select formControlName="department" >
-            <mat-option *ngFor="let departement of dpt" [value]="departement.value">
-              {{departement.value +" "+ departement.viewValue}}
-            </mat-option>
+        <mat-label>Departement</mat-label>
+        <mat-select formControlName="department" class="custom-select">
+          <mat-option *ngFor="let departement of dpt" [value]="departement.value">
+            {{departement.value + " " + departement.viewValue}}
+          </mat-option>
         </mat-select>
       </mat-form-field>
       <br/>
       <mat-form-field>
-        <mat-label>Type établissement </mat-label>
-        <mat-select formControlName="typeEtablissement" >
+        <mat-label>Type établissement</mat-label>
+        <mat-select formControlName="typeEtablissement" class="custom-select">
           <mat-option *ngFor="let typeEtabli of typeEta" [value]="typeEtabli.value">
             {{typeEtabli.viewValue}}
           </mat-option>
         </mat-select>
       </mat-form-field>
-    <div>
-      <button mat-button matStepperNext>Suivant</button>
-    </div>
     </form>
+    <div>
+      <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
+    </div>
+
   </mat-step>
-<!-- step 2 formulaire  Coordonnées-->
-  <mat-step >  <ng-template matStepLabel> <span>  Coordonnées </span> </ng-template>
+
+  <!-- step 2 formulaire  Coordonnées-->
+  <mat-step>
+    <ng-template matStepLabel><span>  Coordonnées </span></ng-template>
     Coordonnées de l'etablisssement
 
-    <div>
-      <button mat-button matStepperPrevious>Précedent</button>
-      <button mat-button matStepperNext>Suivant</button>
-    </div>
 
+
+    <div>
+      <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
+      <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
+    </div>
   </mat-step>
 
-  <mat-step>  <ng-template matStepLabel> <span>  Contacts </span> </ng-template>
+
+  <!-- step 3 formulaire  Contacts-->
+  <mat-step>
+    <ng-template matStepLabel><span>  Contacts </span></ng-template>
     Conctacts de l'etablisssement
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Amount & Stock</ng-template>
@@ -56,125 +59,121 @@
         <input matInput placeholder="Stock" formControlName="stock" required>
       </mat-form-field>
       <br/>
-    <div>
-      <button mat-button matStepperPrevious>Précedent</button>
-      <button mat-button matStepperNext>Suivant</button>
-    </div>
+      <div>
+        <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
+        <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
+      </div>
     </form>
   </mat-step>
-
-  <mat-step>  <ng-template matStepLabel> <span>  Ordres de paticipation </span> </ng-template>
+  <!-- step 4 formulaire  Ordres de paticipation-->
+  <mat-step>
+    <ng-template matStepLabel><span>  Ordres de paticipation </span></ng-template>
 
     <ng-template matStepLabel>Done</ng-template>
     <p>You are now done.</p>
     <mat-list>
-      <mat-list-item> <strong>Name:</strong> {{ this.firstFormGroup.value.name }}</mat-list-item>
-      <mat-list-item> <strong>Description:</strong> {{ this.firstFormGroup.value.description }}</mat-list-item>
-      <mat-list-item> <strong>Amount:</strong> {{ this.secondFormGroup.value.amount }}</mat-list-item>
-      <mat-list-item> <strong>Stock:</strong> {{ this.secondFormGroup.value.stock }}</mat-list-item>
+      <mat-list-item><strong>Name:</strong> {{ this.firstFormGroup.value.name }}</mat-list-item>
+      <mat-list-item><strong>Description:</strong> {{ this.firstFormGroup.value.description }}</mat-list-item>
+      <mat-list-item><strong>Amount:</strong> {{ this.secondFormGroup.value.amount }}</mat-list-item>
+      <mat-list-item><strong>Stock:</strong> {{ this.secondFormGroup.value.stock }}</mat-list-item>
     </mat-list>
 
-    Ordres de paticipation  de l'etablisssement
+    Ordres de paticipation de l'etablisssement
 
 
     <div>
-      <button mat-button matStepperPrevious>Précedent</button>
-      <button mat-button matStepperNext>Suivant</button>
+      <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
+      <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
     </div>
   </mat-step>
-
-  <mat-step>  <ng-template matStepLabel> <span>  Insertions </span> </ng-template>
-    Insertions  de l'etablisssement
-
-
+  <!-- step 5 formulaire  Insertions-->
+  <mat-step>
+    <ng-template matStepLabel><span>  Insertions </span></ng-template>
+    Insertions de l'etablisssement
     <div>
-      <button mat-button matStepperPrevious>Précedent</button>
-      <button mat-button matStepperNext>Suivant</button>
+      <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
+      <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
     </div>
   </mat-step>
-
-  <mat-step>  <ng-template matStepLabel> <span>  Insertions Web </span> </ng-template>
-    Insertions Web  de l'etablisssement
-
-
+  <!-- step 6 formulaire  Insertions Web-->
+  <mat-step>
+    <ng-template matStepLabel><span>  Insertions Web </span></ng-template>
+    Insertions Web de l'etablisssement
     <div>
-      <button mat-button matStepperPrevious>Précedent</button>
-      <button mat-button matStepperNext>Suivant</button>
+      <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
+      <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
     </div>
   </mat-step>
-
-  <mat-step>  <ng-template matStepLabel> <span>  Liens</span> </ng-template>
-    Liens  de l'etablisssement
-
-
+  <!-- step 7 formulaire  Liens -->
+  <mat-step>
+    <ng-template matStepLabel><span>  Liens</span></ng-template>
+    Liens de l'etablisssement
     <div>
-      <button mat-button matStepperPrevious>Précedent</button>
-      <button mat-button matStepperNext>Suivant</button>
+      <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
+      <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
     </div>
   </mat-step>
-
-  <mat-step>  <ng-template matStepLabel> <span>  Zone de dialogue</span> </ng-template>
+  <!-- step 8 formulaire  Zone de dialogu -->
+  <mat-step>
+    <ng-template matStepLabel><span>  Zone de dialogue</span></ng-template>
     Zone de dialogue de l'etablisssement
-
-
     <div>
-      <button mat-button matStepperPrevious>Précedent</button>
-      <button mat-button matStepperNext>Suivant</button>
+      <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
+      <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
     </div>
   </mat-step>
-
-  <mat-step>  <ng-template matStepLabel> <span>  Statut</span> </ng-template>
-    Statut  de l'etablisssement
-
-
+  <!-- step 9 formulaire  Statut-->
+  <mat-step>
+    <ng-template matStepLabel><span>  Statut</span></ng-template>
+    Statut de l'etablisssement
     <div>
-      <button mat-button matStepperPrevious>Précedent</button>
-      <button mat-button matStepperNext>Suivant</button>
+      <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
+      <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
     </div>
   </mat-step>
-
-  <mat-step>  <ng-template matStepLabel> <span>  Editions précedentes </span> </ng-template>
-    Editions précedentes   de l'etablisssement
-
-
+  <!-- step 10 formulaire  Editions précedentes  -->
+  <mat-step>
+    <ng-template matStepLabel><span>  Editions précedentes </span></ng-template>
+    Editions précedentes de l'etablisssement
     <div>
-      <button mat-button matStepperPrevious>Précedent</button>
-      <button mat-button matStepperNext>Suivant</button>
+      <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
+      <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
     </div>
   </mat-step>
-
-  <mat-step>  <ng-template matStepLabel> <span>  Sites </span> </ng-template>
-    Sites  de l'etablisssement
-
-
+  <!-- step 11 formulaire  Sites  -->
+  <mat-step>
+    <ng-template matStepLabel><span>  Sites </span></ng-template>
+    Sites de l'etablisssement
     <div>
-      <button mat-button matStepperPrevious>Précedent</button>
-      <button mat-button matStepperNext>Suivant</button>
+      <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
+      <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
     </div>
   </mat-step>
-
-  <mat-step>  <ng-template matStepLabel> <span>  Bannières </span> </ng-template>
-    Bannières  de l'etablisssement
-
-
+  <!-- step 12 formulaire  Bannières  -->
+  <mat-step>
+    <ng-template matStepLabel><span>  Bannières </span></ng-template>
+    Bannières de l'etablisssement
     <div>
-      <button mat-button matStepperPrevious>Précedent</button>
-      <button mat-button matStepperNext>Suivant</button>
+      <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
+      <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
     </div>
   </mat-step>
-
-  <mat-step>  <ng-template matStepLabel> <span>  Diffusion </span> </ng-template>
-    Diffusion  de l'etablisssement
+  <!-- step 13 formulaire  Diffusion  -->
+  <mat-step>
+    <ng-template matStepLabel><span>  Diffusion </span></ng-template>
+    Diffusion de l'etablisssement
     <div>
-      <button mat-button matStepperPrevious>Précedent</button>
-      <button mat-button matStepperNext>Suivant</button>
+      <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
+      <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
     </div>
   </mat-step>
-  <mat-step>  <ng-template matStepLabel> <span>  Récapitulatif de la fiche </span> </ng-template>
-    Recap de la fiche
+  <!-- step 14 formulaire  Recap de la fiche avant validation   -->
+  <mat-step>
+    <ng-template matStepLabel><span>  Récapitulatif de la fiche </span></ng-template>
+    Recap de la fiche avant validation
     <div>
-      <button mat-button matStepperPrevious>Précedent</button>
-      <button mat-button (click)="submit()">Submit</button>
+      <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
+      <button mat-button (click)="submit()" class="btn btn-primary">Submit</button>
     </div>
   </mat-step>
 
