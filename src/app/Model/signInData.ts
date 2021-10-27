@@ -1,8 +1,4 @@
 export  class  SignInData {
-
-    email!: string;
-    password!: string;
-
-
-
+  email!: string;
+  password!: string;
 }

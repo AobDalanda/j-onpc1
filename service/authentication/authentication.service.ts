@@ -18,9 +18,6 @@ export class AuthenticationService {
   verif=false;
   constructor( private httpClient: HttpClient,private router:Router) { }
 
-
-
-
   logUser(signData: SignInData) : boolean{
         let usercredentiels= [
             {
