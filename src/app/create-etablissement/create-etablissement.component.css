@@ -1,3 +1,36 @@
 button {
   margin-left: 0.5rem;
 }
+.part1 {
+  background-color: Black;
+  padding-left: 15px;
+  width:20%;
+  height:25%;
+  float:left;
+  color:white;
+  font-size: 14px;
+  font-weight: bold;
+}
+.part2 {
+  background-color: #7c7cea;
+  width:20%;
+  height:25%;
+  float:left;
+}
+.part3 {
+  background-color: #86ef86;
+  width:20%;
+  height:25%;
+  float:left;
+}
+.part4 {background-color: #d2d287;
+  width:20%;
+  height:25%;
+  float:left;
+}
+
+.part5 {background-color: #87d2b8;
+  width:20%;
+  height:25%;
+  float:left;
+}

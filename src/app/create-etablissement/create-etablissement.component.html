@@ -1,13 +1,12 @@
 <h2 align="center">Création de fiche etablissement</h2>
-<mat-horizontal-stepper labelPosition="bottom" [linear]="isLinear">
+<mat-horizontal-stepper [linear]="isLinear" labelPosition="bottom">
   <!-- step 1 formulaire  departement et type etablissement-->
   <mat-step [stepControl]="firstFormGroup">
     <ng-template matStepLabel><span>  Departemement </span></ng-template>
     <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Basic Details</ng-template>
       <mat-form-field>
         <mat-label>Departement</mat-label>
-        <mat-select formControlName="department" class="custom-select">
+        <mat-select class="custom-select" formControlName="department">
           <mat-option *ngFor="let departement of dpt" [value]="departement.value">
             {{departement.value + " " + departement.viewValue}}
           </mat-option>
@@ -16,7 +15,7 @@
       <br/>
       <mat-form-field>
         <mat-label>Type établissement</mat-label>
-        <mat-select formControlName="typeEtablissement" class="custom-select">
+        <mat-select class="custom-select" formControlName="typeEtablissement">
           <mat-option *ngFor="let typeEtabli of typeEta" [value]="typeEtabli.value">
             {{typeEtabli.viewValue}}
           </mat-option>
@@ -24,46 +23,92 @@
       </mat-form-field>
     </form>
     <div>
-      <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
+      <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
     </div>
-
   </mat-step>
 
   <!-- step 2 formulaire  Coordonnées-->
   <mat-step>
     <ng-template matStepLabel><span>  Coordonnées </span></ng-template>
-    Coordonnées de l'etablisssement
+    <form [formGroup]="secondFormGroup">
+      <div class="part1">
+         <!--  EXPORT WEB-->
+             <mat-form-field>
+               <mat-label>Export web</mat-label>
+               <mat-select [(value)]="selectedoui"  >
+                 <mat-option value="oui"  >oui</mat-option>
+                 <mat-option value="non">non</mat-option>
+               </mat-select>
+             </mat-form-field> <br/>
+        <!--  PRESENCE PAPIER-->
+            <mat-form-field>
+              <mat-label>Présence papier</mat-label>
+                <mat-select   [(value)]="selectedoui">
+                  <mat-option value="oui"   >oui</mat-option>
+                  <mat-option value="non">non</mat-option>
+                </mat-select>
+            </mat-form-field> <br/>
+      <!--  OPTION PRINT -->
+          <mat-form-field>
+            <mat-label>Option Print</mat-label>
+              <mat-select    [(value)]="selectedoui">
+                <mat-option value="oui"   >oui</mat-option>
+                <mat-option value="non">non</mat-option>
+              </mat-select>
+          </mat-form-field> <br/>
+      <!--  PRESENCE WEB -->
+          <mat-form-field>
+            <mat-label>Présence web</mat-label>
+              <mat-select  [(value)]="selectedoui">
+                <mat-option value="oui"  >oui</mat-option>
+                <mat-option value="non">non</mat-option>
+              </mat-select>
+          </mat-form-field><br/>
+      <!--  PRESENCE GRATUITE -->
+          <mat-form-field>
+            <mat-label>Présence gratuite</mat-label>
+              <mat-select  [(value)]="selectednon">
+                <mat-option value="oui"  >oui</mat-option>
+                <mat-option value="non">non</mat-option>
+              </mat-select>
+          </mat-form-field><br/>
+      <!--  SOURCE DE MISE A JOUR -->
+      <mat-form-field>
+        <mat-label>Source de mise à jour</mat-label>
+        <mat-select  [(value)]="selectednon">
+          <mat-option value="oui"  >oui</mat-option>
+          <mat-option value="non">non</mat-option>
+        </mat-select>
+      </mat-form-field><br/>
+
+
+      </div>
+      <div class="part2">Part2</div>
+      <div class="part3">Part3</div>
+      <div class="part4">Part4</div>
+      <div class="part5">Part5</div>
 
 
 
+
+    </form>
     <div>
-      <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
-      <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
+      <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
+      <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
     </div>
   </mat-step>
-
-
   <!-- step 3 formulaire  Contacts-->
   <mat-step>
     <ng-template matStepLabel><span>  Contacts </span></ng-template>
     Conctacts de l'etablisssement
     <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Amount & Stock</ng-template>
-      <mat-form-field>
-        <mat-label>Amount</mat-label>
-        <input matInput placeholder="Amount" formControlName="amount" required>
-      </mat-form-field>
-      <br/>
-      <mat-form-field>
-        <mat-label>Stock</mat-label>
-        <input matInput placeholder="Stock" formControlName="stock" required>
-      </mat-form-field>
-      <br/>
-      <div>
-        <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
-        <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
-      </div>
+
     </form>
+      <div>
+        <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
+        <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
+      </div>
+
   </mat-step>
   <!-- step 4 formulaire  Ordres de paticipation-->
   <mat-step>
@@ -82,8 +127,8 @@
 
 
     <div>
-      <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
-      <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
+      <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
+      <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
     </div>
   </mat-step>
   <!-- step 5 formulaire  Insertions-->
@@ -91,8 +136,8 @@
     <ng-template matStepLabel><span>  Insertions </span></ng-template>
     Insertions de l'etablisssement
     <div>
-      <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
-      <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
+      <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
+      <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
     </div>
   </mat-step>
   <!-- step 6 formulaire  Insertions Web-->
@@ -100,8 +145,8 @@
     <ng-template matStepLabel><span>  Insertions Web </span></ng-template>
     Insertions Web de l'etablisssement
     <div>
-      <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
-      <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
+      <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
+      <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
     </div>
   </mat-step>
   <!-- step 7 formulaire  Liens -->
@@ -109,8 +154,8 @@
     <ng-template matStepLabel><span>  Liens</span></ng-template>
     Liens de l'etablisssement
     <div>
-      <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
-      <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
+      <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
+      <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
     </div>
   </mat-step>
   <!-- step 8 formulaire  Zone de dialogu -->
@@ -118,8 +163,8 @@
     <ng-template matStepLabel><span>  Zone de dialogue</span></ng-template>
     Zone de dialogue de l'etablisssement
     <div>
-      <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
-      <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
+      <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
+      <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
     </div>
   </mat-step>
   <!-- step 9 formulaire  Statut-->
@@ -127,8 +172,8 @@
     <ng-template matStepLabel><span>  Statut</span></ng-template>
     Statut de l'etablisssement
     <div>
-      <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
-      <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
+      <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
+      <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
     </div>
   </mat-step>
   <!-- step 10 formulaire  Editions précedentes  -->
@@ -136,8 +181,8 @@
     <ng-template matStepLabel><span>  Editions précedentes </span></ng-template>
     Editions précedentes de l'etablisssement
     <div>
-      <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
-      <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
+      <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
+      <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
     </div>
   </mat-step>
   <!-- step 11 formulaire  Sites  -->
@@ -145,8 +190,8 @@
     <ng-template matStepLabel><span>  Sites </span></ng-template>
     Sites de l'etablisssement
     <div>
-      <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
-      <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
+      <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
+      <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
     </div>
   </mat-step>
   <!-- step 12 formulaire  Bannières  -->
@@ -154,8 +199,8 @@
     <ng-template matStepLabel><span>  Bannières </span></ng-template>
     Bannières de l'etablisssement
     <div>
-      <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
-      <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
+      <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
+      <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
     </div>
   </mat-step>
   <!-- step 13 formulaire  Diffusion  -->
@@ -163,8 +208,8 @@
     <ng-template matStepLabel><span>  Diffusion </span></ng-template>
     Diffusion de l'etablisssement
     <div>
-      <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
-      <button mat-button matStepperNext class="btn btn-primary">Suivant</button>
+      <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
+      <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
     </div>
   </mat-step>
   <!-- step 14 formulaire  Recap de la fiche avant validation   -->
@@ -172,8 +217,8 @@
     <ng-template matStepLabel><span>  Récapitulatif de la fiche </span></ng-template>
     Recap de la fiche avant validation
     <div>
-      <button mat-button matStepperPrevious class="btn btn-primary">Précedent</button>
-      <button mat-button (click)="submit()" class="btn btn-primary">Submit</button>
+      <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
+      <button (click)="submit()" class="btn btn-primary" mat-button>Submit</button>
     </div>
   </mat-step>
 
