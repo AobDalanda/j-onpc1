@@ -29,7 +29,7 @@ export class AuthenticationService {
             .subscribe(
               result => {
                 this.isAuthenticated=true;
-               console.log('identifiant et mot de passe ok !'+JSON.stringify(result));
+               console.log(JSON.stringify(result));
                 this.verif= true;
                     this.router.navigate(['Accueil']);
               },

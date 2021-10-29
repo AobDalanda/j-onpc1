@@ -1,18 +1,24 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms'
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms'
+import {HttpClient} from "@angular/common/http";
 
 interface listeTypeDptandEtablishment {
   value: string;
   viewValue: string;
 }
-
-
 @Component({
   selector: 'cf-create-etablissement',
   templateUrl: './create-etablissement.component.html',
   styleUrls: ['./create-etablissement.component.css']
 })
 export class CreateEtablissementComponent implements OnInit {
+  date = new FormControl(new Date());
+
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
+
   /**
    * liste departement
    * doit provenir d'une API
@@ -33,18 +39,42 @@ export class CreateEtablissementComponent implements OnInit {
     {value: '3', viewValue: 'Internat'},
     {value: '4', viewValue: 'Fournisseur'},
     {value: '5', viewValue: 'Groupes scolaires'},
-  ]
+  ];
   title = 'newMat';
   isLinear = true;
   selectedoui = 'oui' ;
   selectednon = 'non' ;
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
-
-  constructor(private _formBuilder: FormBuilder) {
+/*Array for retrieved data from api    */
+  li:any;
+  listeDelegue:any;
+  constructor(private _formBuilder: FormBuilder, private http:HttpClient) {
   }
 
   ngOnInit() {
+    /**
+     * Retrieve data for "source de mise à jour "
+                         */
+                        this.http.get('http://localhost/ONPC/public/extract/sourcemaj')
+                          .subscribe(Response => {
+                            if(Response){
+                              this.listeDelegue=Response;
+                            }
+                          });
+
+    /**
+     * /**
+     * Retrieve data for "delegues"
+     */
+    this.http.get('http://localhost/ONPC/public/liste/delegues')
+      .subscribe(Response => {
+        if(Response){
+          console.log(JSON.stringify(Response));
+          this.li=Response;
+        }
+      });
+
     /**
      * formulaire "departement et type etablissement"
      */
@@ -69,8 +99,6 @@ export class CreateEtablissementComponent implements OnInit {
        // presencepapier: ['', Validators.required],
        // optionprint: ['', Validators.required],
        // presenceweb: ['', Validators.required]
-
-
 
     });
   }

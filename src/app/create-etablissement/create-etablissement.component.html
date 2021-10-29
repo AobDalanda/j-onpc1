@@ -1,4 +1,4 @@
-<h2 align="center">Création de fiche etablissement</h2>
+<h2 >Création de fiche etablissement</h2>
 <mat-horizontal-stepper [linear]="isLinear" labelPosition="bottom">
   <!-- step 1 formulaire  departement et type etablissement-->
   <mat-step [stepControl]="firstFormGroup">
@@ -75,15 +75,74 @@
       <!--  SOURCE DE MISE A JOUR -->
       <mat-form-field>
         <mat-label>Source de mise à jour</mat-label>
-        <mat-select  [(value)]="selectednon">
-          <mat-option value="oui"  >oui</mat-option>
-          <mat-option value="non">non</mat-option>
+        <mat-select>
+          <mat-option value="sans"    >Sans</mat-option>
+          <mat-option *ngFor="let smaj of li" [value]="smaj.Libelle">
+            {{smaj.Libelle}}
+          </mat-option>
         </mat-select>
-      </mat-form-field><br/>
-
-
-      </div>
-      <div class="part2">Part2</div>
+      </mat-form-field><br/><br/>
+        <!--  DATE DE LA DERNIERE MODIFICATION -->
+        <mat-form-field appearance="fill" >
+          <input matInput placeholder="Simple placeholder" required>
+        </mat-form-field>
+        <!--  DATE D'ENVOIE  DU MAIL DE MISE EN LIGNE -->
+        <mat-form-field appearance="fill">
+          <mat-label>Date d'envoie du mail de mise en ligne</mat-label>
+          <input matInput [matDatepicker]="picker1" [formControl]="date">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field><br/>
+        <!--  RETOUR LE :-->
+        <mat-form-field appearance="fill">
+          <mat-label>Retour le </mat-label>
+          <input matInput [matDatepicker]="picker2" [formControl]="date">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div><br/>
+ <div class="part2">
+     <!-- MAIL GESTION EDITO 1 :-->
+           <mat-form-field class="example-full-width" appearance="fill">
+             <mat-label>Mail gestion édito 1 </mat-label>
+             <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. sidy@sidy.com">
+             <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+               Entrez un émail valide.
+             </mat-error>
+             <mat-error *ngIf="emailFormControl.hasError('required')">
+              émail invalide <strong>required</strong>
+             </mat-error>
+           </mat-form-field><br/>
+     <!-- MAIL GESTION EDITO 2 :-->
+           <mat-form-field class="example-full-width" appearance="fill">
+             <mat-label>Mail gestion édito 2 </mat-label>
+             <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. sidy@sidy.com">
+             <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+               Entrez un émail valide.
+             </mat-error>
+             <mat-error *ngIf="emailFormControl.hasError('required')">
+               émail invalide <strong>required</strong>
+             </mat-error>
+           </mat-form-field><br/>
+     <!-- HORS SECTEUR:-->
+           <mat-form-field>
+             <mat-label>Hors secteur</mat-label>
+             <mat-select  [(value)]="selectednon">
+               <mat-option value="oui"  >oui</mat-option>
+               <mat-option value="non">non</mat-option>
+             </mat-select>
+           </mat-form-field><br/>
+   <!-- DELEGUES:-->
+         <mat-form-field>
+           <mat-label>Délégué</mat-label>
+           <mat-select>
+             <mat-option value=""    >   </mat-option>
+             <mat-option *ngFor="let lDelegues of listeDelegue" [value]="lDelegues.id">
+               {{lDelegues.prenom + " " +lDelegues.nom  }}
+             </mat-option>
+           </mat-select>
+         </mat-form-field><br/><br/>
+   </div>
       <div class="part3">Part3</div>
       <div class="part4">Part4</div>
       <div class="part5">Part5</div>
@@ -124,8 +183,6 @@
     </mat-list>
 
     Ordres de paticipation de l'etablisssement
-
-
     <div>
       <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
       <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>

@@ -1,13 +1,12 @@
 button {
-  margin-left: 0.5rem;
+  margin-left: 0rem;
 }
 .part1 {
-  background-color: Black;
   padding-left: 15px;
+  padding-top: 5px;
   width:20%;
   height:25%;
   float:left;
-  color:white;
   font-size: 14px;
   font-weight: bold;
 }
@@ -33,4 +32,9 @@ button {
   width:20%;
   height:25%;
   float:left;
+}
+
+
+mat-form-field {
+  margin-right: 2px;
 }
