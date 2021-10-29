@@ -49,6 +49,7 @@ export class CreateEtablissementComponent implements OnInit {
 /*Array for retrieved data from api    */
   li:any;
   listeDelegue:any;
+  listeDioces:any;
   constructor(private _formBuilder: FormBuilder, private http:HttpClient) {
   }
 
@@ -59,21 +60,27 @@ export class CreateEtablissementComponent implements OnInit {
                         this.http.get('http://localhost/ONPC/public/extract/sourcemaj')
                           .subscribe(Response => {
                             if(Response){
-                              this.listeDelegue=Response;
+                              this.li=Response;
                             }
                           });
-
-    /**
-     * /**
+     /**
      * Retrieve data for "delegues"
      */
-    this.http.get('http://localhost/ONPC/public/liste/delegues')
-      .subscribe(Response => {
-        if(Response){
-          console.log(JSON.stringify(Response));
-          this.li=Response;
-        }
-      });
+                  this.http.get('http://localhost/ONPC/public/liste/delegues')
+                    .subscribe(Response => {
+                      if(Response){
+                        this.listeDelegue=Response;
+                      }
+                    });
+/**
+     * Retrieve data for "diocese"
+     */
+                  this.http.get('http://localhost/ONPC/public/extract/diocese')
+                    .subscribe(Response => {
+                      if(Response){
+                        this.listeDioces=Response;
+                      }
+                    });
 
     /**
      * formulaire "departement et type etablissement"
@@ -94,7 +101,6 @@ export class CreateEtablissementComponent implements OnInit {
       /**
        * champs obligatoires
        */
-
        // exportweb:      ['', Validators.required],
        // presencepapier: ['', Validators.required],
        // optionprint: ['', Validators.required],

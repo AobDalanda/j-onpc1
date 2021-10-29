@@ -1,8 +1,8 @@
 button {
-  margin-left: 0rem;
+  margin-left: 1rem;
 }
 .part1 {
-  padding-left: 15px;
+
   padding-top: 5px;
   width:20%;
   height:25%;
@@ -11,30 +11,24 @@ button {
   font-weight: bold;
 }
 .part2 {
-  background-color: #7c7cea;
   width:20%;
   height:25%;
   float:left;
 }
 .part3 {
-  background-color: #86ef86;
   width:20%;
   height:25%;
   float:left;
 }
-.part4 {background-color: #d2d287;
-  width:20%;
-  height:25%;
-  float:left;
-}
-
-.part5 {background-color: #87d2b8;
+.part4 {
   width:20%;
   height:25%;
   float:left;
 }
 
-
-mat-form-field {
-  margin-right: 2px;
+.part5 {
+  width:20%;
+  height:25%;
+  float:left;
 }
+

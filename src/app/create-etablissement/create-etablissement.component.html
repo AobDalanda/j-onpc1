@@ -30,9 +30,10 @@
   <!-- step 2 formulaire  Coordonnées-->
   <mat-step>
     <ng-template matStepLabel><span>  Coordonnées </span></ng-template>
-    <form [formGroup]="secondFormGroup">
-      <div class="part1">
-         <!--  EXPORT WEB-->
+<form [formGroup]="secondFormGroup">
+<div> <!-- BEGINING OF BIG DIV -->
+<div class="part1">
+<!--  EXPORT WEB-->
              <mat-form-field>
                <mat-label>Export web</mat-label>
                <mat-select [(value)]="selectedoui"  >
@@ -40,7 +41,7 @@
                  <mat-option value="non">non</mat-option>
                </mat-select>
              </mat-form-field> <br/>
-        <!--  PRESENCE PAPIER-->
+<!--  PRESENCE PAPIER-->
             <mat-form-field>
               <mat-label>Présence papier</mat-label>
                 <mat-select   [(value)]="selectedoui">
@@ -48,7 +49,7 @@
                   <mat-option value="non">non</mat-option>
                 </mat-select>
             </mat-form-field> <br/>
-      <!--  OPTION PRINT -->
+<!--  OPTION PRINT -->
           <mat-form-field>
             <mat-label>Option Print</mat-label>
               <mat-select    [(value)]="selectedoui">
@@ -56,7 +57,7 @@
                 <mat-option value="non">non</mat-option>
               </mat-select>
           </mat-form-field> <br/>
-      <!--  PRESENCE WEB -->
+<!--  PRESENCE WEB -->
           <mat-form-field>
             <mat-label>Présence web</mat-label>
               <mat-select  [(value)]="selectedoui">
@@ -64,7 +65,7 @@
                 <mat-option value="non">non</mat-option>
               </mat-select>
           </mat-form-field><br/>
-      <!--  PRESENCE GRATUITE -->
+<!--  PRESENCE GRATUITE -->
           <mat-form-field>
             <mat-label>Présence gratuite</mat-label>
               <mat-select  [(value)]="selectednon">
@@ -72,7 +73,7 @@
                 <mat-option value="non">non</mat-option>
               </mat-select>
           </mat-form-field><br/>
-      <!--  SOURCE DE MISE A JOUR -->
+<!--  SOURCE DE MISE A JOUR -->
       <mat-form-field>
         <mat-label>Source de mise à jour</mat-label>
         <mat-select>
@@ -81,27 +82,27 @@
             {{smaj.Libelle}}
           </mat-option>
         </mat-select>
-      </mat-form-field><br/><br/>
-        <!--  DATE DE LA DERNIERE MODIFICATION -->
+      </mat-form-field><br/>
+<!--  DATE DE LA DERNIERE MODIFICATION -->
         <mat-form-field appearance="fill" >
           <input matInput placeholder="Simple placeholder" required>
-        </mat-form-field>
-        <!--  DATE D'ENVOIE  DU MAIL DE MISE EN LIGNE -->
+        </mat-form-field><br/>
+<!--  DATE D'ENVOIE  DU MAIL DE MISE EN LIGNE -->
         <mat-form-field appearance="fill">
           <mat-label>Date d'envoie du mail de mise en ligne</mat-label>
           <input matInput [matDatepicker]="picker1" [formControl]="date">
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
           <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field><br/>
-        <!--  RETOUR LE :-->
+<!--  RETOUR LE :-->
         <mat-form-field appearance="fill">
           <mat-label>Retour le </mat-label>
           <input matInput [matDatepicker]="picker2" [formControl]="date">
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field>
-      </div><br/>
- <div class="part2">
+</div>
+<div class="part2">
      <!-- MAIL GESTION EDITO 1 :-->
            <mat-form-field class="example-full-width" appearance="fill">
              <mat-label>Mail gestion édito 1 </mat-label>
@@ -133,21 +134,195 @@
              </mat-select>
            </mat-form-field><br/>
    <!-- DELEGUES:-->
-         <mat-form-field>
-           <mat-label>Délégué</mat-label>
-           <mat-select>
-             <mat-option value=""    >   </mat-option>
-             <mat-option *ngFor="let lDelegues of listeDelegue" [value]="lDelegues.id">
-               {{lDelegues.prenom + " " +lDelegues.nom  }}
-             </mat-option>
-           </mat-select>
-         </mat-form-field><br/><br/>
-   </div>
-      <div class="part3">Part3</div>
-      <div class="part4">Part4</div>
-      <div class="part5">Part5</div>
+           <mat-form-field>
+             <mat-label>Délégué</mat-label>
+             <mat-select>
+               <mat-option value=""    >   </mat-option>
+               <mat-option *ngFor="let delegue of listeDelegue" [value]="delegue.id">
+                 {{delegue.Prenom + " " +delegue.Nom  }}
+               </mat-option>
+             </mat-select>
+           </mat-form-field><br/>
+<!-- DELEGUES:-->
+           <mat-form-field>
+             <mat-label>Rubrique principale</mat-label>
+             <mat-select>
+               <mat-option value=""    >   </mat-option>
+               <mat-option *ngFor="let delegue of listeDelegue" [value]="delegue.id">
+                 {{delegue.Prenom + " " +delegue.Nom  }}
+               </mat-option>
+             </mat-select>
+           </mat-form-field><br/>
+<!-- SIGLE:-->
+           <mat-form-field appearance="fill" >
+             <input matInput placeholder="Sigle" required>
+           </mat-form-field><br/>
+<!-- DENOMINATION:-->
+           <mat-form-field appearance="fill" >
+             <input matInput placeholder="Dénomination" required>
+           </mat-form-field><br/>
+<!-- EXTENSION DENOMINATION :-->
+           <mat-form-field appearance="fill" >
+             <input matInput placeholder="Extension dénomination" required>
+           </mat-form-field><br/>
+<!-- DENOMINATION ABREGEE:-->
+  <mat-form-field appearance="fill" >
+    <input matInput placeholder="Dénomination abrégéé" required>
+  </mat-form-field>
+
+</div>
+<div class="part3">
+
+<!-- ADRESSE1:-->
+        <mat-form-field appearance="fill" >
+          <input matInput placeholder="Adresse 1 " required>
+        </mat-form-field><br/>
+<!-- ADRESSE2:-->
+        <mat-form-field appearance="fill" >
+          <input matInput placeholder="Adresse 2 " required>
+        </mat-form-field><br/>
+<!-- ADRESSE3:-->
+        <mat-form-field appearance="fill" >
+          <input matInput placeholder="Adresse 3 " required>
+        </mat-form-field><br/>
+<!-- CODE POSTAL:-->
+        <mat-form-field appearance="fill" >
+          <input matInput placeholder="Code postal" required>
+        </mat-form-field><br/>
+<!-- VILLE:-->
+        <mat-form-field appearance="fill" >
+          <input matInput placeholder="VILLE" required>
+        </mat-form-field><br/>
+<!-- CEDEX:-->
+        <mat-form-field appearance="fill" >
+          <input matInput placeholder="Cedex" required>
+        </mat-form-field><br/>
+<!-- PAYS:-->
+        <mat-form-field appearance="fill" >
+          <input matInput placeholder="Pays" required>
+        </mat-form-field><br/>
+<!--  GESTION DES COORDONNEES GPS  -->
+      <mat-form-field>
+        <mat-label>Gestion des coordonnées GPS</mat-label>
+        <mat-select>
+          <mat-option value="automatique"  >automatique</mat-option>
+          <mat-option value="manuel">manuel</mat-option>
+        </mat-select>
+      </mat-form-field><br/>
+<!-- LATITUDE:-->
+  <mat-form-field appearance="fill" >
+    <input matInput placeholder="Latitude" required>
+  </mat-form-field><br/>
+</div>
+<div class="part4">
+<!-- LATITUDE:-->
+          <mat-form-field appearance="fill" >
+            <input matInput placeholder="Latitude" required>
+          </mat-form-field><br/>
+<!-- LONGITUDE:-->
+          <mat-form-field appearance="fill" >
+            <input matInput placeholder="Longitude" required>
+          </mat-form-field><br/>
+<!-- TELEPHONE:-->
+          <mat-form-field appearance="fill" >
+            <input matInput placeholder="Téléphone" required type="tel">
+          </mat-form-field><br/>
+<!-- FAX:-->
+          <mat-form-field appearance="fill" >
+            <input matInput placeholder="Fax" required>
+          </mat-form-field><br/>
+<!-- Mail:-->
+          <mat-form-field appearance="fill" >
+            <input  matInput placeholder="Email" required type="email">
+          </mat-form-field><br/>
+<!-- AUTRE Mail POUR L'EXTRANET:-->
+          <mat-form-field appearance="fill" >
+            <input matInput placeholder="Autre émail pour l'extranet" required type="email">
+          </mat-form-field><br/>
+<!-- WEB:-->
+          <mat-form-field appearance="fill" >
+            <mat-label>Web</mat-label>
+            <input matInput placeholder="Web" required type="text">
+          </mat-form-field><br/>
+<!-- FACEBOOK:-->
+          <mat-form-field appearance="fill" >
+            <mat-label>Facebook</mat-label>
+            <input matInput placeholder="Facebook" required type="text">
+          </mat-form-field><br/>
+<!-- NOMBRE D'ELEVES:-->
+          <mat-form-field appearance="fill" >
+            <mat-label>Nombre d'élèves</mat-label>
+            <input matInput min="10" placeholder="Nombre d'élèves" required type="number">
+          </mat-form-field>
+</div>
+<div class="part5">
+<!--FAXING-->
+          <mat-form-field>
+            <mat-label>Faxing</mat-label>
+            <mat-select [(value)]="selectedoui"  >
+              <mat-option value="oui"  >oui</mat-option>
+              <mat-option value="non">non</mat-option>
+            </mat-select>
+          </mat-form-field> <br/>
+<!--MAILLING-->
+          <mat-form-field>
+            <mat-label>Mailling</mat-label>
+            <mat-select [(value)]="selectedoui"  >
+              <mat-option value="oui"  >oui</mat-option>
+              <mat-option value="non">non</mat-option>
+            </mat-select>
+          </mat-form-field> <br/>
+<!-- DELEGUES:-->
+          <mat-form-field>
+            <mat-label>Diocèse</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let diocese of listeDioces" [value]="diocese.id">
+                {{diocese.Libelle}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field><br/>
+<!-- ADRESSE POSTALE 1:-->
+          <mat-form-field appearance="fill" >
+            <mat-label>Adresse postale 1</mat-label>
+            <input matInput placeholder="Adresse postale 1" required type="text">
+          </mat-form-field><br/>
+<!-- ADRESSE POSTALE 2:-->
+          <mat-form-field appearance="fill" >
+            <mat-label>Adresse postale 2</mat-label>
+            <input matInput placeholder="Adresse postale 2" required type="text">
+          </mat-form-field><br/>
+<!-- ADRESSE POSTALE 3:-->
+          <mat-form-field appearance="fill" >
+            <mat-label>Adresse postale 3</mat-label>
+            <input matInput placeholder="Adresse postale 3" required type="text">
+          </mat-form-field><br/>
+<!-- ADRESSE POSTALE 4:-->
+          <mat-form-field appearance="fill" >
+            <mat-label>Adresse postale 4</mat-label>
+            <input matInput placeholder="Adresse postale 4" required type="text">
+          </mat-form-field><br/>
+<!-- ADRESSE POSTALE 5:-->
+          <mat-form-field appearance="fill" >
+            <mat-label>Adresse postale 5</mat-label>
+            <input matInput placeholder="Adresse postale 5" required type="text">
+          </mat-form-field><br/>
+<!-- ADRESSE POSTALE 6:-->
+          <mat-form-field appearance="fill" >
+            <mat-label>Adresse postale 6</mat-label>
+            <input matInput placeholder="Adresse postale 6" required type="text">
+          </mat-form-field><br/>
+<!-- ADRESSE POSTALE 7:-->
+          <mat-form-field appearance="fill" >
+            <mat-label>Adresse postale 7</mat-label>
+            <input matInput placeholder="Adresse postale 7" required type="text">
+          </mat-form-field>
 
 
+
+
+</div>
+
+</div> <!--END BIG DIV-->
 
 
     </form>
