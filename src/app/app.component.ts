@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AuthenticationService} from "../../service/authentication/authentication.service";
+import {AuthenticationService} from "./service/authentication/authentication.service";
 
 @Component({
   selector: 'cf-root',

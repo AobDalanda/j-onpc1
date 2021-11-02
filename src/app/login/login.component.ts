@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
-import {AuthenticationService} from "../../../service/authentication/authentication.service";
+import {AuthenticationService} from "../service/authentication/authentication.service";
 import {SignInData} from "../Model/signInData";
 import {Router} from "@angular/router";
 
@@ -36,8 +36,8 @@ export class LoginComponent implements OnInit {
        if(!this.authenticationService.logUser(signInData)){
        this.isFormInValid=false;
        this.areCredentialIsInvalid=true;
-         //this.router.navigate(['Accueil']);
          this.router.navigate(['']);
+         // this.router.navigate(['']);
      }else {
          //this.router.navigate(['']);
          this.router.navigate(['Accueil']);

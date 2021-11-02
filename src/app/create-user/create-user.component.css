@@ -1,0 +1,13 @@
+.login-wrapper {
+  margin: 2rem auto;
+  width: 50%;
+}
+
+input,select {
+  margin-bottom: 1rem;
+}
+
+button {
+  align-self: center;
+  margin-left: 5rem;
+}

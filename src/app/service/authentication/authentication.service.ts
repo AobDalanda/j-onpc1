@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {SignInData} from "../../src/app/Model/signInData";
-import {Router} from "@angular/router";
+import {SignInData} from "../../Model/signInData";
+import {NavigationExtras, Router} from "@angular/router";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 
@@ -14,9 +14,9 @@ const httpOptions = {
 })
 export class AuthenticationService {
  // private readonly mockeduser= new SignInData('bsidy01@aldahim.fr','123');
-  isAuthenticated =false;
+  isAuthenticated =false;constructor( private httpClient: HttpClient,private router:Router) { }
   verif=false;
-  constructor( private httpClient: HttpClient,private router:Router) { }
+
 
   logUser(signData: SignInData) : boolean{
         let usercredentiels= [
@@ -31,7 +31,7 @@ export class AuthenticationService {
                 this.isAuthenticated=true;
                console.log(JSON.stringify(result));
                 this.verif= true;
-                    this.router.navigate(['Accueil']);
+                    this.router.navigate(['']);
               },
               (error) => {
                 this.isAuthenticated=false;

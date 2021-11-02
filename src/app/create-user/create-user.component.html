@@ -1,1 +1,41 @@
-<p>create-user works!</p>
+<div class="login-wrapper">
+  <div class="card">
+    <div class="card-body">
+      <form #createUser="ngForm" (ngSubmit)="onSubmit(createUser)">
+        <h1 class="h3 mb-3 fw-bolder text-center "> Créer un compte utilisateur</h1>
+        <div class="form-floating">
+          <input class="form-control" max="35" min="2" name="prenom" ngModel     required   type="text">
+          <label for="floatingInput">Prenom de l'utilisateur</label>
+        </div>
+        <div class="form-floating">
+          <input class="form-control" max="25" min="2"  name="nom" ngModel      required   type="text">
+          <label for="floatingInput">Nom de l'utilisateur</label>
+        </div>
+        <div class="form-floating">
+          <select class="form-control"   name="typeuser"   ngModel   required >
+            <option selected></option>
+            <option value="administrateur">Administrateur</option>
+            <option value="Délégué">Délégué</option>
+            <option value="invité">Invité</option>
+            <option value="rédacteur">Rédacteur</option>
+            <option value="opérateur PAO">Opérateur PAO</option>
+          </select>
+          <label for="floatingPassword">Type d'utilisateur</label>
+        </div>
+        <div class="form-floating">
+          <input autofocus class="form-control" id="floatingInput" max="35"    name="email"   ngModel required type="email">
+          <label for="floatingInput">Email de l'utilisateur</label>
+        </div>
+        <div class="form-floating">
+          <input class="form-control" id="floatingPassword" max="25" min="6"  name="password" ngModel   required type="password">
+          <label for="floatingPassword">Mot de passe de l'utilisateur</label>
+        </div>
+        <button class="w-25 btn btn-lg btn-primary" type="submit">Créer</button>
+        <button class="w-25 btn btn-lg btn-primary" type="reset">Annuler</button>
+      </form>
+
+    </div>
+
+  </div>
+
+</div>

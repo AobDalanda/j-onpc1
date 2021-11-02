@@ -7,8 +7,8 @@
       <mat-form-field>
         <mat-label>Departement</mat-label>
         <mat-select class="custom-select" formControlName="department">
-          <mat-option *ngFor="let departement of dpt" [value]="departement.value">
-            {{departement.value + " " + departement.viewValue}}
+          <mat-option *ngFor="let departement of listeDptmt" [value]="departement.Numero">
+            {{departement.Numero + " " + departement.Libelle}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -23,10 +23,9 @@
       </mat-form-field>
     </form>
     <div>
-      <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
+      <button [disabled]="!firstFormGroup.valid" class="btn btn-primary" mat-button  matStepperNext>Suivant</button>
     </div>
   </mat-step>
-
   <!-- step 2 formulaire  Coordonnées-->
   <mat-step>
     <ng-template matStepLabel><span>  Coordonnées </span></ng-template>
@@ -34,63 +33,63 @@
 <div> <!-- BEGINING OF BIG DIV -->
 <div class="part1">
 <!--  EXPORT WEB-->
-             <mat-form-field>
+             <mat-form-field >
                <mat-label>Export web</mat-label>
-               <mat-select [(value)]="selectedoui"  >
-                 <mat-option value="oui"  >oui</mat-option>
+               <mat-select [(value)]="selectedoui"  formControlName="exportweb">
+                 <mat-option value="oui">oui</mat-option>
                  <mat-option value="non">non</mat-option>
                </mat-select>
              </mat-form-field> <br/>
 <!--  PRESENCE PAPIER-->
-            <mat-form-field>
+            <mat-form-field  >
               <mat-label>Présence papier</mat-label>
-                <mat-select   [(value)]="selectedoui">
+                <mat-select   [(value)]="selectedoui"  formControlName="presencepapier" >
                   <mat-option value="oui"   >oui</mat-option>
                   <mat-option value="non">non</mat-option>
                 </mat-select>
             </mat-form-field> <br/>
 <!--  OPTION PRINT -->
-          <mat-form-field>
+          <mat-form-field >
             <mat-label>Option Print</mat-label>
-              <mat-select    [(value)]="selectedoui">
+              <mat-select    [(value)]="selectedoui"  formControlName="optionprint">
                 <mat-option value="oui"   >oui</mat-option>
                 <mat-option value="non">non</mat-option>
               </mat-select>
           </mat-form-field> <br/>
 <!--  PRESENCE WEB -->
-          <mat-form-field>
+          <mat-form-field >
             <mat-label>Présence web</mat-label>
-              <mat-select  [(value)]="selectedoui">
+              <mat-select  [(value)]="selectedoui"  formControlName="presenceweb">
                 <mat-option value="oui"  >oui</mat-option>
                 <mat-option value="non">non</mat-option>
               </mat-select>
           </mat-form-field><br/>
 <!--  PRESENCE GRATUITE -->
-          <mat-form-field>
+          <mat-form-field  >
             <mat-label>Présence gratuite</mat-label>
-              <mat-select  [(value)]="selectednon">
+              <mat-select  [(value)]="selectednon"  formControlName="presencegratuite">
                 <mat-option value="oui"  >oui</mat-option>
                 <mat-option value="non">non</mat-option>
               </mat-select>
           </mat-form-field><br/>
 <!--  SOURCE DE MISE A JOUR -->
-      <mat-form-field>
+      <mat-form-field >
         <mat-label>Source de mise à jour</mat-label>
-        <mat-select>
-          <mat-option value="sans"    >Sans</mat-option>
-          <mat-option *ngFor="let smaj of li" [value]="smaj.Libelle">
+        <mat-select formControlName="SourceMaj" >
+          <mat-option value="0"    >Sans</mat-option>
+          <mat-option *ngFor="let smaj of li" [value]="smaj.id">
             {{smaj.Libelle}}
           </mat-option>
         </mat-select>
       </mat-form-field><br/>
 <!--  DATE DE LA DERNIERE MODIFICATION -->
         <mat-form-field appearance="fill" >
-          <input matInput placeholder="Simple placeholder" required>
+          <input formControlName="dateDerniereModif" matInput placeholder="Simple placeholder">
         </mat-form-field><br/>
 <!--  DATE D'ENVOIE  DU MAIL DE MISE EN LIGNE -->
         <mat-form-field appearance="fill">
           <mat-label>Date d'envoie du mail de mise en ligne</mat-label>
-          <input matInput [matDatepicker]="picker1" [formControl]="date">
+          <input [formControl]="date" [matDatepicker]="picker1" formControlName="dateDEnvoiMailMAj" matInput>
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
           <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field><br/>
@@ -106,29 +105,17 @@
      <!-- MAIL GESTION EDITO 1 :-->
            <mat-form-field class="example-full-width" appearance="fill">
              <mat-label>Mail gestion édito 1 </mat-label>
-             <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. sidy@sidy.com">
-             <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-               Entrez un émail valide.
-             </mat-error>
-             <mat-error *ngIf="emailFormControl.hasError('required')">
-              émail invalide <strong>required</strong>
-             </mat-error>
+             <input [formControl]="emailFormControl" formControlName="mailGestionEdito1" matInput placeholder="Ex. sidy@sidy.com" type="email">
            </mat-form-field><br/>
      <!-- MAIL GESTION EDITO 2 :-->
            <mat-form-field class="example-full-width" appearance="fill">
              <mat-label>Mail gestion édito 2 </mat-label>
-             <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. sidy@sidy.com">
-             <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-               Entrez un émail valide.
-             </mat-error>
-             <mat-error *ngIf="emailFormControl.hasError('required')">
-               émail invalide <strong>required</strong>
-             </mat-error>
+             <input [formControl]="emailFormControl" formControlName="mailGestionEdito2" matInput  type="email">
            </mat-form-field><br/>
      <!-- HORS SECTEUR:-->
            <mat-form-field>
              <mat-label>Hors secteur</mat-label>
-             <mat-select  [(value)]="selectednon">
+             <mat-select  [(value)]="selectednon" formControlName="horsSecteur">
                <mat-option value="oui"  >oui</mat-option>
                <mat-option value="non">non</mat-option>
              </mat-select>
@@ -137,13 +124,13 @@
            <mat-form-field>
              <mat-label>Délégué</mat-label>
              <mat-select>
-               <mat-option value=""    >   </mat-option>
-               <mat-option *ngFor="let delegue of listeDelegue" [value]="delegue.id">
+               <mat-option value="0"    >Non rattaché</mat-option>
+               <mat-option *ngFor="let delegue of listeDelegue" [value]="delegue.id"  formControlName="delegue">
                  {{delegue.Prenom + " " +delegue.Nom  }}
                </mat-option>
              </mat-select>
            </mat-form-field><br/>
-<!-- DELEGUES:-->
+<!-- RUBRIQUE PRINCIPALE:-->
            <mat-form-field>
              <mat-label>Rubrique principale</mat-label>
              <mat-select>
@@ -331,11 +318,59 @@
       <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
     </div>
   </mat-step>
-  <!-- step 3 formulaire  Contacts-->
+<!-- step 3 formulaire  Contacts-->
   <mat-step>
     <ng-template matStepLabel><span>  Contacts </span></ng-template>
     Conctacts de l'etablisssement
     <form [formGroup]="secondFormGroup">
+<!-- CIVILITE:-->
+                  <mat-form-field>
+                    <mat-label>Civilité</mat-label>
+                    <mat-select>
+                      <mat-option value="Monsieur"  >Monsieur</mat-option>
+                      <mat-option value="Madame"  >Madame</mat-option>
+                    </mat-select>
+                  </mat-form-field><br/>
+<!-- PRENOM:-->
+                  <mat-form-field appearance="fill" >
+                    <mat-label>Prénom</mat-label>
+                    <input matInput placeholder="Prénom"   type="text">
+                  </mat-form-field><br/>
+<!-- NOM:-->
+                  <mat-form-field appearance="fill" >
+                    <mat-label>Nom</mat-label>
+                    <input matInput placeholder="Nom"   type="text">
+                  </mat-form-field><br/>
+<!-- FONCTION:-->
+                  <mat-form-field appearance="fill" >
+                    <mat-label>Fonction</mat-label>
+                    <input matInput placeholder="Fonction"   type="text">
+                  </mat-form-field><br/>
+<!-- SIGNATAIRE:-->
+                  <mat-form-field>
+                    <mat-label>Signataire</mat-label>
+                    <mat-select required>
+                      <mat-option value="oui"  >Oui</mat-option>
+                      <mat-option value="non"  >Non</mat-option>
+                    </mat-select>
+                  </mat-form-field><br/>
+<!-- FONCTION:-->
+                  <mat-form-field appearance="fill" >
+                    <mat-label>Mail</mat-label>
+                    <input matInput placeholder="Mail"   type="email">
+                  </mat-form-field><br/>
+<!-- TELEPHONE:-->
+                  <mat-form-field appearance="fill" >
+                    <mat-label>Téléphone</mat-label>
+                    <input matInput placeholder="Téléphone"   type="tel">
+                  </mat-form-field><br/>
+<!-- INFORMATIONS COMPLEMENTAIRES :-->
+                  <mat-form-field>
+                    <textarea matInput placeholder="Informations commerciales"></textarea>
+                  </mat-form-field><br/>
+
+
+
 
     </form>
       <div>
@@ -344,7 +379,7 @@
       </div>
 
   </mat-step>
-  <!-- step 4 formulaire  Ordres de paticipation-->
+<!-- step 4 formulaire  Ordres de paticipation-->
   <mat-step>
     <ng-template matStepLabel><span>  Ordres de paticipation </span></ng-template>
 

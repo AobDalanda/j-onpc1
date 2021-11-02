@@ -50,6 +50,7 @@ export class CreateEtablissementComponent implements OnInit {
   li:any;
   listeDelegue:any;
   listeDioces:any;
+  listeDptmt:any;
   constructor(private _formBuilder: FormBuilder, private http:HttpClient) {
   }
 
@@ -82,31 +83,53 @@ export class CreateEtablissementComponent implements OnInit {
                       }
                     });
 
+
+      /**
+      * Retrieve data for departement
+      */
+                  this.http.get('http://localhost/ONPC/public/extract/dptmt')
+                    .subscribe(Response => {
+                      if(Response){
+                        this.listeDptmt=Response;
+                      }
+                    });
+
+
+
+
     /**
      * formulaire "departement et type etablissement"
      */
-    this.firstFormGroup = this._formBuilder.group({
-      /**
-       * champs obligatoires
-       */
-      department: ['', Validators.required],
-      typeEtablissement: ['', Validators.required]
+          this.firstFormGroup = this._formBuilder.group({
+            /**
+             * champs obligatoires
+             */
+                department: ['', Validators.required],
+                typeEtablissement: ['', Validators.required]
+          });
 
-    });
+          /**
+           * formulaire coordonnées
+           */
+          this.secondFormGroup = this._formBuilder.group({
+            /**
+             * champs obligatoires
+             */
+                  exportweb: [''],
+                  presencepapier: [''],
+                  optionprint:[''],
+                  presenceweb: [''],
+                  presencegratuite: [''],
+                  SourceMaj: [''],
+                  dateDerniereModif: [''],
+                  dateDEnvoiMailMAj: [''],
+                  mailGestionEdito1: [''],
+                  mailGestionEdito2: [''],
+                  horsSecteur: [''],
+                  delegue: ['',Validators.required],
 
-    /**
-     * formulaire coordonnées
-     */
-    this.secondFormGroup = this._formBuilder.group({
-      /**
-       * champs obligatoires
-       */
-       // exportweb:      ['', Validators.required],
-       // presencepapier: ['', Validators.required],
-       // optionprint: ['', Validators.required],
-       // presenceweb: ['', Validators.required]
+          });
 
-    });
   }
 
 
