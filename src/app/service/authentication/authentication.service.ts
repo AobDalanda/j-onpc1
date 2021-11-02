@@ -31,7 +31,7 @@ export class AuthenticationService {
                 this.isAuthenticated=true;
                console.log(JSON.stringify(result));
                 this.verif= true;
-                    this.router.navigate(['']);
+                    this.router.navigate(['Accueil']);
               },
               (error) => {
                 this.isAuthenticated=false;

@@ -51,6 +51,7 @@ export class CreateEtablissementComponent implements OnInit {
   listeDelegue:any;
   listeDioces:any;
   listeDptmt:any;
+  listeTypeEtabl:any;
   constructor(private _formBuilder: FormBuilder, private http:HttpClient) {
   }
 
@@ -83,7 +84,6 @@ export class CreateEtablissementComponent implements OnInit {
                       }
                     });
 
-
       /**
       * Retrieve data for departement
       */
@@ -93,9 +93,15 @@ export class CreateEtablissementComponent implements OnInit {
                         this.listeDptmt=Response;
                       }
                     });
-
-
-
+    /**
+     * Retrieve data for type etablissement
+     */
+                  this.http.get('http://localhost/ONPC/public/extract/typeetabl')
+                    .subscribe(Response => {
+                      if(Response){
+                        this.listeTypeEtabl=Response;
+                      }
+                    });
 
     /**
      * formulaire "departement et type etablissement"
@@ -112,6 +118,7 @@ export class CreateEtablissementComponent implements OnInit {
            * formulaire coordonnées
            */
           this.secondFormGroup = this._formBuilder.group({
+
             /**
              * champs obligatoires
              */
@@ -127,6 +134,9 @@ export class CreateEtablissementComponent implements OnInit {
                   mailGestionEdito2: [''],
                   horsSecteur: [''],
                   delegue: ['',Validators.required],
+                  rubriqueprincipale: ['',Validators.required],
+                  typeetablissement1  : ['',Validators.required],
+
 
           });
 

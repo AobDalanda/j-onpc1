@@ -35,7 +35,7 @@
 <!--  EXPORT WEB-->
              <mat-form-field >
                <mat-label>Export web</mat-label>
-               <mat-select [(value)]="selectedoui"  formControlName="exportweb">
+               <mat-select  formControlName="exportweb">
                  <mat-option value="oui">oui</mat-option>
                  <mat-option value="non">non</mat-option>
                </mat-select>
@@ -43,7 +43,7 @@
 <!--  PRESENCE PAPIER-->
             <mat-form-field  >
               <mat-label>Présence papier</mat-label>
-                <mat-select   [(value)]="selectedoui"  formControlName="presencepapier" >
+                <mat-select    formControlName="presencepapier" >
                   <mat-option value="oui"   >oui</mat-option>
                   <mat-option value="non">non</mat-option>
                 </mat-select>
@@ -51,7 +51,7 @@
 <!--  OPTION PRINT -->
           <mat-form-field >
             <mat-label>Option Print</mat-label>
-              <mat-select    [(value)]="selectedoui"  formControlName="optionprint">
+              <mat-select     formControlName="optionprint">
                 <mat-option value="oui"   >oui</mat-option>
                 <mat-option value="non">non</mat-option>
               </mat-select>
@@ -59,7 +59,7 @@
 <!--  PRESENCE WEB -->
           <mat-form-field >
             <mat-label>Présence web</mat-label>
-              <mat-select  [(value)]="selectedoui"  formControlName="presenceweb">
+              <mat-select   formControlName="presenceweb">
                 <mat-option value="oui"  >oui</mat-option>
                 <mat-option value="non">non</mat-option>
               </mat-select>
@@ -67,7 +67,7 @@
 <!--  PRESENCE GRATUITE -->
           <mat-form-field  >
             <mat-label>Présence gratuite</mat-label>
-              <mat-select  [(value)]="selectednon"  formControlName="presencegratuite">
+              <mat-select   formControlName="presencegratuite">
                 <mat-option value="oui"  >oui</mat-option>
                 <mat-option value="non">non</mat-option>
               </mat-select>
@@ -84,7 +84,7 @@
       </mat-form-field><br/>
 <!--  DATE DE LA DERNIERE MODIFICATION -->
         <mat-form-field appearance="fill" >
-          <input formControlName="dateDerniereModif" matInput placeholder="Simple placeholder">
+          <input formControlName="dateDerniereModif" matInput placeholder="Date de dernière modification">
         </mat-form-field><br/>
 <!--  DATE D'ENVOIE  DU MAIL DE MISE EN LIGNE -->
         <mat-form-field appearance="fill">
@@ -99,14 +99,14 @@
           <input matInput [matDatepicker]="picker2" [formControl]="date">
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field> <br/>
+<!-- MAIL GESTION EDITO 1 :-->
+        <mat-form-field appearance="fill" class="example-full-width">
+          <mat-label>Mail gestion édito 1 </mat-label>
+          <input [formControl]="emailFormControl" formControlName="mailGestionEdito1" matInput   type="email">
         </mat-form-field>
 </div>
 <div class="part2">
-     <!-- MAIL GESTION EDITO 1 :-->
-           <mat-form-field class="example-full-width" appearance="fill">
-             <mat-label>Mail gestion édito 1 </mat-label>
-             <input [formControl]="emailFormControl" formControlName="mailGestionEdito1" matInput placeholder="Ex. sidy@sidy.com" type="email">
-           </mat-form-field><br/>
      <!-- MAIL GESTION EDITO 2 :-->
            <mat-form-field class="example-full-width" appearance="fill">
              <mat-label>Mail gestion édito 2 </mat-label>
@@ -120,20 +120,29 @@
                <mat-option value="non">non</mat-option>
              </mat-select>
            </mat-form-field><br/>
-   <!-- DELEGUES:-->
+<!-- DELEGUES:-->
            <mat-form-field>
              <mat-label>Délégué</mat-label>
-             <mat-select>
+             <mat-select formControlName="delegue">
                <mat-option value="0"    >Non rattaché</mat-option>
-               <mat-option *ngFor="let delegue of listeDelegue" [value]="delegue.id"  formControlName="delegue">
+               <mat-option *ngFor="let delegue of listeDelegue" [value]="delegue.id"  >
                  {{delegue.Prenom + " " +delegue.Nom  }}
+               </mat-option>
+             </mat-select>
+           </mat-form-field><br/>
+<!-- TYPE ETABLISSEMENT:-->
+           <mat-form-field>
+             <mat-label>Type établissement</mat-label>
+             <mat-select  formControlName="typeetablissement1">
+               <mat-option *ngFor="let typeEtabl of listeTypeEtabl" [value]="typeEtabl.id"  >
+                 {{typeEtabl.Libelle}}
                </mat-option>
              </mat-select>
            </mat-form-field><br/>
 <!-- RUBRIQUE PRINCIPALE:-->
            <mat-form-field>
              <mat-label>Rubrique principale</mat-label>
-             <mat-select>
+             <mat-select formControlName="rubriqueprincipale">>
                <mat-option value=""    >   </mat-option>
                <mat-option *ngFor="let delegue of listeDelegue" [value]="delegue.id">
                  {{delegue.Prenom + " " +delegue.Nom  }}

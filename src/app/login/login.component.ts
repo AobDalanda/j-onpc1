@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
      let  signInData= new SignInData();
         signInData.email=signInForm.value.email;
         signInData.password=signInForm.value.password;
-       if(!this.authenticationService.logUser(signInData)){
+     if(!this.authenticationService.logUser(signInData)){
        this.isFormInValid=false;
        this.areCredentialIsInvalid=true;
          this.router.navigate(['']);
