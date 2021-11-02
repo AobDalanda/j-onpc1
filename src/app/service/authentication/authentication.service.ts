@@ -37,7 +37,6 @@ export class AuthenticationService {
                 this.isAuthenticated=false;
                 console.log('Erreur ! : ' + error);
                 //this.router.navigate(['']);
-               //
                 this.verif= false;
               }
             );

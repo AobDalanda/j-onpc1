@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
        this.isFormInValid=false;
        this.areCredentialIsInvalid=true;
          this.router.navigate(['']);
-         // this.router.navigate(['']);
      }else {
          //this.router.navigate(['']);
          this.router.navigate(['Accueil']);
