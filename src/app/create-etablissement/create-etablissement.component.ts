@@ -32,6 +32,7 @@ export class CreateEtablissementComponent implements OnInit {
   isLinear = true;
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
+  formcontactGroup!: FormGroup;
 /*Array for retrieved data from api    */
   li:any;
   listeDelegue:any;
@@ -149,6 +150,16 @@ export class CreateEtablissementComponent implements OnInit {
                   adressepostal6 : [''],
                   adressepostal7 : [''],
 
+          });//from line 355 in html
+          this.formcontactGroup= this._formBuilder.group({
+                 contactCivilite: [''],
+                 contactPrenom: ['', Validators.required],
+                 contactNom: ['', Validators.required],
+                 contactFonction: [''],
+                 contactSignataire: ['oui',Validators.required],
+                 contactMail: ['',Validators.required],
+                 contactTelephone: [''],
+                 contactInfo: [''],
           });
   }
 
@@ -156,5 +167,6 @@ export class CreateEtablissementComponent implements OnInit {
   submit() {
     console.log(this.firstFormGroup.value);
     console.log(this.secondFormGroup.value);
+    console.log(this.formcontactGroup.value);
   }
 }

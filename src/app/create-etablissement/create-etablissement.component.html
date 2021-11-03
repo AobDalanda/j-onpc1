@@ -144,7 +144,6 @@
            <mat-form-field>
              <mat-label>Rubrique principale</mat-label>
              <mat-select formControlName="rubriqueprincipale">>
-               <mat-option value=""    >   </mat-option>
                <mat-option *ngFor="let delegue of listeDelegue" [value]="delegue.id">
                  {{delegue.Prenom + " " +delegue.Nom  }}
                </mat-option>
@@ -354,58 +353,57 @@
     </div>
   </mat-step>
 <!-- step 3 formulaire  Contacts-->
-  <mat-step>
+  <mat-step [stepControl]="formcontactGroup">
     <ng-template matStepLabel><span>  Contacts </span></ng-template>
     Conctacts de l'etablisssement
-    <form [formGroup]="secondFormGroup">
+    <form [formGroup]="formcontactGroup">
 <!-- CIVILITE:-->
                   <mat-form-field>
                     <mat-label>Civilité</mat-label>
-                    <mat-select>
+                    <mat-select  formControlName="contactCivilite" >
                       <mat-option value="Monsieur"  >Monsieur</mat-option>
                       <mat-option value="Madame"  >Madame</mat-option>
                     </mat-select>
-                  </mat-form-field><br/>
+                  </mat-form-field>
 <!-- PRENOM:-->
                   <mat-form-field appearance="fill" >
                     <mat-label>Prénom</mat-label>
-                    <input matInput placeholder="Prénom"   type="text">
-                  </mat-form-field><br/>
+                    <input formControlName="contactPrenom" matInput   placeholder="Prénom" type="text">
+                  </mat-form-field>
 <!-- NOM:-->
                   <mat-form-field appearance="fill" >
                     <mat-label>Nom</mat-label>
-                    <input matInput placeholder="Nom"   type="text">
-                  </mat-form-field><br/>
+                    <input formControlName="contactNom" matInput   placeholder="Nom" type="text">
+                  </mat-form-field>
 <!-- FONCTION:-->
                   <mat-form-field appearance="fill" >
                     <mat-label>Fonction</mat-label>
-                    <input matInput placeholder="Fonction"   type="text">
+                    <input formControlName="contactFonction" matInput   placeholder="Fonction" type="text">
                   </mat-form-field><br/>
 <!-- SIGNATAIRE:-->
                   <mat-form-field>
                     <mat-label>Signataire</mat-label>
-                    <mat-select required>
+                    <mat-select  formControlName="contactSignataire">
                       <mat-option value="oui"  >Oui</mat-option>
                       <mat-option value="non"  >Non</mat-option>
                     </mat-select>
-                  </mat-form-field><br/>
-<!-- FONCTION:-->
+                  </mat-form-field>
+<!-- MAIL:-->
                   <mat-form-field appearance="fill" >
                     <mat-label>Mail</mat-label>
-                    <input matInput placeholder="Mail"   type="email">
-                  </mat-form-field><br/>
+                    <input formControlName="contactMail" matInput   pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"  placeholder="Mail" type="email">
+                  </mat-form-field>
 <!-- TELEPHONE:-->
                   <mat-form-field appearance="fill" >
                     <mat-label>Téléphone</mat-label>
-                    <input matInput placeholder="Téléphone"   type="tel">
-                  </mat-form-field><br/>
+                    <input formControlName="contactTelephone" matInput   placeholder="Téléphone"  type="tel">
+                  </mat-form-field>
 <!-- INFORMATIONS COMPLEMENTAIRES :-->
                   <mat-form-field>
-                    <textarea matInput placeholder="Informations commerciales"></textarea>
-                  </mat-form-field><br/>
+                    <textarea formControlName="contactInfo" matInput  placeholder="Informations commerciales">
 
-
-
+                    </textarea>
+                  </mat-form-field>
 
     </form>
       <div>
