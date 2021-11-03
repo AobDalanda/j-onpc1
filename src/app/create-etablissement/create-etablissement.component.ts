@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms'
 import {HttpClient} from "@angular/common/http";
+import {DatePipe, formatDate} from "@angular/common";
 
 interface listeTypeDptandEtablishment {
   value: string;
@@ -18,32 +19,17 @@ export class CreateEtablissementComponent implements OnInit {
     Validators.required,
     Validators.email,
   ]);
-
-  /**
-   * liste departement
-   * doit provenir d'une API
-   */
-  dpt: listeTypeDptandEtablishment[] = [
-    /*{value: '', viewValue: 'Département'},*/
-    {value: '01', viewValue: 'Ain'},
-    {value: '35', viewValue: 'Ille-et-Villaine'},
-    {value: '22', viewValue: "Côtes-d'Armor"}
-  ];
   /**
    * Liste type d'etablissement
    */
   typeEta: listeTypeDptandEtablishment[] = [
-    /*{value: '0', viewValue: 'Type établissement'},  */
     {value: '1', viewValue: 'Etablissement'},
     {value: '2', viewValue: 'Organisme'},
     {value: '3', viewValue: 'Internat'},
     {value: '4', viewValue: 'Fournisseur'},
     {value: '5', viewValue: 'Groupes scolaires'},
   ];
-  title = 'newMat';
   isLinear = true;
-  selectedoui = 'oui' ;
-  selectednon = 'non' ;
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
 /*Array for retrieved data from api    */
@@ -52,7 +38,7 @@ export class CreateEtablissementComponent implements OnInit {
   listeDioces:any;
   listeDptmt:any;
   listeTypeEtabl:any;
-  constructor(private _formBuilder: FormBuilder, private http:HttpClient) {
+  constructor(private _formBuilder: FormBuilder, private http:HttpClient ) {
   }
 
   ngOnInit() {
@@ -83,7 +69,6 @@ export class CreateEtablissementComponent implements OnInit {
                         this.listeDioces=Response;
                       }
                     });
-
       /**
       * Retrieve data for departement
       */
@@ -102,7 +87,6 @@ export class CreateEtablissementComponent implements OnInit {
                         this.listeTypeEtabl=Response;
                       }
                     });
-
     /**
      * formulaire "departement et type etablissement"
      */
@@ -113,33 +97,59 @@ export class CreateEtablissementComponent implements OnInit {
                 department: ['', Validators.required],
                 typeEtablissement: ['', Validators.required]
           });
-
           /**
            * formulaire coordonnées
            */
           this.secondFormGroup = this._formBuilder.group({
-
-            /**
-             * champs obligatoires
-             */
-                  exportweb: [''],
-                  presencepapier: [''],
-                  optionprint:[''],
-                  presenceweb: [''],
-                  presencegratuite: [''],
-                  SourceMaj: [''],
-                  dateDerniereModif: [''],
+                  exportweb: ['oui', Validators.required],
+                  presencepapier: ['oui', Validators.required],
+                  optionprint:['oui', Validators.required],
+                  presenceweb: ['oui', Validators.required],
+                  presencegratuite: ['non', Validators.required],
+                  SourceMaj: ['sans', Validators.required],
+                  dateDerniereModif: [formatDate(new Date(), 'dd/MM/yyyy', 'en'), Validators.required],
                   dateDEnvoiMailMAj: [''],
+                  dateRetour: [''],
                   mailGestionEdito1: [''],
                   mailGestionEdito2: [''],
-                  horsSecteur: [''],
-                  delegue: ['',Validators.required],
+                  horsSecteur:  ['non', Validators.required],
+                  delegue: ['Non rattaché',Validators.required],
+                  typeenseignementprive: ['Laique',Validators.required],
                   rubriqueprincipale: ['',Validators.required],
-                  typeetablissement1  : ['',Validators.required],
-
+                  typeetablissement1  : [1,Validators.required],
+                  formation  : ['classique',Validators.required],
+                  sigle  : [''],
+                  denomination  : ['',Validators.required],
+                  extensiondenomination  : [''],
+                  denominationabregee  : [''],
+                  adresse1 : [''],
+                  adresse2: [''],
+                  adresse3 : [''],
+                  codepostal : [''],
+                  ville : ['',Validators.required],
+                  pays : [''],
+                  gestionCoordonneesGps : ['automatique', Validators.required],
+                  latitude : ['0.0000000'],
+                  longitude : ['0.0000000'],
+                  telephone : [''],
+                  fax : [''],
+                  mail : [''],
+                  autremailExtranet : [''],
+                  web : [''],
+                  facebook : [''],
+                  nbreEleve : [''],
+                  faxing : ['oui', Validators.required],
+                  mailing : ['oui', Validators.required],
+                  diocese : [102, Validators.required],
+                  adressepostal1 : [''],
+                  adressepostal2 : [''],
+                  adressepostal3 : [''],
+                  adressepostal4 : [''],
+                  adressepostal5 : [''],
+                  adressepostal6 : [''],
+                  adressepostal7 : [''],
 
           });
-
   }
 
 
