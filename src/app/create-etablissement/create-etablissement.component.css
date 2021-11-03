@@ -31,4 +31,13 @@ button {
   height:25%;
   float:left;
 }
-
+.addContact{
+  width:20%;
+  height:25%;
+  float:left;
+}
+.showContact{
+  width:77%;
+  height:25%;
+  float:left;
+}
