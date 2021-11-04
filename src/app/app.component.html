@@ -12,15 +12,17 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li> -->
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" >
           <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-bs-toggle="dropdown" aria-expanded="false">Etablissement </a>
           <ul class="dropdown-menu" aria-labelledby="dropdown04">
-            <li><a class="dropdown-item" routerLink="/CreationFicheEtablissement">Créer fiche </a></li>
+            <li  *ngIf="authenticationService.connectedUserData[0].TypeUtilisateur==='Administrateur' || authenticationService.connectedUserData[0].TypeUtilisateur==='Rédacteur' ">
+              <a class="dropdown-item" routerLink="/CreationFicheEtablissement">Créer fiche </a>
+            </li>
             <li><a class="dropdown-item" href="#">Rechercher</a></li>
           </ul>
         </li>
 
-        <li class="nav-item dropdown">
+        <li *ngIf="authenticationService.connectedUserData[0].TypeUtilisateur==='Administrateur' || authenticationService.connectedUserData[0].TypeUtilisateur==='Rédacteur'  || authenticationService.connectedUserData[0].TypeUtilisateur==='Délégué'  " class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-bs-toggle="dropdown" aria-expanded="false">Commercial</a>
           <ul class="dropdown-menu" aria-labelledby="dropdown05">
             <li><a class="dropdown-item" href="#">Renouvellement</a></li>
@@ -31,7 +33,8 @@
           </ul>
         </li>
 
-        <li class="nav-item dropdown">
+       <li *ngIf="authenticationService.connectedUserData[0].TypeUtilisateur==='Administrateur'" class="nav-item dropdown">
+       <!--  <li class="nav-item dropdown"  >-->
           <a class="nav-link dropdown-toggle" href="#" id="dropdown06" data-bs-toggle="dropdown" aria-expanded="false">Administration</a>
           <ul class="dropdown-menu" aria-labelledby="dropdown06">
             <li><a class="dropdown-item" href="#">Tables</a></li>
@@ -42,7 +45,7 @@
         </li>
 
 
-        <li class="nav-item dropdown">
+        <li *ngIf="authenticationService.connectedUserData[0].TypeUtilisateur==='Administrateur'" class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">Utilisateurs</a>
           <ul class="dropdown-menu" aria-labelledby="dropdown07">
             <li><a class="dropdown-item"  routerLink="/CreateUser">Créer</a></li>
@@ -53,7 +56,7 @@
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item pointer">
-          <a  class="nav-link"> Connecté: </a>
+          <a  class="nav-link"> Connecté: {{authenticationService.connectedUserData[0].Prenom|uppercase}} -- {{authenticationService.connectedUserData[0].TypeUtilisateur}}</a>
         </li>
         <li class="nav-item pointer">
             <a (click)="logout()" class="nav-link"> Deconnexion</a>

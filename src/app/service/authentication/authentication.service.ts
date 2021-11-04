@@ -12,9 +12,12 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthenticationService {
  // private readonly mockeduser= new SignInData('bsidy01@aldahim.fr','123');
-  isAuthenticated =false;constructor( private httpClient: HttpClient,private router:Router) { }
+  isAuthenticated =false;
+  connectedUserData:any;
+  constructor( private httpClient: HttpClient,private router:Router) { }
   verif=false;
 
 
@@ -29,8 +32,10 @@ export class AuthenticationService {
             .subscribe(
               result => {
                 this.isAuthenticated=true;
-               console.log(JSON.stringify(result));
+               //console.log(JSON.stringify(result));
+              // console.log(result);
                 this.verif= true;
+                this.connectedUserData=result;
                     this.router.navigate(['Accueil']);
               },
               (error) => {
