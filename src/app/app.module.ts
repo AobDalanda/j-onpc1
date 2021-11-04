@@ -23,6 +23,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { ListeUserComponent } from './Utilisateurs/liste-user/liste-user.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
     FindUserComponent,
     AccueilComponent,
     CreateEtablissementComponent,
-    FourOhFourComponent
+    FourOhFourComponent,
+    ListeUserComponent
   ],
   imports: [
     BrowserModule,
