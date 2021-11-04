@@ -40,7 +40,7 @@ export class AuthenticationService {
               },
               (error) => {
                 this.isAuthenticated=false;
-                console.log('Erreur ! : ' + error);
+               // console.log('Erreur ! : ' + error);
                 //this.router.navigate(['']);
                 this.verif= false;
               }

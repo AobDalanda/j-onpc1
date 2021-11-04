@@ -8,6 +8,7 @@ import {AuthGuard} from "./guards/auth.guard";
 import {AppComponent} from "./app.component";
 import {CreateEtablissementComponent} from "./create-etablissement/create-etablissement.component";
 import {FourOhFourComponent} from "./four-oh-four/four-oh-four.component";
+import {ListeUserComponent} from "./Utilisateurs/liste-user/liste-user.component";
 
 const routes: Routes = [
   {path:'', component:LoginComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path:'CreationFicheEtablissement', component:CreateEtablissementComponent, canActivate:[AuthGuard]},
   {path:'CreateUser', component:CreateUserComponent, canActivate:[AuthGuard]},
   {path: 'FindUser', component:FindUserComponent, canActivate:[AuthGuard]},
+  {path: 'listeUser', component: ListeUserComponent, canActivate:[AuthGuard]},
   { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: 'not-found' }
 ];

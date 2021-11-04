@@ -24,6 +24,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { ListeUserComponent } from './Utilisateurs/liste-user/liste-user.component';
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { ListeUserComponent } from './Utilisateurs/liste-user/liste-user.compone
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatTableModule,
   ],
   providers: [ MatInputModule, {
       provide: STEPPER_GLOBAL_OPTIONS,   useValue: { displayDefaultIndicatorType: false, showError: true  }

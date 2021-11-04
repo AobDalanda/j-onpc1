@@ -20,7 +20,7 @@ const httpOptions = {
      this.httpClient  .post('http://localhost/ONPC/public/users/ajouter',  JSON.stringify(userdata),httpOptions)
        .subscribe(
          result => {
-           console.log( result);
+          // console.log( result);
            this.verif=true;
          },
          (error) => {
