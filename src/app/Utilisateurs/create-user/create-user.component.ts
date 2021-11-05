@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
-import {UserService} from "../service/user.service";
-import {User} from "../Model/User.model";
+import {UserService} from "../../service/user/user.service";
+import {User} from "../../Model/User.model";
 
 @Component({
   selector: 'cf-create-user',

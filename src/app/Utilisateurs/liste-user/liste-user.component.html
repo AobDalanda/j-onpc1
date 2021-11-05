@@ -1,7 +1,9 @@
 <p>liste-user</p>
 
-
+{{message}}
 <div class="example-container mat-elevation-z8">
+
+
   <table [dataSource]="dataSource" mat-table>
 
  <!-- Ordre Column -->
@@ -36,9 +38,8 @@
     <ng-container matColumnDef="Action">
       <th *matHeaderCellDef class="matColumnDef1" mat-header-cell> Action </th>
       <td *matCellDef="let element" mat-cell>
-        <button  (click)="editUser(element.id)" *ngIf="element.Status==='active' " class="btn btn-outline-primary" >Désactiver </button>
-        <button  (click)="editUser(element.id)" *ngIf="element.Status==='desactive' " class="btn btn-outline-primary" >Activer </button>&nbsp;
-        <button  (click)="editUser(element.id)" class="btn btn-outline-primary"   >Editer </button>
+        <button  (click)="editUser(element.id) " class="btn btn-outline-primary" >{{element.Status=== 'active' ? 'Desactiver' : 'Activer'}}</button>
+        <button  class="btn btn-outline-primary"   >Editer </button>
       </td>
     </ng-container>
 

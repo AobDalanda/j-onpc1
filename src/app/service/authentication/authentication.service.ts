@@ -28,19 +28,19 @@ export class AuthenticationService {
               MotDePasse: signData.password
             }];
 
-         this.httpClient  .post('http://127.0.0.1/ONPC/public/users/login',  JSON.stringify(usercredentiels),httpOptions)
+         this.httpClient  .post('http://localhost/ONPC/public/users/login',   JSON.stringify(usercredentiels),httpOptions)
             .subscribe(
               result => {
                 this.isAuthenticated=true;
-               //console.log(JSON.stringify(result));
-              // console.log(result);
+               console.log(JSON.stringify(result));
+                console.log(result);
                 this.verif= true;
                 this.connectedUserData=result;
                     this.router.navigate(['Accueil']);
               },
               (error) => {
                 this.isAuthenticated=false;
-               // console.log('Erreur ! : ' + error);
+               console.log('Erreur ! : ' + error);
                 //this.router.navigate(['']);
                 this.verif= false;
               }

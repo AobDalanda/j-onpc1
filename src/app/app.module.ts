@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { CreateUserComponent } from './create-user/create-user.component';
-import { FindUserComponent } from './find-user/find-user.component';
+import { CreateUserComponent } from './Utilisateurs/create-user/create-user.component';
+import { FindUserComponent } from './Utilisateurs/find-user/find-user.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import {HttpClientModule} from "@angular/common/http";
 import { CreateEtablissementComponent } from './create-etablissement/create-etablissement.component';
