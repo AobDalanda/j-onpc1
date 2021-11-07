@@ -32,8 +32,9 @@ export class ListeUserComponent implements OnInit {
   editUser(id:number) {
     console.log("edition ok pour l'element avec l'identifiant :"+id);
        if(!this.userService.activeUserStatus(id)){
+        // console.log(this.userService.activeUserStatus(id));
          this.message='Modification ok  ';
-         this.router.navigate([this.router.url]);
+         //this.router.navigate([this.router.url]);
        // this.router.navigate(['listeUser']);
        }else{
          console.log(this.userService.activeUserStatus(id));

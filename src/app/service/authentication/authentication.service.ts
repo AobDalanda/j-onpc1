@@ -32,8 +32,8 @@ export class AuthenticationService {
             .subscribe(
               result => {
                 this.isAuthenticated=true;
-               console.log(JSON.stringify(result));
-                console.log(result);
+                console.log(JSON.stringify(result));
+                //console.log( (result[0].Status).toString() );
                 this.verif= true;
                 this.connectedUserData=result;
                     this.router.navigate(['Accueil']);

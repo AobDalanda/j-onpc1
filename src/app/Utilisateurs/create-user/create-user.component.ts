@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {UserService} from "../../service/user/user.service";
 import {User} from "../../Model/User.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'cf-create-user',
@@ -9,27 +10,19 @@ import {User} from "../../Model/User.model";
   styleUrls: ['./create-user.component.css']
 })
 export class CreateUserComponent implements OnInit {
-
-  constructor(private userservice : UserService) { }
+  newUser= new User();
+  message!:string;
+  constructor(private userservice : UserService,private router:Router) { }
 
   ngOnInit(): void {
   }
 
+          addUser(){
+            this.userservice.createUser(this.newUser).subscribe(prod => {
+              console.log(prod);
+            });
+            this.router.navigate(['listeUser']);
+          }
 
 
-  onSubmit(createUser : NgForm){
-    if(createUser.valid){
-      console.log(createUser.value);
-      let  usercredentials= new User();
-      usercredentials.prenom=createUser.value.prenom;
-      usercredentials.nom=createUser.value.nom;
-      usercredentials.email=createUser.value.email;
-      usercredentials.type_utilisateur=createUser.value.typeuser;
-      usercredentials.password=createUser.value.password;
-      if(this.userservice.createUser(usercredentials)){
-        console.log("insertion ok ");
-      }else{console.log("insertion noOk")}
-    }else(console.log("pas de saisie "))
-
-  }
 }

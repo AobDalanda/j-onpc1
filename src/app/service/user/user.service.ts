@@ -1,5 +1,5 @@
 import {User} from "../../Model/User.model";
-import {Subject} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {SignInData} from "../../Model/signInData";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
@@ -12,26 +12,16 @@ const httpOptions = {
 })
  export class UserService {
   apiURL:string='http://localhost/ONPC/public/userStatusChange';
+  apiURLAdd:string='http://localhost/ONPC/public/users/ajouter';
    newUser= new User();
    verif=false;
    verif1=false;
    constructor( private httpClient: HttpClient ) { }
 
-         createUser(userdata: User) : boolean{
-           this.httpClient  .post('http://localhost/ONPC/public/users/ajouter',  JSON.stringify(userdata),httpOptions)
-             .subscribe(
-               result => {
-                // console.log( result);
-                 this.verif=true;
-               },
-               (error) => {
-                 console.log('this.verif;Erreur ! : ' + error);
-                 //this.router.navigate(['']);
-                 //
-               }
-             );
-           return this.verif;
-         };
+           createUser( prod: User):Observable<User>{
+              return this.httpClient.post<User>(this.apiURLAdd, prod, httpOptions);
+            }
+
 
 
          activeUserStatus(id:number):boolean{
