@@ -2,11 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms'
 import {HttpClient} from "@angular/common/http";
 import {DatePipe, formatDate} from "@angular/common";
+import {ExtradataService} from "../service/extradata/extradata.service";
+import {Delegue} from "../Model/ExtraData/delegue.model";
+import {Diocese} from "../Model/ExtraData/diocese.model";
+import {Smaj} from "../Model/ExtraData/smaj.model";
+import {Dptmts} from "../Model/ExtraData/dptmt.model";
+import {TypeEtablissement} from "../Model/ExtraData/typeEtablissement.model";
 
-interface listeTypeDptandEtablishment {
-  value: string;
-  viewValue: string;
-}
 @Component({
   selector: 'cf-create-etablissement',
   templateUrl: './create-etablissement.component.html',
@@ -19,75 +21,40 @@ export class CreateEtablissementComponent implements OnInit {
     Validators.required,
     Validators.email,
   ]);
-  /**
-   * Liste type d'etablissement
-   */
-  typeEta: listeTypeDptandEtablishment[] = [
-    {value: '1', viewValue: 'Etablissement'},
-    {value: '2', viewValue: 'Organisme'},
-    {value: '3', viewValue: 'Internat'},
-    {value: '4', viewValue: 'Fournisseur'},
-    {value: '5', viewValue: 'Groupes scolaires'},
-  ];
   isLinear = true;
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
   formcontactGroup!: FormGroup;
 /*Array for retrieved data from api    */
-  li:any;
-  listeDelegue:any;
-  listeDioces:any;
-  listeDptmt:any;
-  listeTypeEtabl:any;
-  constructor(private _formBuilder: FormBuilder, private http:HttpClient ) {
+  liSourceMaj!:Smaj[];
+  listeDelegue!: Delegue[];
+  listeDioces !: Diocese[];
+  listeDptmt!: Dptmts[];
+  listeTypeEtabl !:TypeEtablissement[] ;
+  constructor(private _formBuilder: FormBuilder, private http:HttpClient, private extraDataService: ExtradataService ) {
   }
 
   ngOnInit() {
-    /**
-     * Retrieve data for "source de mise à jour "
-                         */
-                        this.http.get('http://localhost/ONPC/public/extract/sourcemaj')
-                          .subscribe(Response => {
-                            if(Response){
-                              this.li=Response;
-                            }
-                          });
-     /**
-     * Retrieve data for "delegues"
-     */
-                  this.http.get('http://localhost/ONPC/public/liste/delegues')
-                    .subscribe(Response => {
-                      if(Response){
-                        this.listeDelegue=Response;
-                      }
-                    });
-/**
-     * Retrieve data for "diocese"
-     */
-                  this.http.get('http://localhost/ONPC/public/extract/diocese')
-                    .subscribe(Response => {
-                      if(Response){
-                        this.listeDioces=Response;
-                      }
-                    });
-      /**
-      * Retrieve data for departement
-      */
-                  this.http.get('http://localhost/ONPC/public/extract/dptmt')
-                    .subscribe(Response => {
-                      if(Response){
-                        this.listeDptmt=Response;
-                      }
-                    });
-    /**
-     * Retrieve data for type etablissement
-     */
-                  this.http.get('http://localhost/ONPC/public/extract/typeetabl')
-                    .subscribe(Response => {
-                      if(Response){
-                        this.listeTypeEtabl=Response;
-                      }
-                    });
+                  /**  Retrieve data for "source de mise à jour " */
+                                this.extraDataService.SMajData().subscribe(
+                                  (sMaj)=>{  this.liSourceMaj=sMaj;  },(error)=>{
+                                    alert("Connexion impossible au serveur de données");   }  );
+                 /**  Retrieve data for "delegues" */
+                               this.extraDataService.ListeDelegue().subscribe(
+                                 (listedelegue)=>{  this.listeDelegue=listedelegue;  }  );
+                 /** Retrieve data for Diocese */
+                               this.extraDataService.ListeDiocese().subscribe(
+                                 (ListeDiocese)=>{this.listeDioces=ListeDiocese;}
+                               );
+                /** Retrieve data for department */
+                              this.extraDataService.ListeDptmt().subscribe(
+                                (ListeDptmt)=>{this.listeDptmt=ListeDptmt
+                                }
+                              );
+               /** Retrieve data for type Etablissement */
+                             this.extraDataService.ListeTypeEtablissment().subscribe(
+                               (ListeTypeEtabl)=>{this.listeTypeEtabl=ListeTypeEtabl;}
+                             );
     /**
      * formulaire "departement et type etablissement"
      */
@@ -116,7 +83,7 @@ export class CreateEtablissementComponent implements OnInit {
                   horsSecteur:  ['non', Validators.required],
                   delegue: ['Non rattaché',Validators.required],
                   typeenseignementprive: ['Laique',Validators.required],
-                  rubriqueprincipale: ['',Validators.required],
+                  /*rubriqueprincipale: ['',Validators.required], */
                   typeetablissement1  : [1,Validators.required],
                   formation  : ['classique',Validators.required],
                   sigle  : [''],

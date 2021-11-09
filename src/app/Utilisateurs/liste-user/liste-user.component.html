@@ -5,7 +5,6 @@
 
 
   <table [dataSource]="dataSource" mat-table>
-
  <!-- Ordre Column -->
     <ng-container matColumnDef="id">
       <th *matHeaderCellDef class="matColumnDef" mat-header-cell> No. </th>
@@ -39,7 +38,7 @@
       <th *matHeaderCellDef class="matColumnDef1" mat-header-cell> Action </th>
       <td *matCellDef="let element" mat-cell>
         <button  (click)="editUser(element.id) " class="btn btn-outline-primary" >{{element.Status=== 'active' ? 'Desactiver' : 'Activer'}}</button>
-        <button  class="btn btn-outline-primary"   >Editer </button>
+        <button  [routerLink]="['/updateUser',element.id]"  class="btn btn-outline-primary">Modifier</button>
       </td>
     </ng-container>
 

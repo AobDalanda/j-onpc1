@@ -3,6 +3,7 @@ import {NgForm} from "@angular/forms";
 import {AuthenticationService} from "../service/authentication/authentication.service";
 import {SignInData} from "../Model/signInData";
 import {Router} from "@angular/router";
+import {Userlog} from "../Model/User/Userlog.model";
 
 @Component({
   selector: 'cf-login',
@@ -11,15 +12,20 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
   isFormInValid=false;
+  message!:string;
+  userdata:any;
   areCredentialIsInvalid = false;
 
   constructor(private authenticationService: AuthenticationService,private router:Router) { }
 
   ngOnInit(): void {
+    if(sessionStorage.getItem('isauthentified')){
+      this.userdata=sessionStorage.getItem('dataUser'),
+      this.router.navigate(['Accueil']);
+    }
   }
 
    onSubmit(signInForm:NgForm){
-    //console.log(signInForm.value);
      if(!signInForm.valid){
        this.isFormInValid=true;
        this.areCredentialIsInvalid=false;
@@ -30,14 +36,25 @@ export class LoginComponent implements OnInit {
    }
 
    private checkCredentials(signInForm : NgForm){
-     let  signInData= new SignInData();
-        signInData.email=signInForm.value.email;
-        signInData.password=signInForm.value.password;
-     if(!this.authenticationService.logUser(signInData)){
+     let  signInData= new Userlog();
+        signInData.mail=signInForm.value.email;
+        signInData.MotDePasse=signInForm.value.password;
+     this.authenticationService.logUser(signInData)
 
-           this.isFormInValid=false;
-           this.areCredentialIsInvalid=true;
-           this.router.navigate(['']);
+     if(this.authenticationService.retourlog==='compte désactive')
+     {
+       this.message='Votre compt est désativé';
+       this.isFormInValid=false;
+       this.areCredentialIsInvalid=true;
+       this.router.navigate(['']);
+     }else if(this.authenticationService.retourlog==='compte désactive'){
+       this.isFormInValid=false;
+       this.areCredentialIsInvalid=true;
+       this.router.navigate(['']);
+     }else if(this.authenticationService.retourlog==='not ok'){
+       this.isFormInValid=false;
+       this.areCredentialIsInvalid=true;
+       this.router.navigate(['']);
      }else {
          //this.router.navigate(['']);
          this.router.navigate(['Accueil']);

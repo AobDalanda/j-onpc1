@@ -16,9 +16,11 @@
       <mat-form-field>
         <mat-label>Type établissement</mat-label>
         <mat-select class="custom-select" formControlName="typeEtablissement">
-          <mat-option *ngFor="let typeEtabli of typeEta" [value]="typeEtabli.value">
-            {{typeEtabli.viewValue}}
-          </mat-option>
+          <mat-option   [value]="1">   Etablissement </mat-option>
+          <mat-option   [value]="2">   Organisme </mat-option>
+          <mat-option   [value]="3">   Internat </mat-option>
+          <mat-option   [value]="4">   Fournisseur </mat-option>
+          <mat-option   [value]="5">   Groupes scolaires </mat-option>
         </mat-select>
       </mat-form-field>
     </form>
@@ -77,8 +79,8 @@
         <mat-label>Source de mise à jour</mat-label>
         <mat-select formControlName="SourceMaj" >
           <mat-option value="sans"    >Sans</mat-option>
-          <mat-option *ngFor="let smaj of li" [value]="smaj.id">
-            {{smaj.Libelle}}
+          <mat-option *ngFor="let smaj of liSourceMaj" [value]="smaj.id">
+            {{smaj.Liberlle}}
           </mat-option>
         </mat-select>
       </mat-form-field><br/>
@@ -127,7 +129,7 @@
              <mat-select formControlName="delegue">
                <mat-option value="Non rattaché">Non rattaché</mat-option>
                <mat-option *ngFor="let delegue of listeDelegue" [value]="delegue.id"  >
-                 {{delegue.Prenom + " " +delegue.Nom  }}
+                 {{delegue.Prenom+ " " +delegue.Nom  }}
                </mat-option>
              </mat-select>
            </mat-form-field><br/>
@@ -140,7 +142,7 @@
                </mat-option>
              </mat-select>
            </mat-form-field><br/>
-<!-- RUBRIQUE PRINCIPALE:-->
+<!-- RUBRIQUE PRINCIPALE:
            <mat-form-field>
              <mat-label>Rubrique principale</mat-label>
              <mat-select formControlName="rubriqueprincipale">>
@@ -149,7 +151,7 @@
                </mat-option>
              </mat-select>
            </mat-form-field><br/>
-<!--  TYPE ENSEIGNEMENT PRIVE  -->
+   TYPE ENSEIGNEMENT PRIVE  -->
         <mat-form-field >
           <mat-label>Type enseignement privé</mat-label>
           <mat-select     formControlName="typeenseignementprive">
@@ -466,34 +468,7 @@
       <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
     </div>
   </mat-step>
-  <!-- step 8 formulaire  Zone de dialogu -->
-  <mat-step>
-    <ng-template matStepLabel><span>  Zone de dialogue</span></ng-template>
-    Zone de dialogue de l'etablisssement
-    <div>
-      <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
-      <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
-    </div>
-  </mat-step>
-  <!-- step 9 formulaire  Statut-->
-  <mat-step>
-    <ng-template matStepLabel><span>  Statut</span></ng-template>
-    Statut de l'etablisssement
-    <div>
-      <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
-      <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
-    </div>
-  </mat-step>
-  <!-- step 10 formulaire  Editions précedentes  -->
-  <mat-step>
-    <ng-template matStepLabel><span>  Editions précedentes </span></ng-template>
-    Editions précedentes de l'etablisssement
-    <div>
-      <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
-      <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
-    </div>
-  </mat-step>
-  <!-- step 11 formulaire  Sites  -->
+  <!-- step 8 formulaire  Sites  -->
   <mat-step>
     <ng-template matStepLabel><span>  Sites </span></ng-template>
     Sites de l'etablisssement
@@ -502,25 +477,7 @@
       <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
     </div>
   </mat-step>
-  <!-- step 12 formulaire  Bannières  -->
-  <mat-step>
-    <ng-template matStepLabel><span>  Bannières </span></ng-template>
-    Bannières de l'etablisssement
-    <div>
-      <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
-      <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
-    </div>
-  </mat-step>
-  <!-- step 13 formulaire  Diffusion  -->
-  <mat-step>
-    <ng-template matStepLabel><span>  Diffusion </span></ng-template>
-    Diffusion de l'etablisssement
-    <div>
-      <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
-      <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
-    </div>
-  </mat-step>
-  <!-- step 14 formulaire  Recap de la fiche avant validation   -->
+  <!-- step 94 formulaire  Recap de la fiche avant validation   -->
   <mat-step>
     <ng-template matStepLabel><span>  Récapitulatif de la fiche </span></ng-template>
     Recap de la fiche avant validation

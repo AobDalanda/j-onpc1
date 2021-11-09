@@ -16,7 +16,6 @@ export class ListeUserComponent implements OnInit {
   constructor(private http:HttpClient, private userService:UserService, private router:Router) { }
 
   ngOnInit(): void {
-
     /**
      * Retrieve data for "liste of users"
      */

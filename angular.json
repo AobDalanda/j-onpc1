@@ -76,7 +76,8 @@
               "browserTarget": "j-onpc:build:production"
             },
             "development": {
-              "browserTarget": "j-onpc:build:development"
+              "browserTarget": "j-onpc:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

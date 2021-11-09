@@ -24,7 +24,7 @@ import {MatNativeDateModule} from "@angular/material/core";
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { ListeUserComponent } from './Utilisateurs/liste-user/liste-user.component';
 import {MatTableModule} from "@angular/material/table";
-import { UpdateUserComponent } from './utilisateurs/update-user/update-user.component';
+import {UpdateUserComponent} from "./Utilisateurs/update-user/update-user.component";
 
 @NgModule({
   declarations: [

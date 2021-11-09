@@ -1,1 +1,51 @@
-<p>update-user works!</p>
+
+<div class="login-wrapper">
+  <div class="card">
+    <div class="card-body">
+      <form  >
+        <h1 class="h3 mb-3 fw-bolder text-center "> Editer utilisateur</h1>
+        <div class="form-floating">
+          <input [(ngModel)]= "currentUser.prenom" class="form-control" max="35"  min="2" name="prenom"      required   type="text">
+          <label for="floatingInput">Prenom de l'utilisateur</label>
+        </div>
+        <div class="form-floating">
+          <input [(ngModel)]= "currentUser.nom" class="form-control" max="25"  min="2" name="nom"       required   type="text">
+          <label for="floatingInput">Nom de l'utilisateur</label>
+        </div>
+        <div class="form-floating">
+          <select [(ngModel)]= "currentUser.type_utilisateur" class="form-control"  name="typeuser"      required >
+            <option selected></option>
+            <option value="Administrateur">Administrateur</option>
+            <option value="Délégué">Délégué</option>
+            <option value="Invité">Invité</option>
+            <option value="Rédacteur">Rédacteur</option>
+            <option value="Opérateur PAO">Opérateur PAO</option>
+          </select>
+          <label for="floatingPassword">Type d'utilisateur</label>
+        </div>
+        <div class="form-floating">
+          <input [(ngModel)]= "currentUser.mail" autofocus class="form-control" id="floatingInput"  max="35"    name="email"     required type="email">
+          <label for="floatingInput">Email de l'utilisateur</label>
+        </div>
+        <div class="form-floating">
+          <input [(ngModel)]= "currentUser.password" class="form-control" id="floatingPassword" max="25"  min="6"  name="password"    required type="password">
+          <label for="floatingPassword">Mot de passe de l'utilisateur</label>
+        </div>
+        <div class="form-floating">
+          <select [(ngModel)]= "currentUser.status" class="form-control"   name="status"      required >
+            <option selected></option>
+            <option value="active">Activer</option>
+            <option value="desactive">Désactiver</option>
+          </select>
+          <label for="floatingPassword">Status</label>
+        </div>
+        <div >
+          <button (click)="updateUser()" class="w-25 btn btn-lg btn-primary" type="submit" >Editer</button>
+        </div>
+      </form>
+      <span align="center">{{message}}</span>
+    </div>
+
+  </div>
+
+</div>
