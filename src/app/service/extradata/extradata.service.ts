@@ -12,11 +12,11 @@ import {TypeEtablissement} from "../../Model/ExtraData/typeEtablissement.model";
   providedIn: 'root'
 })
 export class ExtradataService {
-  readonly  apiURLgetSmajData =`${environment.API_URL}/ONPC/public/extract/sourcemaj`;
-  readonly  apiURLListeDelegue =`${environment.API_URL}/ONPC/public/liste/delegues`;
-  readonly  apiURLListeDiocese =`${environment.API_URL}/ONPC/public/extract/diocese`;
-  readonly  apiURLListeDptmt =`${environment.API_URL}/ONPC/public/extract/dptmt`;
-  readonly  apiURLListeTypeetabl=`${environment.API_URL}/ONPC/public/extract/typeetabl`;
+  readonly  apiURLgetSmajData =`${environment.API_URL}/extract/sourcemaj`;
+  readonly  apiURLListeDelegue =`${environment.API_URL}/liste/delegues`;
+  readonly  apiURLListeDiocese =`${environment.API_URL}/extract/diocese`;
+  readonly  apiURLListeDptmt =`${environment.API_URL}/extract/dptmt`;
+  readonly  apiURLListeTypeetabl=`${environment.API_URL}/extract/typeetabl`;
   constructor( private http: HttpClient ) { }
 
                 SMajData():Observable<Smaj[]>{

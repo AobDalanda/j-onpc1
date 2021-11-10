@@ -25,6 +25,8 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { ListeUserComponent } from './Utilisateurs/liste-user/liste-user.component';
 import {MatTableModule} from "@angular/material/table";
 import {UpdateUserComponent} from "./Utilisateurs/update-user/update-user.component";
+import {DialogOverviewExampleDialog} from "./create-etablissement/DialogOverviewExample";
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -36,7 +38,11 @@ import {UpdateUserComponent} from "./Utilisateurs/update-user/update-user.compon
     CreateEtablissementComponent,
     FourOhFourComponent,
     ListeUserComponent,
-    UpdateUserComponent
+
+    UpdateUserComponent,
+
+
+    DialogOverviewExampleDialog
   ],
   imports: [
     BrowserModule,
@@ -56,6 +62,7 @@ import {UpdateUserComponent} from "./Utilisateurs/update-user/update-user.compon
     MatDatepickerModule,
     MatNativeDateModule,
     MatTableModule,
+    MatDialogModule,
   ],
   providers: [ MatInputModule, {
       provide: STEPPER_GLOBAL_OPTIONS,   useValue: { displayDefaultIndicatorType: false, showError: true  }

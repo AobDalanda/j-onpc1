@@ -355,73 +355,51 @@
     </div>
   </mat-step>
 <!-- step 3 formulaire  Contacts-->
-  <mat-step [stepControl]="formcontactGroup">
-    <ng-template matStepLabel><span>  Contacts </span></ng-template>
-    Conctacts de l'etablisssement
-    <form [formGroup]="formcontactGroup">
-<div>
- <div class="addContact">
-               <!-- CIVILITE:-->
-               <mat-form-field>
-                 <mat-label>Civilité</mat-label>
-                 <mat-select  formControlName="contactCivilite" >
-                   <mat-option value="Monsieur"  >Monsieur</mat-option>
-                   <mat-option value="Madame"  >Madame</mat-option>
-                 </mat-select>
-               </mat-form-field><br/>
-               <!-- PRENOM:-->
-               <mat-form-field appearance="fill" >
-                 <mat-label>Prénom</mat-label>
-                 <input formControlName="contactPrenom" matInput   placeholder="Prénom" type="text">
-               </mat-form-field><br/>
-               <!-- NOM:-->
-               <mat-form-field appearance="fill" >
-                 <mat-label>Nom</mat-label>
-                 <input formControlName="contactNom" matInput   placeholder="Nom" type="text">
-               </mat-form-field><br/>
-               <!-- FONCTION:-->
-               <mat-form-field appearance="fill" >
-                 <mat-label>Fonction</mat-label>
-                 <input formControlName="contactFonction" matInput   placeholder="Fonction" type="text">
-               </mat-form-field><br/>
-               <!-- SIGNATAIRE:-->
-               <mat-form-field>
-                 <mat-label>Signataire</mat-label>
-                 <mat-select  formControlName="contactSignataire">
-                   <mat-option value="oui"  >Oui</mat-option>
-                   <mat-option value="non"  >Non</mat-option>
-                 </mat-select>
-               </mat-form-field><br/>
-               <!-- MAIL:-->
-               <mat-form-field appearance="fill" >
-                 <mat-label>Mail</mat-label>
-                 <input formControlName="contactMail" matInput   pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"  placeholder="Mail" type="email">
-               </mat-form-field><br/>
-               <!-- TELEPHONE:-->
-               <mat-form-field appearance="fill" >
-                 <mat-label>Téléphone</mat-label>
-                 <input formControlName="contactTelephone" matInput   placeholder="Téléphone"  type="tel">
-               </mat-form-field><br/>
-               <!-- INFORMATIONS COMPLEMENTAIRES :-->
-                 <mat-form-field>
-                       <textarea formControlName="contactInfo" matInput  placeholder="Informations commerciales">
-                       </textarea>
-               </mat-form-field>
+<mat-step [stepControl]="formcontactGroup">
+            <ng-template matStepLabel><span>  Contacts </span></ng-template>
 
- </div>
- <div class="showContact">
 
- </div>
+               <div id="wrapper">
+                     <div id="first">
+                       <p>liste-Contacts</p>
+                       <button (click)="openDialog()" mat-raised-button>Ajouter un contact</button>
+                       <div class="example-container mat-elevation-z8">
 
-</div>
+                         <table width="60%">
+                                     <thead>
+                                     <tr>
+                                       <th scope="col">Prenom</th>
+                                       <th scope="col">Nom</th>
+                                       <th scope="col">Fonction</th>
+                                       <th scope="col">Signataire</th>
+                                     </tr>
+                                     </thead>
+                                     <tbody>
+                                     <tr *ngFor="let employee of sample ">
+                                       <th scope="row">{{ employee.prenom}}</th>
+                                       <td>{{ employee.nom}}</td>
+                                       <td>{{ employee.fonction}}</td>
+                                       <td>{{ employee.signataire}}</td>
+                                     </tr>
+                                     </tbody>
+                         </table>
 
-    </form>
-      <div>
-        <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
-        <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
-      </div>
 
-  </mat-step>
+                       </div>
+
+                     </div>
+
+                     <div id="second">
+                       <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
+                       <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
+                     </div>
+
+               </div>
+
+
+</mat-step>
+  <!-- End step 3 formulaire  Contacts-->
+
 <!-- step 4 formulaire  Ordres de paticipation-->
   <mat-step>
     <ng-template matStepLabel><span>  Ordres de paticipation </span></ng-template>

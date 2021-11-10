@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms'
 import {HttpClient} from "@angular/common/http";
 import {DatePipe, formatDate} from "@angular/common";
@@ -8,14 +8,34 @@ import {Diocese} from "../Model/ExtraData/diocese.model";
 import {Smaj} from "../Model/ExtraData/smaj.model";
 import {Dptmts} from "../Model/ExtraData/dptmt.model";
 import {TypeEtablissement} from "../Model/ExtraData/typeEtablissement.model";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {DialogOverviewExampleDialog} from "./DialogOverviewExample";
 
+export interface DialogData {
+  civilite:string;
+  prenom:string;
+  nom:string;
+  fonction:string;
+  signataire:string;
+  mail:string;
+  telephone:string;
+  infos:string;
+}
 @Component({
   selector: 'cf-create-etablissement',
   templateUrl: './create-etablissement.component.html',
   styleUrls: ['./create-etablissement.component.css']
 })
 export class CreateEtablissementComponent implements OnInit {
+
+  prenom!: string;
+  nom!:string;
+  fonction!:string;
+  civilite!:string;
+  sample  : DialogData[]= [];
   date = new FormControl(new Date());
+  displayedColumns = ['Prenom', 'Nom', 'Fonction','Signataire'];
+  dataSourcecontact: any;
 
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -31,7 +51,7 @@ export class CreateEtablissementComponent implements OnInit {
   listeDioces !: Diocese[];
   listeDptmt!: Dptmts[];
   listeTypeEtabl !:TypeEtablissement[] ;
-  constructor(private _formBuilder: FormBuilder, private http:HttpClient, private extraDataService: ExtradataService ) {
+  constructor(private _formBuilder: FormBuilder, private http:HttpClient, private extraDataService: ExtradataService, public dialog: MatDialog ) {
   }
 
   ngOnInit() {
@@ -55,6 +75,8 @@ export class CreateEtablissementComponent implements OnInit {
                              this.extraDataService.ListeTypeEtablissment().subscribe(
                                (ListeTypeEtabl)=>{this.listeTypeEtabl=ListeTypeEtabl;}
                              );
+
+
     /**
      * formulaire "departement et type etablissement"
      */
@@ -116,7 +138,6 @@ export class CreateEtablissementComponent implements OnInit {
                   adressepostal5 : [''],
                   adressepostal6 : [''],
                   adressepostal7 : [''],
-
           });//from line 355 in html
           this.formcontactGroup= this._formBuilder.group({
             //https://stackblitz.com/angular/dynvydqgbql?file=app%2Fautocomplete-overview-example.html
@@ -133,9 +154,26 @@ export class CreateEtablissementComponent implements OnInit {
   }
 
 
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '50%',
+       data : { civilite:this.civilite, prenom: this.prenom,  nom:this.nom}
+    });
+
+    dialogRef.afterClosed().subscribe((result:DialogData) => {
+      console.log(result);
+      this.sample.push(result);
+      console.log(this.sample);
+    });
+  }
   submit() {
     console.log(this.firstFormGroup.value);
     console.log(this.secondFormGroup.value);
-    console.log(this.formcontactGroup.value);
+    //console.log(this.formcontactGroup.value);
   }
+
 }
+
+
+
+

@@ -1,0 +1,61 @@
+<h1 mat-dialog-title>Hi</h1>
+
+<div mat-dialog-option>
+
+<!-- CIVILITE:-->
+        <mat-form-field>
+          <mat-label>Civilité</mat-label>
+            <mat-select  [(ngModel)]="data.civilite">
+                <mat-option value={{data.civilite}}  >{{data.civilite}}</mat-option>
+                <mat-option value="Monsieur"  >Monsieur</mat-option>
+                <mat-option value="Madame"  >Madame</mat-option>
+            </mat-select>
+        </mat-form-field><br/>
+  <!-- PRENOM:-->
+          <mat-form-field appearance="fill" >
+            <mat-label>Prénom</mat-label>
+            <input   [(ngModel)]="data.prenom"    matInput   type="text">
+          </mat-form-field><br/>
+  <!-- NOM:-->
+          <mat-form-field appearance="fill" >
+            <mat-label>Nom</mat-label>
+            <input   [(ngModel)]="data.nom"     matInput type="text">
+          </mat-form-field><br/>
+  <!-- FONCTION:-->
+          <mat-form-field appearance="fill" >
+            <mat-label>Fonction</mat-label>
+            <input   [(ngModel)]="data.fonction"     matInput type="text">
+          </mat-form-field><br/>
+  <!-- SIGNATAIRE:-->
+              <mat-form-field>
+                <mat-label>Signataire</mat-label>
+                <mat-select  [(ngModel)]="data.signataire" >
+                  <mat-option value="oui"  >Oui</mat-option>
+                  <mat-option value="non"  >Non</mat-option>
+                </mat-select>
+              </mat-form-field><br/>
+  <!-- MAIL:-->
+              <mat-form-field appearance="fill" >
+                <mat-label>Mail</mat-label>
+                <input  [(ngModel)]="data.mail"   matInput  pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" placeholder="Mail" type="email">
+              </mat-form-field><br/>
+  <!-- TELEPHONE:-->
+              <mat-form-field appearance="fill" >
+                <mat-label>Téléphone</mat-label>
+                <input  [(ngModel)]="data.telephone"   matInput placeholder="Téléphone"  type="tel">
+              </mat-form-field><br/>
+  <!-- INFORMATIONS COMPLEMENTAIRES :-->
+              <mat-form-field>
+                    <textarea   [(ngModel)]="data.infos"  matInput  placeholder="Informations commerciales">    </textarea>
+              </mat-form-field>
+        </div>
+
+
+
+
+
+
+<div mat-dialog-actions>
+  <button (click)="onNoClick()" mat-button>Annuler</button>
+  <button [mat-dialog-close]="data" cdkFocusInitial mat-button>Valider</button>
+</div>

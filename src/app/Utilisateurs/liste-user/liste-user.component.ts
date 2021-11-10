@@ -12,7 +12,6 @@ export class ListeUserComponent implements OnInit {
   displayedColumns = ['id', 'Prenom', 'Nom', 'TypeUtilisateur','Status', 'Action'];
   dataSource: any;
   message!:string;
-
   constructor(private http:HttpClient, private userService:UserService, private router:Router) { }
 
   ngOnInit(): void {
@@ -21,7 +20,7 @@ export class ListeUserComponent implements OnInit {
      */
     this.http.get('http://localhost/ONPC/public/userswithNum')
       .subscribe(Response => {
-        if(Response){ ;
+        if(Response){
           this.dataSource=Response;
         }
       });
