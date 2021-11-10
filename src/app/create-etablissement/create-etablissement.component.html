@@ -365,21 +365,26 @@
                        <button (click)="openDialog()" mat-raised-button>Ajouter un contact</button>
                        <div class="example-container mat-elevation-z8">
 
-                         <table width="60%">
+                         <table width="35%" >
                                      <thead>
-                                     <tr>
-                                       <th scope="col">Prenom</th>
-                                       <th scope="col">Nom</th>
-                                       <th scope="col">Fonction</th>
-                                       <th scope="col">Signataire</th>
+                                     <tr style="background-color: aqua">
+                                           <th scope="col">Prenom</th>
+                                           <th scope="col">Nom</th>
+                                           <th scope="col">Fonction</th>
+                                           <th scope="col">Signataire</th>
+                                           <th scope="col">Action</th>
                                      </tr>
                                      </thead>
                                      <tbody>
-                                     <tr *ngFor="let employee of sample ">
-                                       <th scope="row">{{ employee.prenom}}</th>
-                                       <td>{{ employee.nom}}</td>
-                                       <td>{{ employee.fonction}}</td>
-                                       <td>{{ employee.signataire}}</td>
+                                     <tr *ngFor="let contact of sample; let indexOfelement=index; ">
+                                           <td>{{ contact.prenom}}</td>
+                                           <td>{{ contact.nom}}</td>
+                                           <td>{{ contact.fonction}}</td>
+                                           <td>{{ contact.signataire}}</td>
+                                           <td>
+                                             <button (click)="openDialog()" mat-raised-button>Editer</button>
+                                             <button (click)="deleteContact(indexOfelement)" mat-raised-button>Supprimer</button>
+                                           </td>
                                      </tr>
                                      </tbody>
                          </table>

@@ -35,7 +35,7 @@ export class CreateEtablissementComponent implements OnInit {
   sample  : DialogData[]= [];
   date = new FormControl(new Date());
   displayedColumns = ['Prenom', 'Nom', 'Fonction','Signataire'];
-  dataSourcecontact: any;
+  //dataSourcecontact: any;
 
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -172,6 +172,10 @@ export class CreateEtablissementComponent implements OnInit {
     //console.log(this.formcontactGroup.value);
   }
 
+  deleteContact(indexOfelement: number) {
+    alert(indexOfelement);
+    this.sample.splice(indexOfelement,1);
+  }
 }
 
 
