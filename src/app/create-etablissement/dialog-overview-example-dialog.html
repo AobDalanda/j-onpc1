@@ -57,5 +57,5 @@
 
 <div mat-dialog-actions>
   <button (click)="onNoClick()" mat-button>Annuler</button>
-  <button [mat-dialog-close]="data" cdkFocusInitial mat-button>Valider</button>
+  <button [disabled]="!emailFormControl.valid" [mat-dialog-close]="data" cdkFocusInitial mat-button>Valider</button>
 </div>

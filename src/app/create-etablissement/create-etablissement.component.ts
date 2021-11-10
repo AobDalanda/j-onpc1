@@ -44,7 +44,6 @@ export class CreateEtablissementComponent implements OnInit {
   isLinear = true;
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
-  formcontactGroup!: FormGroup;
 /*Array for retrieved data from api    */
   liSourceMaj!:Smaj[];
   listeDelegue!: Delegue[];
@@ -139,18 +138,6 @@ export class CreateEtablissementComponent implements OnInit {
                   adressepostal6 : [''],
                   adressepostal7 : [''],
           });//from line 355 in html
-          this.formcontactGroup= this._formBuilder.group({
-            //https://stackblitz.com/angular/dynvydqgbql?file=app%2Fautocomplete-overview-example.html
-            //https://stackblitz.com/angular/delolgypoaq?file=app%2Ftable-sticky-header-example.ts
-                 contactCivilite: [''],
-                 contactPrenom: ['', Validators.required],
-                 contactNom: ['', Validators.required],
-                 contactFonction: [''],
-                 contactSignataire: ['oui',Validators.required],
-                 contactMail: ['',Validators.required],
-                 contactTelephone: [''],
-                 contactInfo: [''],
-          });
   }
 
 
