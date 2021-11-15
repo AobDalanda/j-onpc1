@@ -1,18 +1,18 @@
-<h1 mat-dialog-title>Hi</h1>
+<!--<h1 mat-dialog-title>Hi</h1>  -->
 
 <div mat-dialog-option>
 
-            <!-- N°OP:-->
+  <!-- Numéro d'ordre :-->
             <mat-form-field>
-              <mat-label>N°OP</mat-label>
+              <mat-label>Numéro d'ordre</mat-label>
               <input   [(ngModel)]="dataOp.identifiant"    matInput   type="text" >
-            </mat-form-field><br/>
-            <!-- Descriptif :-->
+            </mat-form-field>
+  <!-- Descriptif :-->
             <mat-form-field appearance="fill" >
               <mat-label>Descriptif</mat-label>
               <textarea   [(ngModel)]="dataOp.descriptif"  matInput  placeholder="Informations commerciales">    </textarea>
-            </mat-form-field><br/>
-            <!-- Etat:-->
+            </mat-form-field>
+  <!-- Etat:-->
             <mat-form-field appearance="fill" >
               <mat-label>Etat</mat-label>
               <mat-select  [(ngModel)]="dataOp.etat" >
@@ -23,38 +23,66 @@
                 <mat-option value="OF">OP facturé</mat-option>
               </mat-select>
             </mat-form-field><br/>
-            <!-- Date Souscription:-->
+  <!-- Date Souscription:-->
             <mat-form-field appearance="fill" >
               <mat-label>Date d'envoie du mail de mise en ligne</mat-label>
               <input [(ngModel)]="dataOp.dateSouscription" [matDatepicker]="picker1" matInput>
               <mat-datepicker-toggle [for]="picker1" matSuffix></mat-datepicker-toggle>
               <mat-datepicker #picker1></mat-datepicker>
-            </mat-form-field><br/>
-            <!-- Facturation:-->
+            </mat-form-field>
+  <!-- Facturation:-->
               <mat-form-field appearance="fill" >
-                <mat-label>Etat</mat-label>
+                <mat-label>Facturation</mat-label>
                 <mat-select  [(ngModel)]="dataOp.facturation" >
                   <mat-option value="Normale">Normale</mat-option>
                   <mat-option value="En attente">En attente</mat-option>
                   <mat-option value="Débloquée">Débloquée</mat-option>
                   <mat-option value="Encours technique">Encours technique</mat-option>
                 </mat-select>
-              </mat-form-field><br/>
-            <!-- Commentaire:-->
+              </mat-form-field>
+   <!-- Commentaire:-->
             <mat-form-field appearance="fill" >
                 <mat-label>Commentaire</mat-label>
                 <textarea   [(ngModel)]="dataOp.commentaire"  matInput  placeholder="Informations commerciales">    </textarea>
             </mat-form-field><br/>
   <hr>
-            <!-- TELEPHONE:-->
+          Détails de l'OP<br/>
+          Produit:
+                    <!--
+                <mat-form-field appearance="fill">
+                  <mat-label>Choisissez dans la liste </mat-label>
+                  <input  [(ngModel)]="dataOp.commentaire"   matInput   type="number"/>
+                </mat-form-field>        -->
+
+                  <mat-form-field>
+                    <mat-label>Choisissez dans la liste </mat-label>
+                    <mat-select (selectionChange)="selectproductid()" [(ngModel)]="selectedproductId" >
+                      <mat-option *ngFor="let produit of listeProduits" [value]="produit.id"  >
+                        {{produit.Identifiant+ " - " +produit.Designation  }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field><br/>
+
+
+                <mat-form-field appearance="fill">
+                  <input  [(ngModel)]="dataOp.commentaire"  matInput min="1"   type="number"/>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <input  [(ngModel)]="productprice"   matInput readonly  type="number"/>
+                </mat-form-field>€
+                  <button color="warn" mat-mini-fab style="margin-left:5px;">-</button>
+                  <button color="warn" mat-mini-fab style="margin-left:5px;" value="+">+</button>
+  <hr>
+   <!-- Remise :-->
             <mat-form-field appearance="fill">
-              <mat-label>Téléphone</mat-label>
-              <input  [(ngModel)]="dataOp.commentaire"   matInput placeholder="Téléphone"  type="tel">
-            </mat-form-field><br/>
-            <!-- INFORMATIONS COMPLEMENTAIRES :-->
-            <mat-form-field>
-              <textarea   [(ngModel)]="dataOp.commentaire"  matInput  placeholder="Informations commerciales">    </textarea>
+              <mat-label>Remise délégué (€)</mat-label>
+              <input  [(ngModel)]="dataOp.commentaire"   matInput   type="number"/>
             </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Remise direction (€)</mat-label>
+              <input  [(ngModel)]="dataOp.commentaire"  matInput     type="number"/>
+            </mat-form-field><br/>
+          <span mat-align-tabs="center">Facturable :  €</span>
 </div>
 <div mat-dialog-actions>
   <button (click)="onNoClick()" mat-button>Annuler</button>

@@ -1,5 +1,6 @@
 export class Produit {
-   identifiant!:string;
-   description !:string;
-   prix!:number;
+   id!:number;
+  Identifiant!:string;
+   Designation !:string;
+  Prix!:number;
 }

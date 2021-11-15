@@ -7,6 +7,7 @@ import {Delegue} from "../../Model/ExtraData/delegue.model";
 import {Diocese} from "../../Model/ExtraData/diocese.model";
 import {Dptmts} from "../../Model/ExtraData/dptmt.model";
 import {TypeEtablissement} from "../../Model/ExtraData/typeEtablissement.model";
+import {Produit} from "../../Model/ExtraData/produit.model";
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,8 @@ export class ExtradataService {
   readonly  apiURLListeDiocese =`${environment.API_URL}/extract/diocese`;
   readonly  apiURLListeDptmt =`${environment.API_URL}/extract/dptmt`;
   readonly  apiURLListeTypeetabl=`${environment.API_URL}/extract/typeetabl`;
+  readonly  apiURLListeProduit  =`${environment.API_URL}/extract/listeProduit`;
   constructor( private http: HttpClient ) { }
-
                 SMajData():Observable<Smaj[]>{
                      return this.http.get<Smaj[]>(this.apiURLgetSmajData);
                 }
@@ -33,6 +34,10 @@ export class ExtradataService {
                 }
                 ListeTypeEtablissment():Observable<TypeEtablissement[]>{
                       return this.http.get<TypeEtablissement[]>(this.apiURLListeTypeetabl);
+                }
+
+                ListeProduct():Observable<Produit[]>{
+                      return this.http.get<Produit[]>(this.apiURLListeProduit);
                 }
 
 

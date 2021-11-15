@@ -21,6 +21,9 @@ export class AuthenticationService {
   readonly  appiURLLogin =`${environment.API_URL}/ONPC/public/users/login`;
   isAuthenticated =false;
   connectedUserData:any;
+
+  readonly  apiURLogin=`${environment.API_URL}/users/login`;
+
   constructor( private httpClient: HttpClient,private router:Router) { }
   verif=false;
   retourlog!: string;
@@ -35,7 +38,7 @@ export class AuthenticationService {
 
 
   logUser(signData:Userlog) : boolean{
-         this.httpClient  .post('http://localhost/ONPC/public/users/login',   JSON.stringify(signData),httpOptions)
+         this.httpClient  .post(this.apiURLogin,   JSON.stringify(signData),httpOptions)
             .subscribe(
               result => {
                 this.isAuthenticated=true;

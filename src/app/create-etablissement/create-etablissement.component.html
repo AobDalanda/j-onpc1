@@ -25,7 +25,7 @@
       </mat-form-field>
     </form>
     <div>
-      <button [disabled]="!firstFormGroup.valid" class="btn btn-primary" mat-button  matStepperNext>Suivant</button>
+      <button [disabled]="!firstFormGroup.valid" class="btn btn-secondary" mat-button  matStepperNext>Suivant</button>
     </div>
   </mat-step>
   <!-- step 2 formulaire  Coordonnées-->
@@ -350,8 +350,8 @@
 </div> <!--END BIG DIV-->
     </form>
     <div>
-      <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
-      <button  [disabled]="!secondFormGroup.valid" class="btn btn-primary" mat-button matStepperNext>Suivant</button>
+      <button class="btn btn-secondaryy" mat-button matStepperPrevious>Précedent</button>
+      <button  [disabled]="!secondFormGroup.valid" class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
     </div>
   </mat-step>
 <!-- step 3 formulaire  Contacts-->
@@ -365,7 +365,7 @@
                        <!--  <table width="25%" *ngIf="OpData.length>0"> -->
                          <table width="25%" >
                                      <thead>
-                                     <tr style="background-color: aqua">
+                                     <tr style="background-color: #434348; color: white">
                                            <th scope="col">Prenom</th>
                                            <th scope="col">Nom</th>
                                            <th scope="col">Fonction</th>
@@ -389,23 +389,23 @@
                        </div>
                      </div>
                      <div id="second">
-                       <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
-                       <button   class="btn btn-primary" mat-button matStepperNext>Suivant</button>
+                       <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
+                       <button   class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
                      </div>
                </div>
 </mat-step>
 <!-- End step 3 formulaire  Contacts-->
 <!-- step 4 formulaire  Ordres de paticipation-->
 <mat-step>
-              <ng-template matStepLabel><span>  Contacts </span></ng-template>
+              <ng-template matStepLabel><span>  Ordre de participation </span></ng-template>
               <div id="wrapper">
                 <div id="first">
-                  <p>liste-Contacts</p>
+                  <p>liste-OP</p>
                   <button (click)="openDialogOp()" mat-raised-button>Ajouter un OP</button>
                   <div class="example-container mat-elevation-z8"  >
                     <table width="25%" >
                       <thead>
-                      <tr style="background-color: aqua">
+                      <tr style="background-color: #434348; color: white">
                         <th scope="col">N°OP</th>
                         <th scope="col">Date</th>
                         <th scope="col">Facturable</th>
@@ -431,8 +431,8 @@
                   </div>
                 </div>
                 <div id="second">
-                  <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
-                  <button   class="btn btn-primary" mat-button matStepperNext>Suivant</button>
+                  <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
+                  <button   class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
                 </div>
               </div>
 
@@ -445,8 +445,8 @@
     <ng-template matStepLabel><span>  Insertions </span></ng-template>
     Insertions de l'etablisssement
     <div>
-      <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
-      <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
+      <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
+      <button class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
     </div>
   </mat-step>
   <!-- step 6 formulaire  Insertions Web-->
@@ -454,8 +454,8 @@
     <ng-template matStepLabel><span>  Insertions Web </span></ng-template>
     Insertions Web de l'etablisssement
     <div>
-      <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
-      <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
+      <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
+      <button class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
     </div>
   </mat-step>
   <!-- step 7 formulaire  Liens -->
@@ -463,8 +463,8 @@
     <ng-template matStepLabel><span>  Liens</span></ng-template>
     Liens de l'etablisssement
     <div>
-      <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
-      <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
+      <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
+      <button class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
     </div>
   </mat-step>
   <!-- step 8 formulaire  Sites  -->
@@ -472,8 +472,8 @@
     <ng-template matStepLabel><span>  Sites </span></ng-template>
     Sites de l'etablisssement
     <div>
-      <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
-      <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
+      <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
+      <button class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
     </div>
   </mat-step>
   <!-- step 94 formulaire  Recap de la fiche avant validation   -->
@@ -481,8 +481,8 @@
     <ng-template matStepLabel><span>  Récapitulatif de la fiche </span></ng-template>
     Recap de la fiche avant validation
     <div>
-      <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
-      <button (click)="submit()" class="btn btn-primary" mat-button>Submit</button>
+      <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
+      <button (click)="submit()" class="btn btn-secondary" mat-button>Submit</button>
     </div>
   </mat-step>
 

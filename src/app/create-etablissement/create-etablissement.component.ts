@@ -9,10 +9,11 @@ import {Smaj} from "../Model/ExtraData/smaj.model";
 import {Dptmts} from "../Model/ExtraData/dptmt.model";
 import {TypeEtablissement} from "../Model/ExtraData/typeEtablissement.model";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {DialogOverviewExampleDialog} from "./Contacts/DialogOverviewExample";
+import {DialogOverviewExampleDialog} from "./Contacts/DialogOverviewContact";
 import {DialogOverviewOP} from "./OrdresParticipations/DialogOverviewOP";
 import {ContactDialogue} from "../Model/ExtraData/DialogData";
 import {OpDialogue} from "../Model/ExtraData/ordresParticipation.model";
+import {Produit} from "../Model/ExtraData/produit.model";
 
 
 @Component({
@@ -46,6 +47,9 @@ export class CreateEtablissementComponent implements OnInit {
   listeDioces !: Diocese[];
   listeDptmt!: Dptmts[];
   listeTypeEtabl !:TypeEtablissement[] ;
+
+
+
   constructor(private _formBuilder: FormBuilder, private http:HttpClient, private extraDataService: ExtradataService, public dialog: MatDialog ) {
   }
 
@@ -70,6 +74,7 @@ export class CreateEtablissementComponent implements OnInit {
                              this.extraDataService.ListeTypeEtablissment().subscribe(
                                (ListeTypeEtabl)=>{this.listeTypeEtabl=ListeTypeEtabl;}
                              );
+
 
 
     /**

@@ -25,7 +25,7 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { ListeUserComponent } from './Utilisateurs/liste-user/liste-user.component';
 import {MatTableModule} from "@angular/material/table";
 import {UpdateUserComponent} from "./Utilisateurs/update-user/update-user.component";
-import {DialogOverviewExampleDialog} from "./create-etablissement/Contacts/DialogOverviewExample";
+import {DialogOverviewExampleDialog} from "./create-etablissement/Contacts/DialogOverviewContact";
 import {MatDialogModule} from "@angular/material/dialog";
 import {DialogOverviewOP} from "./create-etablissement/OrdresParticipations/DialogOverviewOP";
 
@@ -66,7 +66,7 @@ import {DialogOverviewOP} from "./create-etablissement/OrdresParticipations/Dial
     MatDialogModule,
   ],
   providers: [ MatInputModule, {
-      provide: STEPPER_GLOBAL_OPTIONS,   useValue: { displayDefaultIndicatorType: false, showError: true  }
+      provide: STEPPER_GLOBAL_OPTIONS,   useValue: { displayDefaultIndicatorType: false, showError: false  }
     }  ],
   bootstrap: [AppComponent]
 })

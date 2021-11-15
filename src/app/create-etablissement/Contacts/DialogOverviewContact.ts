@@ -5,7 +5,7 @@ import {ContactDialogue} from "../../Model/ExtraData/DialogData";
 
 @Component({
   selector: 'dialog-overview-example-dialog',
-  templateUrl: 'dialog-overview-example-dialog.html',
+  templateUrl: 'dialog-overview-Contact-dialog.html',
 })
 export class DialogOverviewExampleDialog implements  OnInit{
   constructor(public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
