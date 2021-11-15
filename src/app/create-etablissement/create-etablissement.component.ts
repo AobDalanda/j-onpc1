@@ -9,18 +9,12 @@ import {Smaj} from "../Model/ExtraData/smaj.model";
 import {Dptmts} from "../Model/ExtraData/dptmt.model";
 import {TypeEtablissement} from "../Model/ExtraData/typeEtablissement.model";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {DialogOverviewExampleDialog} from "./DialogOverviewExample";
+import {DialogOverviewExampleDialog} from "./Contacts/DialogOverviewExample";
+import {DialogOverviewOP} from "./OrdresParticipations/DialogOverviewOP";
+import {ContactDialogue} from "../Model/ExtraData/DialogData";
+import {OpDialogue} from "../Model/ExtraData/ordresParticipation.model";
 
-export interface DialogData {
-  civilite:string;
-  prenom:string;
-  nom:string;
-  fonction:string;
-  signataire:string;
-  mail:string;
-  telephone:string;
-  infos:string;
-}
+
 @Component({
   selector: 'cf-create-etablissement',
   templateUrl: './create-etablissement.component.html',
@@ -32,11 +26,13 @@ export class CreateEtablissementComponent implements OnInit {
   nom!:string;
   fonction!:string;
   civilite!:string;
-  sample  : DialogData[]= [];
+  sample  : ContactDialogue[]= [];
+  OpData:OpDialogue[]=[];
   date = new FormControl(new Date());
+  /*
   displayedColumns = ['Prenom', 'Nom', 'Fonction','Signataire'];
-  //dataSourcecontact: any;
-
+  displayedColumnsOP = ['N°OP', 'Date', 'Facturable','Etat','Facturation'];
+*/
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
@@ -147,22 +143,42 @@ export class CreateEtablissementComponent implements OnInit {
        data : { civilite:this.civilite, prenom: this.prenom,  nom:this.nom}
     });
 
-    dialogRef.afterClosed().subscribe((result:DialogData) => {
+    dialogRef.afterClosed().subscribe((result:ContactDialogue) => {
       console.log(result);
       this.sample.push(result);
       console.log(this.sample);
     });
   }
+
+  openDialogOp(): void {
+    const dialogRef1 = this.dialog.open(DialogOverviewOP, {
+      width: '50%',
+      data: { identifiant:this.nom, etat:this.prenom, dateSouscription: this.date, nom:this.prenom }
+    });
+
+    dialogRef1.afterClosed().subscribe((result1:OpDialogue) => {
+      console.log(result1);
+      this.OpData.push(result1);
+       console.log(this.OpData);
+    });
+  }
+
+
+
+
   submit() {
     console.log(this.firstFormGroup.value);
     console.log(this.secondFormGroup.value);
     //console.log(this.formcontactGroup.value);
+    console.log(this.sample);
   }
 
   deleteContact(indexOfelement: number) {
     alert(indexOfelement);
     this.sample.splice(indexOfelement,1);
   }
+
+
 }
 
 

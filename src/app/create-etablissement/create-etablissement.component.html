@@ -357,14 +357,12 @@
 <!-- step 3 formulaire  Contacts-->
 <mat-step >
             <ng-template matStepLabel><span>  Contacts </span></ng-template>
-
-
                <div id="wrapper">
                      <div id="first">
                        <p>liste-Contacts</p>
                        <button (click)="openDialog()" mat-raised-button>Ajouter un contact</button>
-                       <div class="example-container mat-elevation-z8">
-
+                       <div class="example-container mat-elevation-z8"   >
+                       <!--  <table width="25%" *ngIf="OpData.length>0"> -->
                          <table width="25%" >
                                      <thead>
                                      <tr style="background-color: aqua">
@@ -388,41 +386,60 @@
                                      </tr>
                                      </tbody>
                          </table>
-
-
                        </div>
-
                      </div>
-
                      <div id="second">
                        <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
                        <button   class="btn btn-primary" mat-button matStepperNext>Suivant</button>
                      </div>
-
                </div>
+</mat-step>
+<!-- End step 3 formulaire  Contacts-->
+<!-- step 4 formulaire  Ordres de paticipation-->
+<mat-step>
+              <ng-template matStepLabel><span>  Contacts </span></ng-template>
+              <div id="wrapper">
+                <div id="first">
+                  <p>liste-Contacts</p>
+                  <button (click)="openDialogOp()" mat-raised-button>Ajouter un OP</button>
+                  <div class="example-container mat-elevation-z8"  >
+                    <table width="25%" >
+                      <thead>
+                      <tr style="background-color: aqua">
+                        <th scope="col">N°OP</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Facturable</th>
+                        <th scope="col">Etat</th>
+                        <th scope="col">Facturation</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let op of OpData; let indexOfelement=index; ">
+                        <td>{{ op.identifiant}}</td>
+                        <td>{{ op.dateDebut}}</td>
+                        <td>{{ op.facturable}}</td>
+                        <td>{{ op.etat}}</td>
+                        <td>{{ op.facturation}}</td>
+                        <td>
+                          <button (click)="openDialog()" mat-raised-button>Editer</button>
+                          <button (click)="deleteContact(indexOfelement)" mat-raised-button>Supprimer</button>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div id="second">
+                  <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
+                  <button   class="btn btn-primary" mat-button matStepperNext>Suivant</button>
+                </div>
+              </div>
 
 </mat-step>
-  <!-- End step 3 formulaire  Contacts-->
 
-<!-- step 4 formulaire  Ordres de paticipation-->
-  <mat-step>
-    <ng-template matStepLabel><span>  Ordres de paticipation </span></ng-template>
 
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
-    <mat-list>
-      <mat-list-item><strong>Name:</strong> {{ this.firstFormGroup.value.name }}</mat-list-item>
-      <mat-list-item><strong>Description:</strong> {{ this.firstFormGroup.value.description }}</mat-list-item>
-      <mat-list-item><strong>Amount:</strong> {{ this.secondFormGroup.value.amount }}</mat-list-item>
-      <mat-list-item><strong>Stock:</strong> {{ this.secondFormGroup.value.stock }}</mat-list-item>
-    </mat-list>
 
-    Ordres de paticipation de l'etablisssement
-    <div>
-      <button class="btn btn-primary" mat-button matStepperPrevious>Précedent</button>
-      <button class="btn btn-primary" mat-button matStepperNext>Suivant</button>
-    </div>
-  </mat-step>
   <!-- step 5 formulaire  Insertions-->
   <mat-step>
     <ng-template matStepLabel><span>  Insertions </span></ng-template>

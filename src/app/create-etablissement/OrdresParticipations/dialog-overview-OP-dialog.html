@@ -1,0 +1,63 @@
+<h1 mat-dialog-title>Hi</h1>
+
+<div mat-dialog-option>
+
+            <!-- N°OP:-->
+            <mat-form-field>
+              <mat-label>N°OP</mat-label>
+              <input   [(ngModel)]="dataOp.identifiant"    matInput   type="text" >
+            </mat-form-field><br/>
+            <!-- Descriptif :-->
+            <mat-form-field appearance="fill" >
+              <mat-label>Descriptif</mat-label>
+              <textarea   [(ngModel)]="dataOp.descriptif"  matInput  placeholder="Informations commerciales">    </textarea>
+            </mat-form-field><br/>
+            <!-- Etat:-->
+            <mat-form-field appearance="fill" >
+              <mat-label>Etat</mat-label>
+              <mat-select  [(ngModel)]="dataOp.etat" >
+                <mat-option value="STC">OP sans transfert compta</mat-option>
+                <mat-option value="AMF">En attente de facturation</mat-option>
+                <mat-option value="TO">OP transféré</mat-option>
+                <mat-option value="TG">Transmission à la Gescom</mat-option>
+                <mat-option value="OF">OP facturé</mat-option>
+              </mat-select>
+            </mat-form-field><br/>
+            <!-- Date Souscription:-->
+            <mat-form-field appearance="fill" >
+              <mat-label>Date d'envoie du mail de mise en ligne</mat-label>
+              <input [(ngModel)]="dataOp.dateSouscription" [matDatepicker]="picker1" matInput>
+              <mat-datepicker-toggle [for]="picker1" matSuffix></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field><br/>
+            <!-- Facturation:-->
+              <mat-form-field appearance="fill" >
+                <mat-label>Etat</mat-label>
+                <mat-select  [(ngModel)]="dataOp.facturation" >
+                  <mat-option value="Normale">Normale</mat-option>
+                  <mat-option value="En attente">En attente</mat-option>
+                  <mat-option value="Débloquée">Débloquée</mat-option>
+                  <mat-option value="Encours technique">Encours technique</mat-option>
+                </mat-select>
+              </mat-form-field><br/>
+            <!-- Commentaire:-->
+            <mat-form-field appearance="fill" >
+                <mat-label>Commentaire</mat-label>
+                <textarea   [(ngModel)]="dataOp.commentaire"  matInput  placeholder="Informations commerciales">    </textarea>
+            </mat-form-field><br/>
+  <hr>
+            <!-- TELEPHONE:-->
+            <mat-form-field appearance="fill">
+              <mat-label>Téléphone</mat-label>
+              <input  [(ngModel)]="dataOp.commentaire"   matInput placeholder="Téléphone"  type="tel">
+            </mat-form-field><br/>
+            <!-- INFORMATIONS COMPLEMENTAIRES :-->
+            <mat-form-field>
+              <textarea   [(ngModel)]="dataOp.commentaire"  matInput  placeholder="Informations commerciales">    </textarea>
+            </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button (click)="onNoClick()" mat-button>Annuler</button>
+  <!--<button [disabled]="!emailFormControl.valid" [mat-dialog-close]="data" cdkFocusInitial mat-button>Valider</button> -->
+  <button   [mat-dialog-close]="dataOp" cdkFocusInitial mat-button>Valider</button>
+</div>

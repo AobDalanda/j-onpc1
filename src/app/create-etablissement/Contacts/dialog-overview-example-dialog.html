@@ -40,7 +40,7 @@
                 <input  [(ngModel)]="data.mail"   matInput  pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" placeholder="Mail" type="email">
               </mat-form-field><br/>
   <!-- TELEPHONE:-->
-              <mat-form-field appearance="fill" >
+              <mat-form-field appearance="fill">
                 <mat-label>Téléphone</mat-label>
                 <input  [(ngModel)]="data.telephone"   matInput placeholder="Téléphone"  type="tel">
               </mat-form-field><br/>
@@ -49,14 +49,7 @@
                     <textarea   [(ngModel)]="data.infos"  matInput  placeholder="Informations commerciales">    </textarea>
               </mat-form-field>
         </div>
-
-
-
-
-
-
 <div mat-dialog-actions>
   <button (click)="onNoClick()" mat-button>Annuler</button>
-  <!--<button [disabled]="!emailFormControl.valid" [mat-dialog-close]="data" cdkFocusInitial mat-button>Valider</button> -->
   <button   [mat-dialog-close]="data" cdkFocusInitial mat-button>Valider</button>
 </div>

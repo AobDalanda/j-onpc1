@@ -105,7 +105,7 @@ td.example-element-row:not(.example-expanded-row):active {
   margin: 1rem auto;
   font-weight: bold;
   font-size: 14px;
-  width: 15%;
+  width: 35%;
 }
 .matColumnDef1{
   color: black;

@@ -25,6 +25,7 @@
         <li *ngIf="authenticationService.connectedUserData[0].TypeUtilisateur==='Administrateur' || authenticationService.connectedUserData[0].TypeUtilisateur==='Rédacteur'  || authenticationService.connectedUserData[0].TypeUtilisateur==='Délégué'  " class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-bs-toggle="dropdown" aria-expanded="false">Commercial</a>
           <ul class="dropdown-menu" aria-labelledby="dropdown05">
+            <li><a class="dropdown-item" href="#">Clients</a></li>
             <li><a class="dropdown-item" href="#">Renouvellement</a></li>
             <li><a class="dropdown-item" href="#">Prospects</a></li>
             <li><a class="dropdown-item" href="#">Bordereaux</a></li>

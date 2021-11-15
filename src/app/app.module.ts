@@ -25,8 +25,9 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { ListeUserComponent } from './Utilisateurs/liste-user/liste-user.component';
 import {MatTableModule} from "@angular/material/table";
 import {UpdateUserComponent} from "./Utilisateurs/update-user/update-user.component";
-import {DialogOverviewExampleDialog} from "./create-etablissement/DialogOverviewExample";
+import {DialogOverviewExampleDialog} from "./create-etablissement/Contacts/DialogOverviewExample";
 import {MatDialogModule} from "@angular/material/dialog";
+import {DialogOverviewOP} from "./create-etablissement/OrdresParticipations/DialogOverviewOP";
 
 @NgModule({
   declarations: [
@@ -40,9 +41,9 @@ import {MatDialogModule} from "@angular/material/dialog";
     ListeUserComponent,
 
     UpdateUserComponent,
+    DialogOverviewExampleDialog,
 
-
-    DialogOverviewExampleDialog
+    DialogOverviewOP,
   ],
   imports: [
     BrowserModule,
