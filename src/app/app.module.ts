@@ -37,6 +37,7 @@ import {DialogOverviewOP} from "./create-etablissement/OrdresParticipations/Dial
     FindUserComponent,
     AccueilComponent,
     CreateEtablissementComponent,
+
     FourOhFourComponent,
     ListeUserComponent,
 
@@ -47,11 +48,13 @@ import {DialogOverviewOP} from "./create-etablissement/OrdresParticipations/Dial
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-
+    ReactiveFormsModule,
     MatStepperModule,
     MatIconModule,
     MatButtonModule,

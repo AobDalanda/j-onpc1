@@ -116,3 +116,10 @@ td.example-element-row:not(.example-expanded-row):active {
   font-size: 14px;
   width: 35%;
 }
+
+
+
+.line {
+  display:flex;
+  justify-content: space-between
+}
