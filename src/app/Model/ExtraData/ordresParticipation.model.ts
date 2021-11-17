@@ -1,5 +1,5 @@
 export class OpDialogue {
-       identifiant!:string;
+       NumOp!:string;
        etat!:string;
        dateSouscription!:string
        montant!:number;
@@ -11,5 +11,4 @@ export class OpDialogue {
        dateDebut!:string;
        dateFin!:string;
        commentaire!:string;
-
 }

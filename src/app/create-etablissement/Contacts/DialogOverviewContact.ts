@@ -9,7 +9,7 @@ import {ContactDialogue} from "../../Model/ExtraData/DialogData";
 })
 export class DialogOverviewExampleDialog implements  OnInit{
   constructor(public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: ContactDialogue) {}
+    @Inject(MAT_DIALOG_DATA) public data1: ContactDialogue) {}
 
   emailFormControl = new FormControl('', [
     Validators.required,

@@ -172,10 +172,11 @@ export class CreateEtablissementComponent implements OnInit {
 
 
   submit() {
-    console.log(this.firstFormGroup.value);
-    console.log(this.secondFormGroup.value);
+    console.log("partie 1 departement : "+this.firstFormGroup.value);
+    console.log("partie 2 coordonnées : "+this.secondFormGroup.value);
     //console.log(this.formcontactGroup.value);
-    console.log(this.sample);
+    console.log("partie 3 contact : "+this.sample);
+    console.log("partie 4 OP  : "+this.OpData);
   }
 
   deleteContact(indexOfelement: number) {

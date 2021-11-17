@@ -49,13 +49,14 @@ export class DialogOverviewOP implements  OnInit{
             dateSouscription: [],
             facturation:[],
             commentaire: [],
-            remiseDelegue: [0],
-            remiseDirection:[0],
+            remiseDelegue: [0.00],
+            remiseDirection:[0.00],
+            montant:[0.00],
+            Facturable:[0.00],
             product: this.formBuilder.array([this.createItem()]),
           });
 
   }
-
 
 
 
@@ -64,7 +65,7 @@ export class DialogOverviewOP implements  OnInit{
     return this.formBuilder.group({
       prods:0,
       qte: 1,
-      price:0,
+      price:0.00,
     });
   }
   // Au clic de l'utilisateur sur le bouton "Ajouter une ligne"
@@ -84,26 +85,45 @@ export class DialogOverviewOP implements  OnInit{
     //e.preventDefault();
     this.product = this.orderForm.get('product') as FormArray;
     console.log(this.product);
-
     this.product.removeAt(i);
   }
 
 
-/*
-  onNoClick(): void {
-    this.dialogRef1.close();
-  }
-*/
-  // @ts-ignore
-  // @ts-ignore
   selectproductid(i:number){
           this.product = this.orderForm.get('product') as FormArray;
+          const otheFormField=this.orderForm as FormGroup;
           const orderForm=this.product.at(i) as FormGroup;
-          console.log("Prix avant  "+this.product.value[i]['price']);
-          console.log("id avant  "+this.product.value[i]['prods']);
       // @ts-ignore
           const price =this.listeProduits.find(e=>e.id===Number(this.product.value[i]['prods']))['Prix'];
           orderForm.get('price')?.patchValue(price);
+          const qtity=orderForm.get('qte')?.value;
+          otheFormField.get('montant')?.patchValue(price * qtity);
+           /*
+           const mont=this.orderForm.get('montant')?.value;
+           console.log('amount '+mont);
+           this.orderForm.get('montant')?.value.patchValue(price * quantity);
+            const mont1=this.orderForm.get('montant')?.value;
+            console.log('amount 1'+mont1);
+            */
   }
+
+  getTotalPrice():any{
+    this.product = this.orderForm.get('product') as FormArray;
+    const otheFormField=this.orderForm as FormGroup;
+    let items = this.product.value;
+    let total=0;
+    for(let sid of items)
+    {
+      const totalyse =sid.qte * sid.price;
+      total+=parseFloat(totalyse);
+    }
+    if(!isNaN(total)) {
+      return total.toFixed(2);
+    }
+    otheFormField.get('montant')?.patchValue(total.toFixed(2));
+  }
+
+
+
 
 }
