@@ -72,6 +72,7 @@ export class DialogOverviewOP implements  OnInit{
   addItem(): void {
           this.product = this.orderForm.get('product') as FormArray;
           this.product.push(this.createItem());
+         this.getTotalPrice();
   }
 
 
@@ -117,9 +118,11 @@ export class DialogOverviewOP implements  OnInit{
       const totalyse =sid.qte * sid.price;
       total+=parseFloat(totalyse);
     }
+    /*
     if(!isNaN(total)) {
       return total.toFixed(2);
     }
+    */
     otheFormField.get('montant')?.patchValue(total.toFixed(2));
   }
 
