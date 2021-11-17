@@ -5,6 +5,7 @@ import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angul
 import {Delegue} from "../../Model/ExtraData/delegue.model";
 import {Produit} from "../../Model/ExtraData/produit.model";
 import {ExtradataService} from "../../service/extradata/extradata.service";
+import {formatNumber} from "@angular/common";
 
 @Component({
   selector: 'dialog-overview-OP-dialog',
@@ -22,7 +23,7 @@ export class DialogOverviewOP implements  OnInit{
   */
 
   orderForm!: FormGroup;
-  items!: FormArray;
+  product!: FormArray;
   // On injecte une instance de FormBuilder en dépendance de notre component
 
 
@@ -33,7 +34,7 @@ export class DialogOverviewOP implements  OnInit{
 
   // Permet de récupérer formData dans la vue qui est une instance de FormArray
   get formData() {
-    return <FormArray>this.orderForm.get('items');
+    return <FormArray>this.orderForm.get('product');
   }
 
   ngOnInit() {
@@ -41,37 +42,35 @@ export class DialogOverviewOP implements  OnInit{
             this.extraDataService.ListeProduct().subscribe(
               (listedesproduits)=>{  this.listeProduits=listedesproduits;  }  );
 
-    this.orderForm = this.formBuilder.group({
-      NumOp: [],
-      description: [],
-      etat: [],
-      dateSouscription: [],
-      facturation:[],
-      commentaire: [],
-      remiseDelegue: [],
-      remiseDirection: [],
-      items: this.formBuilder.array([this.createItem()]),
-      /*
-       * Ci-dessus: la clé items aura en valeur un array de formulaires que l'on génère à la volée
-       * grâce à la méthode formbuilder.array() d'Angular
-       * qui prend en param la méthode createItem() que nous définissons plus bas
-       */
-    });
+          this.orderForm = this.formBuilder.group({
+            NumOp: [],
+            description: [],
+            etat: [],
+            dateSouscription: [],
+            facturation:[],
+            commentaire: [],
+            remiseDelegue: [0],
+            remiseDirection:[0],
+            product: this.formBuilder.array([this.createItem()]),
+          });
 
   }
+
+
+
 
   // Permet de créer un reactiveForm à la volée
   createItem(): FormGroup {
     return this.formBuilder.group({
-      prods:'',
-      qte: '',
-      price: '',
+      prods:0,
+      qte: 1,
+      price:0,
     });
   }
   // Au clic de l'utilisateur sur le bouton "Ajouter une ligne"
   addItem(): void {
-    this.items = this.orderForm.get('items') as FormArray;
-    this.items.push(this.createItem());
+          this.product = this.orderForm.get('product') as FormArray;
+          this.product.push(this.createItem());
   }
 
 
@@ -83,9 +82,10 @@ export class DialogOverviewOP implements  OnInit{
   // Au clic de l'utilisateur sur le bouton "X" pour supprimer une ligne
   deleteItemLine(i:number): void {
     //e.preventDefault();
-    this.items = this.orderForm.get('items') as FormArray;
-    console.log(this.items);
-    this.items.removeAt(i);
+    this.product = this.orderForm.get('product') as FormArray;
+    console.log(this.product);
+
+    this.product.removeAt(i);
   }
 
 
@@ -94,9 +94,16 @@ export class DialogOverviewOP implements  OnInit{
     this.dialogRef1.close();
   }
 */
+  // @ts-ignore
+  // @ts-ignore
   selectproductid(i:number){
-    this.items = this.orderForm.get('items') as FormArray;
-    console.log( this.items.value[i]['prods']);
+          this.product = this.orderForm.get('product') as FormArray;
+          const orderForm=this.product.at(i) as FormGroup;
+          console.log("Prix avant  "+this.product.value[i]['price']);
+          console.log("id avant  "+this.product.value[i]['prods']);
+      // @ts-ignore
+          const price =this.listeProduits.find(e=>e.id===Number(this.product.value[i]['prods']))['Prix'];
+          orderForm.get('price')?.patchValue(price);
   }
 
 }

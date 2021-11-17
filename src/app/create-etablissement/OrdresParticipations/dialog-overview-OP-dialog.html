@@ -12,8 +12,8 @@
     margin-top:10px;
     padding:0;
   }
-  select { width: 5.5em }
-  input { width: 10.5em; height: 2.1em}
+  select { width: 7.5em; height: 2.1em }
+  input { width: 8.5em; height: 2.1em}
   .addbutton button {
     background: rgb(0, 100, 255);
     border:3px solid rgb(0, 100, 255);
@@ -33,7 +33,7 @@
               <option value="TG">Transmission à la Gescom</option>
               <option value="OF">OP facturé</option>
         </select><br>
-        Date souscription : <input formControlName="dateSouscription" type="date" >
+        Date souscription : <input formControlName="dateSouscription" type="date">
         Facturation :<select formControlName="facturation">
               <option value="Normale">Normale</option>
               <option value="En attente">En attente</option>
@@ -43,7 +43,7 @@
        Commentaire : <textarea formControlName="commentaire" placeholder="Informations commerciales" ></textarea><br>
        <span>Détails de l'OP</span>
 
-       <div *ngFor="let item of formData.controls; let i= index; let c =count" formArrayName="items">
+       <div *ngFor="let item of formData.controls; let i= index; let c =count" formArrayName="product">
          <hr>
             <div [formGroupName]="i" class="line">
                   Produit {{i+1}}:
@@ -52,19 +52,23 @@
                         {{produit.Identifiant+ " - " +produit.Designation  }}
                       </option>
                  </select>
-                 <input  formControlName="qte" max="100"  min="1" type="number"/>
-                 <input formControlName="price"   readonly type="number" />€
+                       <input  formControlName="qte" max="100"  min="1" type="number"/>
+                       <input formControlName="price"   readonly type="number"   />€
+
                   <div *ngIf=" c > 1">
                     <button     (click)="deleteItemLine(i)" >x</button>
                   </div>
-                 <button   (click)="addItem()">+</button>
+                 <div *ngIf=" c < 6">
+                   <button   (click)="addItem()" >+</button>
+                 </div>
+
             </div>
          <hr>
        </div>
      <div>
        Montant :   € <br>
-       Remise délégué (€) : <input formControlName="remiseDelegue" placeholder="0.0"  type="number"/><br>
-     Remise direction (€) : <input formControlName="remiseDirection" placeholder="0.0"  type="number"/><br>
+       Remise délégué (€) : <input formControlName="remiseDelegue"   type="number"/><br>
+     Remise direction (€) : <input formControlName="remiseDirection"   type="number"/><br>
         Facturable  :   €
      </div>
      <button type="submit">Ajouter</button>
