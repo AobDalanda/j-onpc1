@@ -6,7 +6,7 @@ export class OpDialogue {
        descriptif!:string;
        remiseDirection!:number;
        remisedelegue!:number;
-       facturable!:number;
+       Facturable!:number;
        facturation!:number;
        dateDebut!:string;
        dateFin!:string;

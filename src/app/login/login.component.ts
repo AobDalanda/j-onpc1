@@ -40,20 +40,20 @@ export class LoginComponent implements OnInit {
         signInData.mail=signInForm.value.email;
         signInData.MotDePasse=signInForm.value.password;
      this.authenticationService.logUser(signInData)
-
+      //console.log(this.authenticationService.retourlog);
+     console.log("login return :"+ JSON.stringify(this.authenticationService.retourlog, null, "    "));
      if(this.authenticationService.retourlog==='compte désactive')
      {
-       this.message='Votre compt est désativé';
-       this.isFormInValid=false;
-       this.areCredentialIsInvalid=true;
-       this.router.navigate(['']);
-     }else if(this.authenticationService.retourlog==='compte désactive'){
+       this.message='Votre compte est désativé';
+       console.log("message alerte"+this.message);
        this.isFormInValid=false;
        this.areCredentialIsInvalid=true;
        this.router.navigate(['']);
      }else if(this.authenticationService.retourlog==='not ok'){
+       this.message='Identifiant ou mot de passe incorrect';
        this.isFormInValid=false;
-       this.areCredentialIsInvalid=true;
+       this.areCredentialIsInvalid=false;
+       console.log("message alerte"+this.message);
        this.router.navigate(['']);
      }else {
          //this.router.navigate(['']);

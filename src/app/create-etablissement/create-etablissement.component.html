@@ -1,7 +1,7 @@
 <h2 >Création de fiche etablissement</h2>
 <mat-horizontal-stepper [linear]="isLinear" labelPosition="bottom">
   <!-- step 1 formulaire  departement et type etablissement-->
-  <mat-step [stepControl]="firstFormGroup">
+  <mat-step [stepControl]="firstFormGroup" class="department">
     <ng-template matStepLabel><span>  Departemement </span></ng-template>
     <form [formGroup]="firstFormGroup">
       <mat-form-field>
@@ -418,7 +418,7 @@
                       <tr *ngFor="let op of OpData; let indexOfelement=index; ">
                         <td>{{ op.NumOp}}</td>
                         <td>{{ op.dateSouscription}}</td>
-                        <td>{{ op.facturable}}</td>
+                        <td>{{ op.Facturable}}</td>
                         <td>{{ op.etat}}</td>
                         <td>{{ op.facturation}}</td>
                         <td>

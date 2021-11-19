@@ -123,3 +123,12 @@ td.example-element-row:not(.example-expanded-row):active {
   display:flex;
   justify-content: space-between
 }
+/**********************************  Style form Departement *******************************/
+.department{
+  margin: 1rem auto;
+  alignment: center;
+  width: 100%;
+  color: #e7deea;
+  font-weight: bold;
+  font-size: 14px;
+}

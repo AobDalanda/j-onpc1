@@ -20,12 +20,9 @@
                Saisissez votre identifiant et mot de passe.
           </div>
 
-            <div *ngIf="areCredentialIsInvalid" class="alert alert-danger" role="alert">
-              Identifiant ou mot de passe incorrect.
-            </div>
-          <div  >
-            {{message}}
-            </div>
+          <div *ngIf="areCredentialIsInvalid" class="alert alert-danger" role="alert">
+            Identifiant ou mot de passe incorrect.
+          </div>
         </form>
 
     </div>

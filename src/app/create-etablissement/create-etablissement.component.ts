@@ -172,11 +172,12 @@ export class CreateEtablissementComponent implements OnInit {
 
 
   submit() {
-    console.log("partie 1 departement : "+this.firstFormGroup.value);
-    console.log("partie 2 coordonnées : "+this.secondFormGroup.value);
-    //console.log(this.formcontactGroup.value);
-    console.log("partie 3 contact : "+this.sample);
-    console.log("partie 4 OP  : "+this.OpData);
+    console.log("Departement :"+ JSON.stringify(this.firstFormGroup, null, "    "));
+    console.log("Coordonnées :"+ JSON.stringify(this.secondFormGroup, null, "    "));
+    console.log("contact :"+ JSON.stringify(this.sample, null, "    "));
+    console.log("OP :"+ JSON.stringify(this.OpData, null, "    "));
+    //console.log("%s %O", "My Object", this.OpData);
+
   }
 
   deleteContact(indexOfelement: number) {

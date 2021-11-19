@@ -32,8 +32,8 @@ export class AuthenticationService {
     sessionStorage.setItem('isauthentified','true');
   }
 
-      logUser1(signData:Userlog): Observable<User>{
-        return this.httpClient.post<User>(this.appiURLLogin, signData)
+      logUser1(signData:Userlog): Observable<User[]>{
+        return this.httpClient.post<User[]>(this.appiURLLogin, signData)
       }
 
 
@@ -42,8 +42,8 @@ export class AuthenticationService {
             .subscribe(
               result => {
                 this.isAuthenticated=true;
-                console.log(JSON.stringify(result));
-                this.retourlog=JSON.stringify(result);
+                //console.log("texte"+JSON.stringify(result));
+                this.retourlog=JSON.stringify(JSON.stringify(result));
                 //console.log( (result[0].Status).toString() );
                 this.verif= true;
                 this.connectedUserData=result;
@@ -52,15 +52,14 @@ export class AuthenticationService {
               },
               (error) => {
                 this.isAuthenticated=false;
-               console.log('Erreur ! : ' + error);
+              // console.log('Erreur ! : ' + error.text);
+               console.log( error.text);
                 //this.router.navigate(['']);
                 this.verif= false;
               }
             );
           return this.verif;
   }
-
-
 
 
   logout(){

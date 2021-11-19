@@ -53,7 +53,7 @@
                       </option>
                  </select>
                        <input  (change)="getTotalPrice()" formControlName="qte" max="100" min="1" type="number"/>
-                       <input formControlName="price"   readonly type="number"   />€
+                       <input formControlName="price"   readonly type="number"  />€
 
                   <div *ngIf=" c > 1">
                     <button     (click)="deleteItemLine(i)" >x</button>
@@ -67,8 +67,8 @@
        </div>
      <div>
        Montant :  <input formControlName="montant"  readonly  type="number"/> € <br>
-       Remise délégué (€) : <input formControlName="remiseDelegue"  placeholder="0.00" type="number"/><br>
-     Remise direction (€) : <input formControlName="remiseDirection"  placeholder="0.00"   type="number"/><br>
+       Remise délégué (€) : <input (change)="enchereDelegue()" formControlName="remiseDelegue" min="0" placeholder="0.00" type="number"/>€ <br>
+     Remise direction (€) : <input (ngModelChange)="enchereDirection()" formControlName="remiseDirection" min="0" placeholder="0.00"   type="number"/>€ <br>
         Facturable  : <input formControlName="Facturable"  placeholder="0.00" readonly type="number"/>  €
      </div>
      <button [mat-dialog-close]=orderForm.value type="submit">Ajouter</button>

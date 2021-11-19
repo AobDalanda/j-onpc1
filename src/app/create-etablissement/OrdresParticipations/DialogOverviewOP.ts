@@ -87,6 +87,7 @@ export class DialogOverviewOP implements  OnInit{
     this.product = this.orderForm.get('product') as FormArray;
     console.log(this.product);
     this.product.removeAt(i);
+    this.getTotalPrice();
   }
 
 
@@ -98,35 +99,63 @@ export class DialogOverviewOP implements  OnInit{
           const price =this.listeProduits.find(e=>e.id===Number(this.product.value[i]['prods']))['Prix'];
           orderForm.get('price')?.patchValue(price);
           const qtity=orderForm.get('qte')?.value;
-          otheFormField.get('montant')?.patchValue(price * qtity);
-           /*
-           const mont=this.orderForm.get('montant')?.value;
-           console.log('amount '+mont);
-           this.orderForm.get('montant')?.value.patchValue(price * quantity);
-            const mont1=this.orderForm.get('montant')?.value;
-            console.log('amount 1'+mont1);
-            */
-  }
+    const oldAmount= otheFormField.get('montant')?.value;
+          otheFormField.get('montant')?.patchValue(((price * qtity) + Number(oldAmount)).toFixed(2));
+          const total=otheFormField.get('montant')?.value;
+          const enchereDelegueAmount= otheFormField.get('remiseDelegue')?.value;
+          const enchereDirectionAmount= otheFormField.get('remiseDirection')?.value;
+          const newAmount=(total-(enchereDirectionAmount+enchereDelegueAmount))<0 ? 0: (total-(enchereDirectionAmount+enchereDelegueAmount));
+          otheFormField.get('Facturable')?.patchValue((newAmount).toFixed(2));
 
+
+
+  }
+//Calculer le total des produits ajoutés
   getTotalPrice():any{
-    this.product = this.orderForm.get('product') as FormArray;
-    const otheFormField=this.orderForm as FormGroup;
-    let items = this.product.value;
-    let total=0;
-    for(let sid of items)
-    {
-      const totalyse =sid.qte * sid.price;
-      total+=parseFloat(totalyse);
-    }
-    /*
-    if(!isNaN(total)) {
-      return total.toFixed(2);
-    }
-    */
-    otheFormField.get('montant')?.patchValue(total.toFixed(2));
+          this.product = this.orderForm.get('product') as FormArray;
+          const otheFormField=this.orderForm as FormGroup;
+          let items = this.product.value;
+          let total=0;
+          for(let sid of items)
+          {
+            const totalyse =sid.qte * sid.price;
+            total+=parseFloat(totalyse);
+          }
+             // if(isNaN(total)) {    return total.toFixed(2);  }
+          otheFormField.get('montant')?.patchValue(total.toFixed(2));
+              this.enchereDelegue();
+          const enchereDelegueAmount= otheFormField.get('remiseDelegue')?.value;
+          const enchereDirectionAmount= otheFormField.get('remiseDirection')?.value;
+          const newAmount=(total-(enchereDirectionAmount+enchereDelegueAmount))<0 ? 0: (total-(enchereDirectionAmount+enchereDelegueAmount));
+         otheFormField.get('Facturable')?.patchValue((newAmount).toFixed(2));
   }
 
 
+  //Apply enchère délégué
+         enchereDelegue(){
+           this.product = this.orderForm.get('product') as FormArray;
+           const otherFormField=this.orderForm as FormGroup;
+           const montantTotal = otherFormField.get('montant')?.value;
+
+           const enchereDirectionAmount= otherFormField.get('remiseDirection')?.value;
+           const enchereDelegueAmount= otherFormField.get('remiseDelegue')?.value;
+           const total=otherFormField.get('montant')?.value;
+           const newAmount=(total-(enchereDirectionAmount+enchereDelegueAmount))<0 ? 0: (total-(enchereDirectionAmount+enchereDelegueAmount));
+           otherFormField.get('Facturable')?.patchValue((newAmount).toFixed(2));
+         }
+
+
+  //Apply enchère direction
+        enchereDirection(){
+          this.product = this.orderForm.get('product') as FormArray;
+          const otherFormField=this.orderForm as FormGroup;
+
+          const enchereDirectionAmount= otherFormField.get('remiseDirection')?.value;
+          const enchereDelegueAmount= otherFormField.get('remiseDelegue')?.value;
+          const total=otherFormField.get('montant')?.value;
+          const newAmount=(total-(enchereDirectionAmount+enchereDelegueAmount))<0 ? 0: (total-(enchereDirectionAmount+enchereDelegueAmount));
+          otherFormField.get('Facturable')?.patchValue((newAmount).toFixed(2));
+        }
 
 
 }
