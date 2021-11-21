@@ -119,7 +119,7 @@ export class DialogOverviewOP implements  OnInit{
           for(let sid of items)
           {
             const totalyse =sid.qte * sid.price;
-            total+=parseFloat(totalyse);
+            total+=parseFloat(totalyse.toFixed(2));
           }
              // if(isNaN(total)) {    return total.toFixed(2);  }
           otheFormField.get('montant')?.patchValue(total.toFixed(2));
