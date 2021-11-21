@@ -7,5 +7,4 @@ export class ContactDialogue {
   mail!:string;
   telephone!:string;
   infos!:string;
-  animal!: string;
 }

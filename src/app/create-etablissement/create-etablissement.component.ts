@@ -1,19 +1,20 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms'
 import {HttpClient} from "@angular/common/http";
-import {DatePipe, formatDate} from "@angular/common";
+import {formatDate} from "@angular/common";
 import {ExtradataService} from "../service/extradata/extradata.service";
 import {Delegue} from "../Model/ExtraData/delegue.model";
 import {Diocese} from "../Model/ExtraData/diocese.model";
 import {Smaj} from "../Model/ExtraData/smaj.model";
 import {Dptmts} from "../Model/ExtraData/dptmt.model";
 import {TypeEtablissement} from "../Model/ExtraData/typeEtablissement.model";
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {MatDialog} from "@angular/material/dialog";
 import {DialogOverviewExampleDialog} from "./Contacts/DialogOverviewContact";
 import {DialogOverviewOP} from "./OrdresParticipations/DialogOverviewOP";
 import {ContactDialogue} from "../Model/ExtraData/DialogData";
 import {OpDialogue} from "../Model/ExtraData/ordresParticipation.model";
-import {Produit} from "../Model/ExtraData/produit.model";
+import {DialogOverviewInsertion} from "./Insertion/DialogOverviewInsertion";
+import {InsertionDialogue} from "../Model/ExtraData/insertionData";
 
 
 @Component({
@@ -29,6 +30,7 @@ export class CreateEtablissementComponent implements OnInit {
   civilite!:string;
   sample  : ContactDialogue[]= [];
   OpData:OpDialogue[]=[];
+  insertionData:InsertionDialogue[]=[];
   date = new FormControl(new Date());
   /*
   displayedColumns = ['Prenom', 'Nom', 'Fonction','Signataire'];
@@ -164,6 +166,18 @@ export class CreateEtablissementComponent implements OnInit {
     dialogRef1.afterClosed().subscribe((result1:OpDialogue) => {
       console.log(result1);
       this.OpData.push(result1);
+       console.log(this.OpData);
+    });
+  }
+  openDialoginsert(): void {
+    const dialogRef2 = this.dialog.open(DialogOverviewInsertion, {
+      width: '50%',
+      data: { identifiant:this.nom, etat:this.prenom, dateSouscription: this.date, nom:this.prenom }
+    });
+
+    dialogRef2.afterClosed().subscribe((result1:InsertionDialogue) => {
+      console.log(result1);
+      this.insertionData.push(result1);
        console.log(this.OpData);
     });
   }

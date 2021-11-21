@@ -1,6 +1,5 @@
-import { Injectable } from '@angular/core';
-import {SignInData} from "../../Model/signInData";
-import {NavigationExtras, Router} from "@angular/router";
+import {Injectable} from '@angular/core';
+import {Router} from "@angular/router";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {User} from "../../Model/User/User.model";

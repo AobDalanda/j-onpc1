@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {AuthenticationService} from "../service/authentication/authentication.service";
-import {SignInData} from "../Model/signInData";
 import {Router} from "@angular/router";
 import {Userlog} from "../Model/User/Userlog.model";
 

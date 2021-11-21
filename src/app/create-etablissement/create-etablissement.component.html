@@ -443,10 +443,57 @@
   <!-- step 5 formulaire  Insertions-->
   <mat-step>
     <ng-template matStepLabel><span>  Insertions </span></ng-template>
-    Insertions de l'etablisssement
-    <div>
-      <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
-      <button class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
+    <div id="wrapper">
+      <div id="first">
+        <p>liste-Insertion</p>
+        <mat-form-field>
+          <mat-label>Mailling</mat-label>
+          <mat-select   formControlName="mailing">
+            <mat-option value="insertion modulaire"  >insertion modulaire</mat-option>
+            <mat-option value="pub">publicité</mat-option>
+            <mat-option value="insertion guide pro">insertion guid pro</mat-option>
+          </mat-select>
+        </mat-form-field>
+                               <button (click)="openDialoginsert()" mat-raised-button>Ajouter</button>
+
+        <div class="example-container mat-elevation-z8"  >
+          <table width="25%" >
+            <thead>
+            <tr style="background-color: #434348; color: white">
+              <th scope="col">Type</th>
+              <th scope="col">Rubrique</th>
+              <th scope="col">Département</th>
+              <th scope="col">Publicité</th>
+              <th scope="col">Tri</th>
+              <th scope="col">Folio</th>
+              <th scope="col">Placement</th>
+              <th scope="col">Actif</th>
+              <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let op of OpData; let indexOfelement=index; ">
+              <td>Type</td>
+              <td>Rubrique </td>
+              <td>Département </td>
+              <td>Publicité </td>
+              <td>Tri </td>
+              <td>Folio </td>
+              <td>Placement</td>
+              <td>Actif </td>
+              <td>
+                <button  mat-raised-button>Editer</button>
+                <button   mat-raised-button>Supprimer</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div id="second">
+        <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
+        <button   class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
+      </div>
     </div>
   </mat-step>
   <!-- step 6 formulaire  Insertions Web-->

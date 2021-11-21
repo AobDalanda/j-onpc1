@@ -1,10 +1,9 @@
 import {User} from "../../Model/User/User.model";
-import {Observable, Subject} from "rxjs";
-import {SignInData} from "../../Model/signInData";
+import {Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Router} from "@angular/router";
 import {Injectable} from "@angular/core";
 import {environment} from "../../../environments/environment";
+
 const httpOptions = {
   headers: new HttpHeaders(   )
 };

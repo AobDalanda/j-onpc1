@@ -1,0 +1,74 @@
+
+<div mat-dialog-option>
+  <!-- Type:-->
+                  <mat-form-field appearance="fill" >
+                    <mat-label>Type</mat-label>
+                    <input   [(ngModel)]="data1.type"  matInput  readonly type="text"   value="publicité">
+                  </mat-form-field>
+  <!-- Option Print:-->
+                  <mat-form-field appearance="fill" >
+                    <mat-label>Option Print</mat-label>
+                    <input   [(ngModel)]="data1.optionprint"  matInput  readonly  type="text" value="indéterminé">
+                  </mat-form-field>
+  <!-- Rublique:-->
+                  <mat-form-field appearance="fill" >
+                    <mat-label>Rubrique</mat-label>
+                  </mat-form-field>
+  <!-- APPEL PUBLICITE:-->
+                  <mat-form-field>
+                    <mat-label>Appel publicité</mat-label>
+                    <input   [(ngModel)]="data1.appelpublicite"     matInput type="text">
+                  </mat-form-field>
+  <!-- FORMAT PUBLICITE:-->
+                  <mat-form-field appearance="fill" >
+                        <mat-label>Format publicité</mat-label>
+                        <mat-select  [(ngModel)]="data1.formatpublicite" >
+                          <mat-option value="oui"  >Oui</mat-option>
+                          <mat-option value="non"  >Non</mat-option>
+                        </mat-select>
+                  </mat-form-field>
+  <!-- EMPLACEMENT PUBLICITE:-->
+                   <mat-form-field appearance="fill">
+                      <mat-label>Emplacement publicité</mat-label>
+                      <mat-select  [(ngModel)]="data1.emplacementpublicite" >
+                        <mat-option value="oui"  >Oui</mat-option>
+                        <mat-option value="non"  >Non</mat-option>
+                      </mat-select>
+                      </mat-form-field><br>
+  <!-- DEPARTEMENT  :-->
+                      <mat-label>Departement</mat-label>
+                        <mat-select   [(ngModel)]="data1.departement"   formControlName="department">
+                          <mat-option *ngFor="let departement of listeDptmt" [value]="departement.Numero">
+                            {{departement.Numero + " " + departement.Libelle}}
+                          </mat-option>
+                        </mat-select>
+  <!-- VILLE  :-->
+                      <mat-form-field appearance="fill" >
+                        <mat-label>Ville</mat-label>
+                        <input   [(ngModel)]="data1.ville"     matInput type="text">
+                      </mat-form-field>
+  <!-- TRI  :-->
+                        <mat-form-field appearance="fill" >
+                          <mat-label>Tri</mat-label>
+                          <input   [(ngModel)]="data1.tri"     matInput type="text">
+                        </mat-form-field>
+  <!-- FOLIO  :-->
+                      <mat-form-field appearance="fill" >
+                        <mat-label>Folio</mat-label>
+                        <input   [(ngModel)]="data1.folio"     matInput type="text">
+                      </mat-form-field>
+  <!-- PLACEMENT VERTICAL  :-->
+                          <mat-form-field appearance="fill">
+                            <mat-label>Emplacement publicité</mat-label>
+                            <mat-select  [(ngModel)]="data1.placement" >
+                              <mat-option value="indifferent"  >indifferent</mat-option>
+                              <mat-option value="tête"  >tête</mat-option>
+                              <mat-option value="pied"  >pied</mat-option>
+                              <mat-option value="tête sans espace"  >tête sans espace</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button (click)="onNoClick()" mat-button>Annuler</button>
+  <button   [mat-dialog-close]="data1" cdkFocusInitial mat-button>Valider</button>
+</div>
