@@ -59,14 +59,14 @@ import {DialogOverviewInsertion} from "./create-etablissement/Insertion/DialogOv
     MatIconModule,
     MatButtonModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
     MatListModule,
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatTableModule,
     MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [ MatInputModule, {
     provide: STEPPER_GLOBAL_OPTIONS,   useValue: { displayDefaultIndicatorType: false, showError: false  }

@@ -11,10 +11,11 @@ const httpOptions = {
   providedIn: 'root'
 })
  export class UserService {
- readonly apiURL='http://localhost/ONPC/public/userStatusChange';
-  readonly  apiURLAdd =`${environment.API_URL}/ONPC/public/users/ajouter`;
-  readonly apiURLUpdate =`${environment.API_URL}/ONPC/public/users/ajouter`;
-  readonly apiURLConsulteUser =`${environment.API_URL}/ONPC/public/users/detail`;
+// readonly apiURLstatusChange='http://localhost/ONPC/public/userStatusChange';
+  readonly  apiURLstatusChange =`${environment.API_URL}/userStatusChange`;
+  readonly  apiURLAdd =`${environment.API_URL}/users/ajouter`;
+  readonly apiURLUpdate =`${environment.API_URL}/users/ajouter`;
+  readonly apiURLConsulteUser =`${environment.API_URL}/users/detail`;
    newUser= new User();
    verif=false;
    verif1=false;
@@ -35,7 +36,7 @@ const httpOptions = {
 
 
   activeUserStatus(id:number):boolean{
-           const url = `${this.apiURL}/${id}`;
+           const url = `${this.apiURLstatusChange}/${id}`;
            this.httpClient  .get(url,httpOptions)
              .subscribe(
                result => {

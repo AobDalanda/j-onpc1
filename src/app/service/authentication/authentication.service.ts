@@ -17,7 +17,7 @@ const httpOptions = {
 
 export class AuthenticationService {
 
-  readonly  appiURLLogin =`${environment.API_URL}/ONPC/public/users/login`;
+  readonly  appiURLLogin =`${environment.API_URL}/users/login`;
   isAuthenticated =false;
   connectedUserData:any;
 

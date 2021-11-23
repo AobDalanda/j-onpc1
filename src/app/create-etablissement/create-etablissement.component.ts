@@ -175,14 +175,12 @@ export class CreateEtablissementComponent implements OnInit {
       data: { identifiant:this.nom, etat:this.prenom, dateSouscription: this.date, nom:this.prenom }
     });
 
-    dialogRef2.afterClosed().subscribe((result1:InsertionDialogue) => {
-      console.log(result1);
-      this.insertionData.push(result1);
-       console.log(this.OpData);
+    dialogRef2.afterClosed().subscribe((result2:InsertionDialogue) => {
+      console.log(result2);
+      this.insertionData.push(result2);
+       console.log(this.insertionData);
     });
   }
-
-
 
 
   submit() {
@@ -190,6 +188,7 @@ export class CreateEtablissementComponent implements OnInit {
     console.log("Coordonnées :"+ JSON.stringify(this.secondFormGroup, null, "    "));
     console.log("contact :"+ JSON.stringify(this.sample, null, "    "));
     console.log("OP :"+ JSON.stringify(this.OpData, null, "    "));
+    console.log("OP :"+ JSON.stringify(this.insertionData, null, "    "));
     //console.log("%s %O", "My Object", this.OpData);
 
   }

@@ -15,19 +15,10 @@ export class DialogOverviewOP implements  OnInit{
   listeProduits!: Produit[];
   selectedproductId!:number;
   productprice!:number;
-  /*
-  emailFormControl = new FormControl('', [
-      Validators.required,
-      Validators.email,
-  ]);
-  */
 
   orderForm!: FormGroup;
   product!: FormArray;
   // On injecte une instance de FormBuilder en dépendance de notre component
-
-
-
 
   constructor(public dialogRef1: MatDialogRef<DialogOverviewOP>,private formBuilder: FormBuilder,
               @Inject(MAT_DIALOG_DATA) public dataOp: OpDialogue, private extraDataService:ExtradataService) {}
