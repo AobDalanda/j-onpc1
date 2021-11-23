@@ -177,6 +177,9 @@ export class CreateEtablissementComponent implements OnInit {
 
     dialogRef2.afterClosed().subscribe((result2:InsertionDialogue) => {
       console.log(result2);
+      result2.type="publicité";
+      result2.optionprint="indeterminé";
+      result2.actif="Oui";
       this.insertionData.push(result2);
        console.log(this.insertionData);
     });
@@ -184,8 +187,8 @@ export class CreateEtablissementComponent implements OnInit {
 
 
   submit() {
-    console.log("Departement :"+ JSON.stringify(this.firstFormGroup, null, "    "));
-    console.log("Coordonnées :"+ JSON.stringify(this.secondFormGroup, null, "    "));
+    console.log(  this.firstFormGroup);
+    console.log( JSON.stringify(this.secondFormGroup, null, "    "));
     console.log("contact :"+ JSON.stringify(this.sample, null, "    "));
     console.log("OP :"+ JSON.stringify(this.OpData, null, "    "));
     console.log("OP :"+ JSON.stringify(this.insertionData, null, "    "));

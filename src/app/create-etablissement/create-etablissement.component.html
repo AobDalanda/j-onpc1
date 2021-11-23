@@ -472,15 +472,15 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let insert of OpData; let indexOfelement=index; ">
-              <td>Type</td>
-              <td>Rubrique </td>
-              <td>Département </td>
-              <td>Publicité </td>
-              <td>Tri </td>
-              <td>Folio </td>
-              <td>Placement</td>
-              <td>Actif </td>
+            <tr *ngFor="let insert of insertionData; let indexOfelement=index; ">
+              <td>{{insert.type}}</td>
+              <td> {{insert.rubrique}}</td>
+              <td> {{insert.departement}}</td>
+              <td> {{insert.appelpublicite}}</td>
+              <td>{{insert.tri}}</td>
+              <td> {{insert.folio}}</td>
+              <td>{{insert.emplacementpublicite}}</td>
+              <td> {{insert.actif}}</td>
               <td>
                 <button  mat-raised-button>Editer</button>
                 <button   mat-raised-button>Supprimer</button>

@@ -22,6 +22,9 @@ export class DialogOverviewInsertion implements  OnInit{
   ]);
 
   ngOnInit() {
+    this.data2.type="publicité";
+    this.data2.optionprint="indeterminé";
+    this.data2.actif="Oui";
     /** Retrieve data for department */
     this.extraDataService.ListeDptmt().subscribe(
       (ListeDptmt)=>{this.listeDptmt=ListeDptmt
