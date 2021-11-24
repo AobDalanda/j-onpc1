@@ -24,14 +24,19 @@
                <mat-form-field appearance="fill" >
                         <mat-label>Format publicité</mat-label>
                         <mat-select [(ngModel)]="data2.formatpublicite"   >
-                          <mat-option value="oui"  >Oui</mat-option>
-                          <mat-option value="non"  >Non</mat-option>
+                          <mat-option *ngFor="let formatpub of listeFormatPub" [value]="formatpub.id">
+                            {{ formatpub.Libelle}}
+                          </mat-option>
                         </mat-select>
               </mat-form-field>
   <!-- EMPLACEMENT PUBLICITE:-->
                 <mat-form-field appearance="fill">
                       <mat-label>Emplacement publicité</mat-label>
                       <mat-select [(ngModel)]="data2.emplacementpublicite" >
+                        <mat-option *ngFor="let emplacePub of listeEmplPub" [value]="emplacePub.id">
+                          {{ emplacePub.Libelle}}
+                        </mat-option>
+
                         <mat-option value="oui"  >Oui</mat-option>
                         <mat-option value="non"  >Non</mat-option>
                       </mat-select>

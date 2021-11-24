@@ -15,6 +15,10 @@ import {ContactDialogue} from "../Model/ExtraData/DialogData";
 import {OpDialogue} from "../Model/ExtraData/ordresParticipation.model";
 import {DialogOverviewInsertion} from "./Insertion/DialogOverviewInsertion";
 import {InsertionDialogue} from "../Model/ExtraData/insertionData";
+import {villeData} from "../Model/ExtraData/ville.model";
+import { Observable, pipe} from "rxjs";
+import {debounceTime, finalize, map, startWith, tap} from 'rxjs/operators';
+
 
 
 @Component({
@@ -23,6 +27,15 @@ import {InsertionDialogue} from "../Model/ExtraData/insertionData";
   styleUrls: ['./create-etablissement.component.css']
 })
 export class CreateEtablissementComponent implements OnInit {
+//data for autocomplete
+  villeCtrl= new FormControl();
+  filteredTown: Observable<villeData[]>;
+  isLoading = false;
+//data for autocomplete
+
+
+
+
 
   prenom!: string;
   nom!:string;
@@ -42,20 +55,36 @@ export class CreateEtablissementComponent implements OnInit {
   ]);
   isLinear = true;
   firstFormGroup!: FormGroup;
-  secondFormGroup!: FormGroup;
+  //secondFormGroup!: FormGroup;
 /*Array for retrieved data from api    */
   liSourceMaj!:Smaj[];
   listeDelegue!: Delegue[];
   listeDioces !: Diocese[];
   listeDptmt!: Dptmts[];
   listeTypeEtabl !:TypeEtablissement[] ;
+  listeTown :villeData[] = [];
 
-
+  secondFormGroup = new FormGroup({
+    villeCtrl: new FormControl()
+  });
+  insertionWebFormGroup!: FormGroup;
 
   constructor(private _formBuilder: FormBuilder, private http:HttpClient, private extraDataService: ExtradataService, public dialog: MatDialog ) {
+    //for autocomplete
+    this.filteredTown = this.villeCtrl.valueChanges.pipe(
+      startWith(''),
+      debounceTime(300),
+      map(town => (town ? this._filterVille(town) : this.listeTown.slice())),
+
+
+    );
+    //for autocomplete
+
   }
 
   ngOnInit() {
+
+
                   /**  Retrieve data for "source de mise à jour " */
                                 this.extraDataService.SMajData().subscribe(
                                   (sMaj)=>{  this.liSourceMaj=sMaj;  },(error)=>{
@@ -76,6 +105,11 @@ export class CreateEtablissementComponent implements OnInit {
                              this.extraDataService.ListeTypeEtablissment().subscribe(
                                (ListeTypeEtabl)=>{this.listeTypeEtabl=ListeTypeEtabl;}
                              );
+               /** Retrieve data for the town */
+                             this.extraDataService.ListeVille().subscribe(
+                               (listeTowns)=>{this.listeTown=listeTowns;this.listeTown=listeTowns }
+                             );
+
 
 
 
@@ -92,7 +126,9 @@ export class CreateEtablissementComponent implements OnInit {
           /**
            * formulaire coordonnées
            */
+
           this.secondFormGroup = this._formBuilder.group({
+                  villeCtrl:[''],
                   exportweb: ['oui', Validators.required],
                   presencepapier: ['oui', Validators.required],
                   optionprint:['oui', Validators.required],
@@ -141,7 +177,19 @@ export class CreateEtablissementComponent implements OnInit {
                   adressepostal6 : [''],
                   adressepostal7 : [''],
           });//from line 355 in html
+
+          /**
+           * Formulaire insertion web
+           */
+          this.insertionWebFormGroup=this._formBuilder.group({
+            logoliste: [''],
+            logofiche:[''],
+            diaporama:[''],
+            motscles:[''],
+          });
+
   }
+
 
 
   openDialog(): void {
@@ -187,11 +235,14 @@ export class CreateEtablissementComponent implements OnInit {
 
 
   submit() {
-    console.log(  this.firstFormGroup);
-    console.log( JSON.stringify(this.secondFormGroup, null, "    "));
-    console.log("contact :"+ JSON.stringify(this.sample, null, "    "));
-    console.log("OP :"+ JSON.stringify(this.OpData, null, "    "));
-    console.log("OP :"+ JSON.stringify(this.insertionData, null, "    "));
+    console.log(  this.firstFormGroup.value);
+    //console.log( JSON.stringify(this.secondFormGroup, null, "    "));
+    console.log( this.secondFormGroup.value);
+    console.log(this.sample);
+    console.log(this.OpData);
+    console.log(this.insertionData);
+    console.log("Ville"+ JSON.stringify(this.listeTown, null, "    "))
+   // console.log(this.listeTown);
     //console.log("%s %O", "My Object", this.OpData);
 
   }
@@ -201,6 +252,14 @@ export class CreateEtablissementComponent implements OnInit {
     this.sample.splice(indexOfelement,1);
   }
 
+
+
+        //for autocomplete
+              private _filterVille(value: string): villeData[] {
+                const filterValue = value.toLowerCase();
+                return this.listeTown.filter(state => state.Libelle.toLowerCase().includes(filterValue));
+              }
+      //for autocomplete
 
 }
 

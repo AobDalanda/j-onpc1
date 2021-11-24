@@ -213,10 +213,23 @@
             <input formControlName="codepostal" matInput placeholder="Code postal">
           </mat-form-field><br/>
 <!-- VILLE:-->
-            <mat-form-field appearance="fill" >
-              <mat-label>Ville</mat-label>
-              <input formControlName="ville" matInput placeholder="VILLE">
-            </mat-form-field><br/>
+
+              <mat-form-field appearance="fill" class="example-full-width">
+                <mat-label>Ville</mat-label>
+                <input [formControl]="villeCtrl" [matAutocomplete]="auto"
+                       aria-label="Ville"
+                       formControlName="ville"
+
+                       matInput
+                >
+                <mat-autocomplete #auto="matAutocomplete"  >
+
+
+                  <mat-option *ngFor="let town of filteredTown | async" [value]="town.Libelle">
+                    <span>{{town.Libelle}} ({{town.Departements_Numero}})</span>
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>  <br/>
 <!-- CEDEX:-->
             <mat-form-field appearance="fill" >
               <mat-label>Cedex </mat-label>
@@ -447,7 +460,7 @@
       <div id="first">
         <p>liste-Insertion</p>
         <mat-form-field>
-          <mat-label>Mailling</mat-label>
+          <mat-label>Type d'insertion</mat-label>
           <mat-select   formControlName="mailing">
             <mat-option value="insertion modulaire"  >insertion modulaire</mat-option>
             <mat-option value="pub">publicité</mat-option>
@@ -497,14 +510,40 @@
     </div>
   </mat-step>
   <!-- step 6 formulaire  Insertions Web-->
-  <mat-step>
-    <ng-template matStepLabel><span>  Insertions Web </span></ng-template>
-    Insertions Web de l'etablisssement
-    <div>
-      <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
-      <button class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
-    </div>
-  </mat-step>
+          <mat-step [stepControl]="insertionWebFormGroup">
+                      <ng-template matStepLabel><span>  Insertions Web </span></ng-template>
+
+
+
+                      <form [formGroup]="firstFormGroup">
+                              <mat-form-field appearance="fill" >
+                                <mat-label>Logo Liste</mat-label>
+                                <input formControlName="logoliste" matInput   placeholder="Logo Liste"  type="text">
+                              </mat-form-field>
+
+                              <mat-form-field appearance="fill" >
+                                <mat-label>Logo Fiche</mat-label>
+                                <input formControlName="logofiche" matInput   placeholder="Logo Fiche"  type="text">
+                              </mat-form-field>
+
+                              <mat-form-field   >
+                                <mat-label>Diaporama</mat-label>
+                                <mat-select   formControlName="diaporama"  >
+                                  <mat-option value="oui">oui</mat-option>
+                                  <mat-option value="non">non</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+
+
+                      </form>
+
+
+
+                      <div>
+                        <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
+                        <button class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
+                      </div>
+          </mat-step>
   <!-- step 7 formulaire  Liens -->
   <mat-step>
     <ng-template matStepLabel><span>  Liens</span></ng-template>

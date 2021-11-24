@@ -8,6 +8,9 @@ import {Diocese} from "../../Model/ExtraData/diocese.model";
 import {Dptmts} from "../../Model/ExtraData/dptmt.model";
 import {TypeEtablissement} from "../../Model/ExtraData/typeEtablissement.model";
 import {Produit} from "../../Model/ExtraData/produit.model";
+import {Formatpub} from "../../Model/ExtraData/formatpub.model";
+import {EmplaPub} from "../../Model/ExtraData/emplapub.model";
+import {villeData} from "../../Model/ExtraData/ville.model";
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +20,11 @@ export class ExtradataService {
   readonly  apiURLListeDelegue =`${environment.API_URL}/liste/delegues`;
   readonly  apiURLListeDiocese =`${environment.API_URL}/extract/diocese`;
   readonly  apiURLListeDptmt =`${environment.API_URL}/extract/dptmt`;
+  readonly  apiURLListeFormatPub =`${environment.API_URL}/extract/formatpub`;
+  readonly  apiURLListeEmplacementPub =`${environment.API_URL}/extract/emplPub`;
   readonly  apiURLListeTypeetabl=`${environment.API_URL}/extract/typeetabl`;
   readonly  apiURLListeProduit  =`${environment.API_URL}/extract/listeProduit`;
+  readonly  apiURLListeVille  =`${environment.API_URL}/extract/ville`;
   constructor( private http: HttpClient ) { }
                 SMajData():Observable<Smaj[]>{
                      return this.http.get<Smaj[]>(this.apiURLgetSmajData);
@@ -40,6 +46,16 @@ export class ExtradataService {
                       return this.http.get<Produit[]>(this.apiURLListeProduit);
                 }
 
+                ListeFormatPub():Observable<Formatpub[]>{
+                  return this.http.get<Formatpub[]>(this.apiURLListeFormatPub);
+                }
+                ListeEmplacPub():Observable<EmplaPub[]>{
+                  return this.http.get<EmplaPub[]>(this.apiURLListeEmplacementPub);
+                }
+
+                ListeVille():Observable<villeData[]>{
+                  return this.http.get<villeData[]>(this.apiURLListeVille);
+                }
 
 
 }

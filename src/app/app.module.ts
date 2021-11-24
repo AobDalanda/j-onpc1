@@ -28,6 +28,8 @@ import {AppRoutingModule} from "./app-routing.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
 import {DialogOverviewInsertion} from "./create-etablissement/Insertion/DialogOverviewInsertion";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -46,28 +48,30 @@ import {DialogOverviewInsertion} from "./create-etablissement/Insertion/DialogOv
     DialogOverviewInsertion,
     DialogOverviewOP,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    MatStepperModule,
-    MatIconModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    MatListModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatTableModule,
-    MatDialogModule,
-    MatInputModule,
-    MatFormFieldModule
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
+        MatStepperModule,
+        MatIconModule,
+        MatButtonModule,
+        ReactiveFormsModule,
+        MatListModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatTableModule,
+        MatDialogModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatAutocompleteModule,
+        MatProgressSpinnerModule
+    ],
   providers: [ MatInputModule, {
     provide: STEPPER_GLOBAL_OPTIONS,   useValue: { displayDefaultIndicatorType: false, showError: false  }
   }  ],
