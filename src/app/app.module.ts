@@ -30,6 +30,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {DialogOverviewInsertion} from "./create-etablissement/Insertion/DialogOverviewInsertion";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -48,30 +49,31 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     DialogOverviewInsertion,
     DialogOverviewOP,
   ],
-    imports: [
-        BrowserModule,
-        FormsModule,
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        ReactiveFormsModule,
-        MatStepperModule,
-        MatIconModule,
-        MatButtonModule,
-        ReactiveFormsModule,
-        MatListModule,
-        MatSelectModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatTableModule,
-        MatDialogModule,
-        MatInputModule,
-        MatFormFieldModule,
-        MatAutocompleteModule,
-        MatProgressSpinnerModule
-    ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MatStepperModule,
+    MatIconModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatListModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTableModule,
+    MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatAutocompleteModule,
+    MatProgressSpinnerModule,
+    MatCheckboxModule
+  ],
   providers: [ MatInputModule, {
     provide: STEPPER_GLOBAL_OPTIONS,   useValue: { displayDefaultIndicatorType: false, showError: false  }
   }  ],

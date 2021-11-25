@@ -68,6 +68,7 @@ export class CreateEtablissementComponent implements OnInit {
     villeCtrl: new FormControl()
   });
   insertionWebFormGroup!: FormGroup;
+  siteFormGroup!:FormGroup;
 
   constructor(private _formBuilder: FormBuilder, private http:HttpClient, private extraDataService: ExtradataService, public dialog: MatDialog ) {
     //for autocomplete
@@ -187,6 +188,25 @@ export class CreateEtablissementComponent implements OnInit {
             diaporama:[''],
             motscles:[''],
           });
+          this.siteFormGroup=this._formBuilder.group({
+                  etatWeb:[''],
+                  typeSite:[''],
+                  urlSite:[''],
+                  siteOxatis:[''],
+                  siteResponsiveDesign:[''],
+                  siteActualite:[''],
+                  siteWordpress:[''],
+                  offresEmplois:[''],
+                  HebergementMensuel:[''],
+                  placeDisponible:[''],
+                  numeroOp:[''],
+                  statut:[''],
+                  dateFirstMAJ:[''],
+                  dateEndMAJ:[''],
+                  commentaire:[''],
+          });
+
+
 
   }
 

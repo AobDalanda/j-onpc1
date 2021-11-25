@@ -461,7 +461,7 @@
         <p>liste-Insertion</p>
         <mat-form-field>
           <mat-label>Type d'insertion</mat-label>
-          <mat-select   formControlName="mailing">
+          <mat-select  >
             <mat-option value="insertion modulaire"  >insertion modulaire</mat-option>
             <mat-option value="pub">publicité</mat-option>
             <mat-option value="insertion guide pro">insertion guid pro</mat-option>
@@ -512,56 +512,101 @@
   <!-- step 6 formulaire  Insertions Web-->
           <mat-step [stepControl]="insertionWebFormGroup">
                       <ng-template matStepLabel><span>  Insertions Web </span></ng-template>
+            <form [formGroup]="insertionWebFormGroup">
+              <mat-form-field appearance="fill" >
+                <mat-label>Logo Liste</mat-label>
+                <input formControlName="logoliste" matInput     type="text"/>
+              </mat-form-field>
 
+              <mat-form-field appearance="fill" >
+                <mat-label>Logo Fiche</mat-label>
+                <input formControlName="logofiche" matInput     type="text"/>
+              </mat-form-field><br>
 
-
-                      <form [formGroup]="firstFormGroup">
-                              <mat-form-field appearance="fill" >
-                                <mat-label>Logo Liste</mat-label>
-                                <input formControlName="logoliste" matInput   placeholder="Logo Liste"  type="text">
-                              </mat-form-field>
-
-                              <mat-form-field appearance="fill" >
-                                <mat-label>Logo Fiche</mat-label>
-                                <input formControlName="logofiche" matInput   placeholder="Logo Fiche"  type="text">
-                              </mat-form-field>
-
-                              <mat-form-field   >
-                                <mat-label>Diaporama</mat-label>
-                                <mat-select   formControlName="diaporama"  >
-                                  <mat-option value="oui">oui</mat-option>
-                                  <mat-option value="non">non</mat-option>
-                                </mat-select>
-                              </mat-form-field>
-
-
-                      </form>
-
-
-
-                      <div>
-                        <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
-                        <button class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
-                      </div>
+              <mat-form-field   >
+                <mat-label>Diaporama</mat-label>
+                <mat-select  formControlName="diaporama" matNativeControl  >
+                  <mat-option value="oui">oui</mat-option>
+                  <mat-option value="non">non</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Mots Clés</mat-label>
+                <textarea   formControlName="motscles"    matInput placeholder="Informations commerciales">    </textarea>
+              </mat-form-field>
+            </form>
+              <div>
+                <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
+                 <button class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
+             </div>
           </mat-step>
   <!-- step 7 formulaire  Liens -->
-  <mat-step>
-    <ng-template matStepLabel><span>  Liens</span></ng-template>
-    Liens de l'etablisssement
-    <div>
-      <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
-      <button class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
-    </div>
-  </mat-step>
+        <mat-step>
+          <ng-template matStepLabel><span>  Liens</span></ng-template>
+          Liens de l'etablisssement
+          <div>
+            <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
+            <button class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
+          </div>
+        </mat-step>
   <!-- step 8 formulaire  Sites  -->
-  <mat-step>
-    <ng-template matStepLabel><span>  Sites </span></ng-template>
-    Sites de l'etablisssement
-    <div>
-      <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
-      <button class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
-    </div>
-  </mat-step>
+            <mat-step [stepControl]="siteFormGroup">
+              <ng-template matStepLabel><span>  Sites </span></ng-template>
+                     <form [formGroup]="siteFormGroup" style="align-content: center">
+                       <mat-form-field>
+                         <mat-label>Etat web</mat-label>
+                         <mat-select  formControlName="etatWeb" matNativeControl  >
+                           <mat-option value="Actif">Actif</mat-option>
+                           <mat-option value="Inactif">Inactif</mat-option>
+                           <mat-option value="Refus">Refus</mat-option>
+                         </mat-select>
+                       </mat-form-field><br>
+
+                       <mat-form-field appearance="fill" >
+                         <mat-label>Type de site</mat-label>
+                         <input formControlName="typeSite" matInput   placeholder="Type de site"  type="text"/>
+                       </mat-form-field><br>
+
+                       <mat-form-field appearance="fill" >
+                         <mat-label>Url</mat-label>
+                         <input formControlName="urlSite" matInput   placeholder="Url"  type="text"/>
+                       </mat-form-field><br>
+                         site sous Oxatis : <mat-checkbox formControlName="siteOxatis"></mat-checkbox>
+                         site sous Wordpress : <mat-checkbox formControlName="siteWordpress"></mat-checkbox>
+                         Hébergement mensuelisé : <mat-checkbox formControlName="HebergementMensuel"></mat-checkbox>
+                        <br>
+                          site responsive design: <mat-checkbox formControlName="siteResponsiveDesign"></mat-checkbox>
+                        <br>
+                         site avec Actualités : <mat-checkbox formControlName="siteActualite"></mat-checkbox>
+                         Offres d'emplois : <mat-checkbox formControlName="offresEmplois"></mat-checkbox>
+                         Place disponible : <mat-checkbox formControlName="placeDisponible"></mat-checkbox>
+                        <br>
+                       <mat-form-field>
+                          <mat-label>Numéro OP</mat-label>
+                         <input formControlName="numeroOp" matInput placeholder="Numéro OP" type="text"/>
+                       </mat-form-field>
+
+                       <mat-form-field>
+                         <mat-label>Statut</mat-label>
+                         <mat-select  formControlName="statut" matNativeControl  >
+                           <mat-option value="attente">en attente</mat-option>
+                           <mat-option selected="selected" value="debloque">débloquée</mat-option>
+                         </mat-select>
+                       </mat-form-field>
+
+                       <br>
+                       <mat-form-field>
+                         <mat-label>Commentaires</mat-label>
+                         <textarea  formControlName="commentaire"    matInput placeholder="Commentaires">    </textarea>
+                       </mat-form-field>
+
+
+                     </form>
+              <div>
+                <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
+                <button class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
+              </div>
+            </mat-step>
   <!-- step 94 formulaire  Recap de la fiche avant validation   -->
   <mat-step>
     <ng-template matStepLabel><span>  Récapitulatif de la fiche </span></ng-template>
