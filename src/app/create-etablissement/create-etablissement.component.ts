@@ -18,6 +18,8 @@ import {InsertionDialogue} from "../Model/ExtraData/insertionData";
 import {villeData} from "../Model/ExtraData/ville.model";
 import { Observable, pipe} from "rxjs";
 import {debounceTime, finalize, map, startWith, tap} from 'rxjs/operators';
+import {Banniere} from "../Model/ExtraData/banniere.model";
+import {DialogOverviewBanniere} from "./Banniere/DialogOverviewBanniere";
 
 
 
@@ -44,6 +46,7 @@ export class CreateEtablissementComponent implements OnInit {
   sample  : ContactDialogue[]= [];
   OpData:OpDialogue[]=[];
   insertionData:InsertionDialogue[]=[];
+  banniere:Banniere[]=[];
   date = new FormControl(new Date());
   /*
   displayedColumns = ['Prenom', 'Nom', 'Fonction','Signataire'];
@@ -253,16 +256,17 @@ export class CreateEtablissementComponent implements OnInit {
     });
   }
 
+
   openDialogBanniere(): void {
-    const dialogRef3 = this.dialog.open(DialogOverviewOP, {
+    const dialogRef3 = this.dialog.open(DialogOverviewBanniere, {
       width: '50%',
       data: { identifiant:this.nom, etat:this.prenom, dateSouscription: this.date, nom:this.prenom }
     });
 
-    dialogRef3.afterClosed().subscribe((result1:OpDialogue) => {
-      console.log(result1);
-      this.OpData.push(result1);
-      console.log(this.OpData);
+    dialogRef3.afterClosed().subscribe((result3:Banniere) => {
+      console.log(result3);
+      this.banniere.push(result3);
+      console.log(this.banniere);
     });
   }
 

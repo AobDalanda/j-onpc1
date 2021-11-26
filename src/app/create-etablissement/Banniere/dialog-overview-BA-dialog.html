@@ -1,0 +1,114 @@
+
+<div mat-dialog-option>
+
+  <!-- DATE OP:-->
+           <mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Date OP</mat-label>
+                  <input [(ngModel)]="dataB.date_op" [formControl]="date"  [matDatepicker]="picker5"  matInput>
+                  <mat-datepicker-toggle [for]="picker5" matSuffix></mat-datepicker-toggle>
+                  <mat-datepicker #picker5></mat-datepicker>
+                </mat-form-field>
+           </mat-form-field><br/>
+  <!-- NUMERO OP:-->
+          <mat-form-field appearance="fill" >
+                <mat-label>Numéro OP</mat-label>
+                <input   [(ngModel)]="dataB.numero_op"    matInput   type="text">
+          </mat-form-field><br/>
+  <!-- TYPE DE BANNIERE:-->
+         <mat-form-field appearance="fill" >
+           <mat-label>Type de bannière</mat-label>
+               <mat-select   [(ngModel)]="dataB.type_banniere" >
+                 <mat-option value=""  >Sélectionnez un type de bannière</mat-option>
+                 <mat-option value="1"  >Méga Bannière Verticale Site</mat-option>
+                 <mat-option value="2"  >Méga Bannière Verticale Page d'Accueil</mat-option>
+                 <mat-option value="3"  >Grand Pavé Contextuel</mat-option>
+                 <mat-option value="4"  >Grand Pavé Départemental</mat-option>
+                 <mat-option value="5"  >Grand Pavé Espace Emploi</mat-option>
+                 <mat-option value="6"  >Grand Pavé Espace Fournisseurs</mat-option>
+               </mat-select>
+          </mat-form-field><br/>
+  <!-- PRESENCE REGIONALE:-->
+          <mat-form-field appearance="fill" >
+                <mat-label>Departement</mat-label>
+                <mat-select [(ngModel)]="dataB.regions_identifiant" class="custom-select">
+                  <mat-option *ngFor="let region of listeRegion" [value]="region.Identifiant">
+                    {{region.Libelle}}
+                  </mat-option>
+            </mat-select>
+          </mat-form-field><br/>
+  <!-- PRESENCE DEPARTEMENTATALE:-->
+          <mat-form-field appearance="fill" >
+                <mat-label>Departement</mat-label>
+                <mat-select [(ngModel)]="dataB.departements_numero" class="custom-select">
+                  <mat-option *ngFor="let departement of listeDptmt" [value]="departement.Numero">
+                    {{departement.Numero + " " + departement.Libelle}}
+                  </mat-option>
+            </mat-select>
+          </mat-form-field><br/>
+  <!-- RUBRIQUE:-->
+          <mat-form-field>
+            <mat-label>Rubrique</mat-label>
+            <mat-select   [(ngModel)]="dataB.rubrique" >
+              <mat-option value=""  >Sélectionnez une rubrique</mat-option>
+              <mat-option value="1"  >ÉCOLES</mat-option>
+              <mat-option value="2"  >COLLÈGES</mat-option>
+              <mat-option value="3"  >LYCÉES</mat-option>
+              <mat-option value="4"  >BAC TECHNIQUE</mat-option>
+              <mat-option value="5"  >ENSEIGNEMENT PROFESSIONNEL</mat-option>
+              <mat-option value="6"  >ENSEIGNEMENT SUPÉRIEUR</mat-option>
+              <mat-option value="7"  >INTERNATS</mat-option>
+              <mat-option value="8"  >TOUS NIVEAUX</mat-option>
+              <mat-option value="9"  >PAGE D'ACCUEIL</mat-option>
+              <mat-option value="10"  >ESPACE ORGANISMES</mat-option>
+              <mat-option value="11"  >ESPACE FOURNISSEURS</mat-option>
+              <mat-option value="12"  >TOUT LE SITE</mat-option>
+            </mat-select>
+          </mat-form-field><br/>
+  <!-- DATE DEBUT DE MISE EN LIGNE:-->
+          <mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Date de début de mise en ligne </mat-label>
+                  <input [(ngModel)]="dataB.date_debut_mise_en_ligne" [formControl]="date"  [matDatepicker]="picker7"  matInput>
+                  <mat-datepicker-toggle [for]="picker7" matSuffix></mat-datepicker-toggle>
+                  <mat-datepicker #picker7></mat-datepicker>
+                </mat-form-field>
+          </mat-form-field><br/>
+  <!-- DATE FIN DE MISE EN LIGNE:-->
+          <mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Date de fin de mise en ligne</mat-label>
+                  <input [(ngModel)]="dataB.date_fin_mise_en_ligne" [formControl]="date"  [matDatepicker]="picker8"  matInput>
+                  <mat-datepicker-toggle [for]="picker8" matSuffix></mat-datepicker-toggle>
+                  <mat-datepicker #picker8></mat-datepicker>
+                </mat-form-field>
+          </mat-form-field><br/>
+  <!-- DETAIL:-->
+          <mat-form-field>
+                  <mat-label>Detail</mat-label>
+                  <textarea  [(ngModel)]="dataB.detail"    matInput placeholder="Detail">    </textarea>
+          </mat-form-field>
+<!-- URL:-->
+          <mat-form-field appearance="fill" >
+                  <mat-label>Url</mat-label>
+                  <input   [(ngModel)]="dataB.url"    matInput   type="text">
+          </mat-form-field>
+  <!-- MAIL:-->
+  <mat-form-field  >
+    <mat-label>Bannière</mat-label>
+    <input #fileSelect (change)="onFileSelect($event)" [hidden]="true" accept="all/*" type="file">
+    <input [(ngModel)]="dataB.nom_banniere" matInput placeholder="Select file..." readonly/>
+    <button (click)="this.base64File = null; this.filename = null" *ngIf="this.base64File" [matTooltipPosition]="'above'" color="warn"
+            mat-icon-button matSuffix matTooltip="Remove selected file" type="button">
+      <mat-icon>close</mat-icon>
+    </button>
+    <button (click)="fileSelect.click();" [matTooltipPosition]="'above'" mat-icon-button  matSuffix matTooltip="Select a file">
+      <mat-icon>file_upload</mat-icon>
+    </button>
+  </mat-form-field>
+  <
+</div>
+<div mat-dialog-actions>
+  <button (click)="onNoClick()" mat-button>Annuler</button>
+  <button   [mat-dialog-close]="dataB" cdkFocusInitial mat-button>Valider</button>
+</div>

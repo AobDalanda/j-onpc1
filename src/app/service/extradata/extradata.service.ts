@@ -11,6 +11,7 @@ import {Produit} from "../../Model/ExtraData/produit.model";
 import {Formatpub} from "../../Model/ExtraData/formatpub.model";
 import {EmplaPub} from "../../Model/ExtraData/emplapub.model";
 import {villeData} from "../../Model/ExtraData/ville.model";
+import {regionData} from "../../Model/ExtraData/region.model";
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,7 @@ export class ExtradataService {
   readonly  apiURLListeTypeetabl=`${environment.API_URL}/extract/typeetabl`;
   readonly  apiURLListeProduit  =`${environment.API_URL}/extract/listeProduit`;
   readonly  apiURLListeVille  =`${environment.API_URL}/extract/ville`;
+  readonly  apiURLListeRegion  =`${environment.API_URL}/extract/region`;
   constructor( private http: HttpClient ) { }
                 SMajData():Observable<Smaj[]>{
                      return this.http.get<Smaj[]>(this.apiURLgetSmajData);
@@ -55,6 +57,10 @@ export class ExtradataService {
 
                 ListeVille():Observable<villeData[]>{
                   return this.http.get<villeData[]>(this.apiURLListeVille);
+                }
+
+                ListeRegion():Observable<regionData[]>{
+                  return this.http.get<regionData[]>(this.apiURLListeRegion);
                 }
 
 

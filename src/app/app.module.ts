@@ -31,6 +31,8 @@ import {DialogOverviewInsertion} from "./create-etablissement/Insertion/DialogOv
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import {DialogOverviewBanniere} from "./create-etablissement/Banniere/DialogOverviewBanniere";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     DialogOverviewExampleDialog,
     DialogOverviewInsertion,
     DialogOverviewOP,
+    DialogOverviewBanniere
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     MatFormFieldModule,
     MatAutocompleteModule,
     MatProgressSpinnerModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTooltipModule
   ],
   providers: [ MatInputModule, {
     provide: STEPPER_GLOBAL_OPTIONS,   useValue: { displayDefaultIndicatorType: false, showError: false  }

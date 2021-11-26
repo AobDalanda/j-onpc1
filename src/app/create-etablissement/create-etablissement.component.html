@@ -3,30 +3,34 @@
   <!-- step 1 formulaire  departement et type etablissement-->
   <mat-step [stepControl]="firstFormGroup" class="department">
     <ng-template matStepLabel><span>  Departemement </span></ng-template>
-    <form [formGroup]="firstFormGroup" class="form-group">
-      <mat-form-field>
-        <mat-label>Departement</mat-label>
-        <mat-select class="custom-select" formControlName="department">
-          <mat-option *ngFor="let departement of listeDptmt" [value]="departement.Numero">
-            {{departement.Numero + " " + departement.Libelle}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <br/>
-      <mat-form-field>
-        <mat-label>Type établissement</mat-label>
-        <mat-select class="custom-select" formControlName="typeEtablissement">
-          <mat-option   [value]="1">   Etablissement </mat-option>
-          <mat-option   [value]="2">   Organisme </mat-option>
-          <mat-option   [value]="3">   Internat </mat-option>
-          <mat-option   [value]="4">   Fournisseur </mat-option>
-          <mat-option   [value]="5">   Groupes scolaires </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </form>
-    <div>
-      <button [disabled]="!firstFormGroup.valid" class="btn btn-secondary" mat-button  matStepperNext>Suivant</button>
-    </div>
+    <div id="wrapper">
+      <div id="first">
+              <form [formGroup]="firstFormGroup" class="form-group">
+                <mat-form-field>
+                  <mat-label>Departement</mat-label>
+                  <mat-select class="custom-select" formControlName="department">
+                    <mat-option *ngFor="let departement of listeDptmt" [value]="departement.Numero">
+                      {{departement.Numero + " " + departement.Libelle}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <br/>
+                <mat-form-field>
+                  <mat-label>Type établissement</mat-label>
+                  <mat-select class="custom-select" formControlName="typeEtablissement">
+                    <mat-option   [value]="1">   Etablissement </mat-option>
+                    <mat-option   [value]="2">   Organisme </mat-option>
+                    <mat-option   [value]="3">   Internat </mat-option>
+                    <mat-option   [value]="4">   Fournisseur </mat-option>
+                    <mat-option   [value]="5">   Groupes scolaires </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </form>
+        </div>
+        <div id="second">
+          <button [disabled]="!firstFormGroup.valid" class="btn btn-secondary" mat-button  matStepperNext>Suivant</button>
+        </div>
+      </div>
   </mat-step>
   <!-- step 2 formulaire  Coordonnées-->
   <mat-step  [stepControl]="secondFormGroup">
@@ -512,6 +516,9 @@
   <!-- step 6 formulaire  Insertions Web-->
           <mat-step [stepControl]="insertionWebFormGroup">
                       <ng-template matStepLabel><span>  Insertions Web </span></ng-template>
+<div id="wrapper">
+ <div id="first">
+
             <form [formGroup]="insertionWebFormGroup">
               <mat-form-field appearance="fill" >
                 <mat-label>Logo Liste</mat-label>
@@ -534,12 +541,15 @@
                 <textarea   formControlName="motscles"    matInput placeholder="Informations commerciales">    </textarea>
               </mat-form-field>
             </form>
-              <div>
-                <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
-                 <button class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
              </div>
+              <div id="second">
+                <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
+                <button   class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
+              </div>
+            </div>
           </mat-step>
   <!-- step 7 formulaire  Liens -->
+  <!--
         <mat-step>
           <ng-template matStepLabel><span>  Liens</span></ng-template>
           Liens de l'etablisssement
@@ -548,9 +558,13 @@
             <button class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
           </div>
         </mat-step>
+
+  -->
   <!-- step 8 formulaire  Sites  -->
 <mat-step [stepControl]="siteFormGroup">
               <ng-template matStepLabel><span>  Sites </span></ng-template>
+  <div id="wrapper">
+    <div id="first">
                      <form [formGroup]="siteFormGroup" class="form-group" >
                        <mat-form-field>
                          <mat-label>Etat web</mat-label>
@@ -610,10 +624,12 @@
                          <textarea  formControlName="commentaire"    matInput placeholder="Commentaires">    </textarea>
                        </mat-form-field>
                      </form>
-              <div>
+              </div>
+              <div id="second">
                 <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
                 <button class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
               </div>
+            </div>
 </mat-step>
   <!-- step   formulaire  Bannière -->
 <mat-step>
@@ -621,12 +637,13 @@
 
             <div id="wrapper">
               <div id="first">
-                <p>liste-OP</p>
-                <button (click)="openDialogOp()" mat-raised-button>Créer une bannière</button>
+                <p>liste-Bannières</p>
+                <button (click)="openDialogBanniere()" mat-raised-button>Créer une bannière</button>
                 <div class="example-container mat-elevation-z8"  >
                   <table width="25%" >
                     <thead>
                     <tr style="background-color: #434348; color: white">
+                      <th scope="col">Region</th>
                       <th scope="col">Département</th>
                       <th scope="col">Rubrique</th>
                       <th scope="col">Nom</th>
@@ -636,12 +653,13 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let op of OpData; let indexOfelement=index; ">
-                      <td>{{ op.NumOp}}</td>
-                      <td>{{ op.dateSouscription}}</td>
-                      <td>{{ op.Facturable}}</td>
-                      <td>{{ op.etat}}</td>
-                      <td>{{ op.facturation}}</td>
+                    <tr *ngFor="let ban of banniere; let indexOfelement=index; ">
+                      <td>{{ ban.regions_identifiant}}</td>
+                      <td>{{ ban.departements_numero}}</td>
+                      <td>{{ ban.rubrique}}</td>
+                      <td>{{ ban.nom_banniere}}</td>
+                      <td>{{ ban.date_debut_mise_en_ligne}}</td>
+                      <td>{{ ban.date_fin_mise_en_ligne}}</td>
                       <td>
                         <button (click)="openDialog()" mat-raised-button>Editer</button>
                         <button (click)="deleteContact(indexOfelement)" mat-raised-button>Supprimer</button>
@@ -652,25 +670,26 @@
                 </div>
               </div>
               <div id="second">
-                <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
-                <button   class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
+                    <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
+                    <button class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
               </div>
             </div>
 
 
 
-    <div>
-      <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
-      <button class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
-    </div>
+
 </mat-step>
   <!-- step 9 formulaire  Recap de la fiche avant validation   -->
 <mat-step>
     <ng-template matStepLabel><span>  Récapitulatif de la fiche </span></ng-template>
-    Recap de la fiche avant validation
-    <div>
-      <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
-      <button (click)="submit()" class="btn btn-secondary" mat-button>Submit</button>
+
+  <div id="wrapper">  Recap de la fiche avant validation
+    <div id="first">
+      <div id="second">
+        <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
+        <button (click)="submit()" class="btn btn-secondary" mat-button>Submit</button>
+      </div>
+    </div>
     </div>
 </mat-step>
 
