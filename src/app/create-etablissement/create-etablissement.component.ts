@@ -253,6 +253,18 @@ export class CreateEtablissementComponent implements OnInit {
     });
   }
 
+  openDialogBanniere(): void {
+    const dialogRef3 = this.dialog.open(DialogOverviewOP, {
+      width: '50%',
+      data: { identifiant:this.nom, etat:this.prenom, dateSouscription: this.date, nom:this.prenom }
+    });
+
+    dialogRef3.afterClosed().subscribe((result1:OpDialogue) => {
+      console.log(result1);
+      this.OpData.push(result1);
+      console.log(this.OpData);
+    });
+  }
 
   submit() {
     console.log(  this.firstFormGroup.value);

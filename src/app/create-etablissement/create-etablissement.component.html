@@ -618,8 +618,44 @@
   <!-- step   formulaire  Bannière -->
 <mat-step>
     <ng-template matStepLabel><span>  Bannière</span></ng-template>
-    Bannière de l'établissement
 
+            <div id="wrapper">
+              <div id="first">
+                <p>liste-OP</p>
+                <button (click)="openDialogOp()" mat-raised-button>Créer une bannière</button>
+                <div class="example-container mat-elevation-z8"  >
+                  <table width="25%" >
+                    <thead>
+                    <tr style="background-color: #434348; color: white">
+                      <th scope="col">Département</th>
+                      <th scope="col">Rubrique</th>
+                      <th scope="col">Nom</th>
+                      <th scope="col">Debut</th>
+                      <th scope="col">Fin</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let op of OpData; let indexOfelement=index; ">
+                      <td>{{ op.NumOp}}</td>
+                      <td>{{ op.dateSouscription}}</td>
+                      <td>{{ op.Facturable}}</td>
+                      <td>{{ op.etat}}</td>
+                      <td>{{ op.facturation}}</td>
+                      <td>
+                        <button (click)="openDialog()" mat-raised-button>Editer</button>
+                        <button (click)="deleteContact(indexOfelement)" mat-raised-button>Supprimer</button>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div id="second">
+                <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
+                <button   class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
+              </div>
+            </div>
 
 
 
