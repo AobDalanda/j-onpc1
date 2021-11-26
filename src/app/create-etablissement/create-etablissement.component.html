@@ -3,7 +3,7 @@
   <!-- step 1 formulaire  departement et type etablissement-->
   <mat-step [stepControl]="firstFormGroup" class="department">
     <ng-template matStepLabel><span>  Departemement </span></ng-template>
-    <form [formGroup]="firstFormGroup">
+    <form [formGroup]="firstFormGroup" class="form-group">
       <mat-form-field>
         <mat-label>Departement</mat-label>
         <mat-select class="custom-select" formControlName="department">
@@ -31,7 +31,7 @@
   <!-- step 2 formulaire  Coordonnées-->
   <mat-step  [stepControl]="secondFormGroup">
     <ng-template matStepLabel><span>  Coordonnées </span></ng-template>
-<form [formGroup]="secondFormGroup">
+<form [formGroup]="secondFormGroup"  class="form-group" >
 <div> <!-- BEGINING OF BIG DIV -->
 <div class="part1">
 <!--  EXPORT WEB-->
@@ -516,20 +516,19 @@
               <mat-form-field appearance="fill" >
                 <mat-label>Logo Liste</mat-label>
                 <input formControlName="logoliste" matInput     type="text"/>
-              </mat-form-field>
+              </mat-form-field><br>
 
               <mat-form-field appearance="fill" >
                 <mat-label>Logo Fiche</mat-label>
                 <input formControlName="logofiche" matInput     type="text"/>
               </mat-form-field><br>
 
-              <mat-form-field   >
-                <mat-label>Diaporama</mat-label>
-                <mat-select  formControlName="diaporama" matNativeControl  >
-                  <mat-option value="oui">oui</mat-option>
-                  <mat-option value="non">non</mat-option>
-                </mat-select>
-              </mat-form-field>
+
+              Diaporama : <mat-checkbox formControlName="diaporama"></mat-checkbox><br>
+
+
+
+
               <mat-form-field>
                 <mat-label>Mots Clés</mat-label>
                 <textarea   formControlName="motscles"    matInput placeholder="Informations commerciales">    </textarea>
@@ -550,9 +549,9 @@
           </div>
         </mat-step>
   <!-- step 8 formulaire  Sites  -->
-            <mat-step [stepControl]="siteFormGroup">
+<mat-step [stepControl]="siteFormGroup">
               <ng-template matStepLabel><span>  Sites </span></ng-template>
-                     <form [formGroup]="siteFormGroup" style="align-content: center">
+                     <form [formGroup]="siteFormGroup" class="form-group" >
                        <mat-form-field>
                          <mat-label>Etat web</mat-label>
                          <mat-select  formControlName="etatWeb" matNativeControl  >
@@ -592,29 +591,51 @@
                            <mat-option value="attente">en attente</mat-option>
                            <mat-option selected="selected" value="debloque">débloquée</mat-option>
                          </mat-select>
-                       </mat-form-field>
+                       </mat-form-field><br>
 
-                       <br>
+                       <mat-form-field appearance="fill">
+                         <mat-label>Date de première mise en ligne</mat-label>
+                         <input [formControl]="date" [matDatepicker]="picker3"  formControlName="dateFirstMAJ" matInput>
+                         <mat-datepicker-toggle [for]="picker3" matSuffix></mat-datepicker-toggle>
+                         <mat-datepicker #picker3></mat-datepicker>
+                       </mat-form-field><br/>
+                       <mat-form-field appearance="fill">
+                         <mat-label>Date de première mise en ligne</mat-label>
+                         <input [formControl]="date" [matDatepicker]="picker4"  formControlName="dateEndMAJ" matInput>
+                         <mat-datepicker-toggle [for]="picker4" matSuffix></mat-datepicker-toggle>
+                         <mat-datepicker #picker4></mat-datepicker>
+                       </mat-form-field><br/>  <br>
                        <mat-form-field>
                          <mat-label>Commentaires</mat-label>
                          <textarea  formControlName="commentaire"    matInput placeholder="Commentaires">    </textarea>
                        </mat-form-field>
-
-
                      </form>
               <div>
                 <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
                 <button class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
               </div>
-            </mat-step>
-  <!-- step 94 formulaire  Recap de la fiche avant validation   -->
-  <mat-step>
+</mat-step>
+  <!-- step   formulaire  Bannière -->
+<mat-step>
+    <ng-template matStepLabel><span>  Bannière</span></ng-template>
+    Bannière de l'établissement
+
+
+
+
+    <div>
+      <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
+      <button class="btn btn-secondary" mat-button matStepperNext>Suivant</button>
+    </div>
+</mat-step>
+  <!-- step 9 formulaire  Recap de la fiche avant validation   -->
+<mat-step>
     <ng-template matStepLabel><span>  Récapitulatif de la fiche </span></ng-template>
     Recap de la fiche avant validation
     <div>
       <button class="btn btn-secondary" mat-button matStepperPrevious>Précedent</button>
       <button (click)="submit()" class="btn btn-secondary" mat-button>Submit</button>
     </div>
-  </mat-step>
+</mat-step>
 
 </mat-horizontal-stepper>

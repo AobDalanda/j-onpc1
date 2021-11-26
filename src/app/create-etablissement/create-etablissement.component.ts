@@ -263,6 +263,7 @@ export class CreateEtablissementComponent implements OnInit {
     console.log(this.insertionData);
     console.log("Ville"+ JSON.stringify(this.listeTown, null, "    "))
    // console.log(this.listeTown);
+     console.log("InsertionWeb"+ JSON.stringify(this.insertionWebFormGroup.value, null, "    "))
     //console.log("%s %O", "My Object", this.OpData);
 
   }
