@@ -46,7 +46,7 @@ export class DialogOverviewBanniere implements  OnInit{
           );
           /** Retrieve data for region */
           this.extraDataService.ListeRegion().subscribe(
-            (ListeRegion)=>{this.listeRegion}
+            (ListeRegion)=>{this.listeRegion=ListeRegion}
           );
 
   }
